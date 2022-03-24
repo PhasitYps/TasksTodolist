@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardPreventCornerOverlap="true"
+    app:cardUseCompatPadding="true"
+    app:cardCornerRadius="20dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:fillViewport="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="20dp"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    >
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@color/colorWhite"
+                        android:orientation="horizontal"
+                        >
+
+                        <ImageView
+                            android:id="@+id/calendarLeftIV"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_sort_left_filled" />
+
+                        <TextView
+                            android:id="@+id/dateTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:padding="10dp"
+                            android:text="9 มีนาคม 2564"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:id="@+id/calendarRightIV"
+                            android:layout_width="40dp"
+                            android:layout_height="40dp"
+                            android:layout_gravity="center"
+                            android:background="?attr/selectableItemBackgroundBorderless"
+                            android:padding="10dp"
+                            android:src="@drawable/ic_sort_right_filled" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:paddingTop="10dp"
+                        >
+
+                        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                            android:id="@+id/calCCV"
+                            android:layout_width="fill_parent"
+                            android:layout_height="250dp"
+                            app:compactCalendarBackgroundColor="@color/colorWhite"
+                            app:compactCalendarCurrentDayBackgroundColor="@color/colorWhite"
+                            app:compactCalendarCurrentDayTextColor="?attr/colorAccent"
+                            app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorAccent"
+                            app:compactCalendarCurrentSelectedDayTextColor="@color/colorWhite"
+                            app:compactCalendarMultiEventIndicatorColor="#fff"
+                            app:compactCalendarTargetHeight="250dp"
+                            app:compactCalendarTextColor="@color/colorBlack"
+                            app:compactCalendarTextSize="14dp" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/selectDayCG"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:singleSelection="false"
+                            >
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/notDueDateChip"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/no_date"
+                                app:chipBackgroundColor="@color/selector_choice_state"
+                                android:textColor="@color/selector_text_state"
+                                android:checkable="true"
+                                android:clickable="true"
+                                app:checkedIconVisible="false"
+                                android:tag="0"
+                                />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/selectDay2CC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/today"
+                                app:chipBackgroundColor="@color/selector_choice_state"
+                                android:textColor="@color/selector_text_state"
+                                android:checkable="true"
+                                android:clickable="true"
+                                app:checkedIconVisible="false"
+                                android:tag="1"
+                                />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/selectDay3CC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tomorrow"
+                                app:chipBackgroundColor="@color/selector_choice_state"
+                                android:textColor="@color/selector_text_state"
+                                android:checkable="true"
+                                android:clickable="true"
+                                app:checkedIconVisible="false"
+                                android:tag="2"
+                                />
+
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/selectDay4CC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/tree_days_later"
+                                app:chipBackgroundColor="@color/selector_choice_state"
+                                android:textColor="@color/selector_text_state"
+                                android:checkable="true"
+                                android:clickable="true"
+                                app:checkedIconVisible="false"
+                                android:tag="3"
+                                />
+
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/selectDay5CC"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/sunday"
+                                app:chipBackgroundColor="@color/selector_choice_state"
+                                android:textColor="@color/selector_text_state"
+                                android:checkable="true"
+                                android:clickable="true"
+                                app:checkedIconVisible="false"
+                                android:tag="4"
+                                />
+
+
+                        </com.google.android.material.chip.ChipGroup>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/addTimeLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:background="?attr/selectableItemBackground"
+                        >
+
+                        <ImageView
+                            android:id="@+id/timeIV"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_clock"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textTimeTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/time"
+                            android:textColor="@color/colorBlack"
+                            />
+
+                        <TextView
+                            android:id="@+id/stateTimeTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ไม่"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/setReminderLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:background="?attr/selectableItemBackground"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        >
+
+                        <ImageView
+                            android:id="@+id/notifyIV"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_notification"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textNotifyTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/notify"
+                            android:textColor="@color/colorBlack"
+                            />
+
+                        <TextView
+                            android:id="@+id/stateNotifyTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ไม่"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/addRepeatLL"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center"
+                        android:paddingTop="10dp"
+                        android:paddingBottom="10dp"
+                        android:paddingStart="15dp"
+                        android:paddingEnd="15dp"
+                        android:background="?attr/selectableItemBackground"
+                        android:visibility="gone"
+                        >
+
+                        <ImageView
+                            android:id="@+id/repeatIV"
+                            android:layout_width="25dp"
+                            android:layout_height="25dp"
+                            android:src="@drawable/ic_repeat"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/textRepeatTV"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="วนซ้ำ"
+                            android:textColor="@color/colorBlack"
+                            />
+
+                        <TextView
+                            android:id="@+id/stateRepeatTV"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ไม่ วนซ้ำ"
+                            android:textColor="@color/colorBlack"
+                            android:layout_marginEnd="10dp"
+                            />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/negativeTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="15dp"
+                    android:text="@string/cancel"
+                    android:textColor="?attr/colorPrimary"
+                    android:textStyle="bold" />
+
+
+                <TextView
+                    android:id="@+id/positiveTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="15dp"
+                    android:text="@string/done"
+                    android:textColor="?attr/colorAccent"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

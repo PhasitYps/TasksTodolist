@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="CustomTimePicker" parent="android:Widget.Material.TimePicker">
+        <item name="android:headerBackground">@color/colorWhite</item>
+        <item name="android:numbersTextColor">@color/colorBlack</item>
+        <item name="android:numbersSelectorColor">?attr/colorAccent</item>
+        <item name="android:numbersBackgroundColor">@color/colorWhite</item>
+        <item name="android:numbersInnerTextColor">@color/colorWhiteDarkDark</item>
+        <item name="android:background">@color/colorWhite</item>
+
+    </style>
+
+    <style name="BaseTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="android:timePickerStyle">@style/CustomTimePicker</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+
+        <item name="android:windowLightStatusBar">true</item>
+
+    </style>
+
+</resources>

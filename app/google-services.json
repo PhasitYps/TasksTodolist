@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "580610190420",
+    "project_id": "chillchillapp-tasktodolist",
+    "storage_bucket": "chillchillapp-tasktodolist.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:580610190420:android:91f7cd931d86d34e3991c1",
+        "android_client_info": {
+          "package_name": "com.chillchillapp.tasks.todolist"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBIcC_iCa6_g_41-wlX_-Qzbu8batgoTdE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

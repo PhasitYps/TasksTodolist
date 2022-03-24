@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccentAlpha">#26D81B60</color>
+
+
+    <color name="colorWhiteAlpha">#80FFFFFF</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteDark">#ebeef0</color>
+    <color name="colorWhiteDarkDark">#b2b5b7</color>
+
+    <color name="colorBlack">#000000</color>
+    <color name="colorBlackAlpha">#7b000000</color>
+
+    <color name="colorGray">#595b5d</color>
+
+    <color name="colorOrange">#ff8800</color>
+    <color name="colorOrangeDark">#c46900</color>
+
+    <color name="colorPink">#F06292</color>
+    <color name="colorPinkDark">#D81B60</color>
+    <color name="colorPinkAlpha">#FCE4EC</color>
+
+    <color name="colorPurple">#BA68C8</color>
+    <color name="colorPurpleDark">#AB47BC</color>
+    <color name="colorPurpleAlpha">#F3E5F5</color>
+
+    <color name="colorRed">#E57373</color>
+    <color name="colorRedDark">#D32F2F</color>
+    <color name="colorRedAlpha">#FFEBEE</color>
+
+    <color name="colorYellow">#FFB74D</color>
+    <color name="colorYellowDark">#FBC02D</color>
+    <color name="colorYellowAlpha">#FFFDE7</color>
+
+    <color name="colorGreen">#81C784</color>
+    <color name="colorGreenDark">#2E7D32</color>
+    <color name="colorGreenAlpha">#E8F5E9</color>
+
+    <color name="colorBlue">#64B5F6</color>
+    <color name="colorBlueDark">#1976D2</color>
+    <color name="colorBlueAlpha">#E3F2FD</color>
+
+    <color name="colorBrown">#b77a69</color>
+    <color name="colorBrownDark">#614633</color>
+    <color name="colorBrownAlpha">#efdfcc</color>
+
+
+
+    <color name="colorTransparent">#00ffffff</color>
+
+
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TasksTodolist</string>
+    <string name="no">Hindi</string>
+    <string name="done">Tapos na</string>
+    <string name="cancel">Kanselahin</string>
+    <string name="delete">Tanggalin</string>
+    <string name="apply">Mag-apply</string>
+
+    <!--MenuTaskFragment-->
+    <string name="today">Ngayon</string>
+    <string name="other">Iba pa</string>
+    <string name="task_completed_today">Nakumpleto ang gawain ngayon</string>
+    <string name="task_pending_today">Nakabinbin ang gawain ngayon</string>
+    <string name="check_all_completed_tasks">Suriin ang lahat ng nakumpletong gawain</string>
+
+    <!--MenuCalendarFragment-->
+    <string name="yesterday">Kahapon</string>
+    <string name="tomorrow">Bukas</string>
+    <string name="tree_days_later">3 araw mamaya</string>
+    <string name="sunday">Linggo</string>
+
+    <!--MenuStatisticsFragment-->
+    <string name="task_overview">Pangkalahatang-ideya ng Gawain</string>
+    <string name="completed_tasks">Mga nakumpletong gawain</string>
+    <string name="pending_tasks">Mga nakabinbing gawain</string>
+    <string name="achieve_daily_goals">Makamit ang Mga Pang-araw-araw na Layunin</string>
+    <string name="task_in_the_next_7_days">Gawain sa susunod na 7 araw</string>
+
+
+    <!--MenuMenuFragment-->
+    <string name="star_task">Bituin na Gawain</string>
+    <string name="category">Kategorya</string>
+    <string name="theme">Tema</string>
+    <string name="language">Wika</string>
+    <string name="menu">Menu</string>
+    <string name="click_for_login_google">i-click para sa pag-log in sa google</string>
+
+    <!--InputTaskActivity-->
+    <string name="create_new">Gumawa ng Bago</string>
+    <string name="enter_a_new_task_here">Magpasok ng bagong gawain dito.</string>
+    <string name="add_subtasks">Magdagdag ng Sub-tasks</string>
+    <string name="due_date">Takdang Petsa</string>
+    <string name="time_and_notification">Oras &amp; Paalala</string>
+    <string name="notification_at">Paalala sa</string>
+    <string name="repeat_every">Ulitin bawat</string>
+    <string name="attachment">Kalakip</string>
+    <string name="add_task">Magdagdag ng Gawain</string>
+    <string name="not_repeat">Hindi Ulitin</string>
+    <string name="no_date">Walang Petsa</string>
+    <string name="enter_subtasks">Ipasok ang sub-tasks</string>
+    <string name="no_category">Walang kategorya</string>
+    <string name="this_task_is_marked_complete">Ang gawaing ito ay minarkahan na kumpleto</string>
+
+    <!--SetRpeatDialog-->
+    <string name="set_as_repeat_task">Itakda bilang Ulitin na Gawain</string>
+    <string name="repeat_ending_at">Ulitin ang pagtatapos sa</string>
+    <string name="hour">Oras</string>
+    <string name="daily">Araw-araw</string>
+    <string name="weekly">Lingguhan</string>
+    <string name="monthly">Buwan-buwan</string>
+    <string name="yearly">Taun-taon</string>
+    <string name="day">Araw</string>
+    <string name="week">Linggo</string>
+    <string name="month">Buwan</string>
+    <string name="year">Taon</string>
+    <string name="endlessly">Walang katapusan</string>
+    <string name="no_loop">Walang loop</string>
+    <string name="repeat">Ulitin</string>
+    <string name="please_set_a_date_first">Mangyaring magtakda muna ng petsa</string>
+
+    <!--SetDueDateDialog-->
+    <string name="time">Oras</string>
+    <string name="notify">Abisuhan</string>
+
+    <!--SetTimeDialog-->
+    <string name="set_time">Itakda ang Oras</string>
+    <string name="no_time">Walang Oras</string>
+
+    <!--ConfirmDialog-->
+    <string name="delete_category">Kung tatanggalin mo ang kategoryang ito Lahat ng gawaing kabilang sa kategoryang ito ay tatanggalin. Gustong tanggalin?</string>
+
+    <!--AuthenticationActivity-->
+    <string name="login_to_collect_database">Mag-login upang mangolekta ng impormasyon. at gumamit ng iba pang mga function</string>
+    <string name="return_to_the_menu_page">Bumalik sa pahina ng menu</string>
+
+    <!--CategoryActivity-->
+    <string name="category_management">Pamamahala ng Kategorya</string>
+    <string name="categories_displayed_on_the_home_page">Mga kategoryang ipinapakita sa home page</string>
+
+    <!--HistoryActivity-->
+    <string name="achieve_the_goal">Achieve the goal</string>
+    <string name="time_of_completion">Oras ng pagkumpleto</string>
+    <string name="clock">Orasan</string>
+
+    <!--ThemeActivity-->
+    <string name="pure_color">Purong Kulay</string>
+    <string name="tap_to_select_a_theme">I-tap para pumili ng tema.</string>
+
+    <!--LanguageActivity-->
+    <string name="choose_the_language">Piliin ang wika</string>
+    <string name="keep_going">Ipagpatuloy</string>
+
+    <!--Bottom Sheet Menu-->
+    <string name="picture">Larawan</string>
+    <string name="video">Video</string>
+    <string name="record_sound">I-record ang tunog</string>
+    <string name="attached_list">Nakalakip na listahan</string>
+
+    <!--Menu sa Gawain-->
+    <string name="share">Ibahagi</string>
+    <string name="mark_as_finished">Markahan bilang tapos na</string>
+    <string name="mark_undo">Markahan ang undo</string>
+
+    <!--icon-->
+    <string name="all">Lahat</string>
+    <string name="finance">Pananalapi</string>
+    <string name="car">kotse</string>
+    <string name="utilities">Kagamitan</string>
+    <string name="family_and_children">Pamilya at mga anak</string>
+    <string name="entertainment">Aliwan</string>
+    <string name="health">Kalusugan</string>
+    <string name="home">Bahay</string>
+    <string name="personal_use">Personal na paggamit</string>
+    <string name="donate">Donate</string>
+    <string name="accommodation_hotel">Accommodation-hotel</string>
+    <string name="garden">Hardin</string>
+    <string name="shopping">Shopping</string>
+    <string name="food_and_drink">Pagkain at inumin</string>
+    <string name="education">Edukasyon</string>
+    <string name="friends_and_lovers">Mga kaibigan at magkasintahan</string>
+    <string name="sport">Palakasan</string>
+    <string name="pet">Alagang hayop</string>
+    <string name="travel">Paglalakbay</string>
+
+    <string name="save">I-save</string>
+    <string name="do_you_want_to_end_this_recording">Gusto mo bang tapusin ang recording na ito</string>
+    <string name="are_you_sure_you_want_to_delete_the_recording">Sigurado ka bang gusto mong tanggalin ang recording</string>
+
+    <!--Toast -->
+    <string name="please_enter_a_job">Mangyaring magpasok ng trabaho</string>
+    <string name="successfully_added">Matagumpay na naidagdag</string>
+    <string name="canceled_successfully">Matagumpay na nakansela</string>
+    <string name="category_added">Idinagdag ang kategorya</string>
+    <string name="add_failed">Nabigo ang pagdagdag</string>
+    <string name="fixed_it">Inayos ito</string>
+    <string name="fail">Fail</string>
+    <string name="added_to_star">Idinagdag sa star</string>
+
+    <!--Iba pa-->
+    <string name="work">Trabaho</string>
+    <string name="activities_to_do">Mga aktibidad na gagawin</string>
+    <string name="wish">Wish</string>
+
+    <string name="do_not_have">Wala</string>
+    <string name="have">Meron</string>
+    <string name="add">Idagdag</string>
+    <string name="create_a_new_category">Gumawa ng bagong kategorya</string>
+    <string name="enter_a_category_name">Magpasok ng pangalan ng kategorya</string>
+    <string name="the_category_name_is_too_long">Masyadong mahaba ang pangalan ng kategorya</string>
+    <string name="the_category_has_been_deleted">Ang kategorya ay tinanggal na</string>
+    <string name="show">Ipakita</string>
+    <string name="hide">Itago</string>
+    <string name="edit">I-edit</string>
+    <string name="leave">Umalis</string>
+    <string name="do_you_want_to_leave_the_app_now">Gusto mo bang umalis sa app ngayon?</string>
+    <string name="tap_again_to_exit_see_you_again_tomorrow">I-tap muli upang lumabas. magkita tayong muli bukas</string>
+    <string name="loading">Naglo-load</string>
+    <string name="you_want_to_leave_this_account">Gusto mong umalis sa account na ito?</string>
+    <string name="please_set_the_task_time_first">Pakitakda muna ang oras ng gawain</string>
+    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="quit">Quit</string>
+    <string name="tap_to_record_sound">I-tap para mag-record ng tunog</string>
+
+</resources>

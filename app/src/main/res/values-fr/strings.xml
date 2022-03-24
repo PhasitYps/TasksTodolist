@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TasksTodolist</string>
+    <string name="no">Non</string>
+    <string name="done">Terminé</string>
+    <string name="cancel">Annuler</string>
+    <string name="delete">Supprimer</string>
+    <string name="apply">Appliquer</string>
+
+    <!--MenuTaskFragment-->
+    <string name="today">Aujourd\'hui</string>
+    <string name="other">Autre</string>
+    <string name="task_completed_today">Tâche terminée aujourd\'hui</string>
+    <string name="task_pending_today">Tâche en attente aujourd\'hui</string>
+    <string name="check_all_completed_tasks">Vérifier toutes les tâches terminées</string>
+
+    <!--MenuCalendarFragment-->
+    <string name="yesterday">Hier</string>
+    <string name="tomorrow">Demain</string>
+    <string name="tree_days_later">3 jours plus tard</string>
+    <string name="sunday">Dimanche</string>
+
+    <!--MenuStatisticsFragment-->
+    <string name="task_overview">Présentation des tâches</string>
+    <string name="completed_tasks">Tâches terminées</string>
+    <string name="pending_tasks">Tâches en attente</string>
+    <string name="achieve_daily_goals">Atteindre les objectifs quotidiens</string>
+    <string name="task_in_the_next_7_days">Tâche dans les 7 prochains jours</string>
+
+
+    <!--MenuMenuFragment-->
+    <string name="star_task">Tâche en étoile</string>
+    <string name="category">Catégorie</string>
+    <string name="theme">Thème</string>
+    <string name="language">Langue</string>
+    <string name="menu">Menu</string>
+    <string name="click_for_login_google">cliquez pour vous connecter google</string>
+
+    <!--InputTaskActivity-->
+    <string name="create_new">Créer un nouveau</string>
+    <string name="enter_a_new_task_here">Entrez une nouvelle tâche ici.</string>
+    <string name="add_subtasks">Ajouter des sous-tâches</string>
+    <string name="due_date">Date d\'échéance</string>
+    <string name="time_and_notification">Heure &amp; Rappel</string>
+    <string name="notification_at">Rappel à</string>
+    <string name="repeat_every">Répétez chaque</string>
+    <string name="attachment">Pièce jointe</string>
+    <string name="add_task">Ajouter une tâche</string>
+    <string name="not_repeat">Ne pas répéter</string>
+    <string name="no_date">Pas de date</string>
+    <string name="enter_subtasks">Entrez les sous-tâches</string>
+    <string name="no_category">Aucune catégorie</string>
+    <string name="this_task_is_marked_complete">Cette tâche est marquée comme terminée</string>
+
+    <!--SetRpeatDialog-->
+    <string name="set_as_repeat_task">Définir comme tâche répétée</string>
+    <string name="repeat_ending_at">Répétition se terminant par</string>
+    <string name="hour">Heure</string>
+    <string name="daily">Tous les jours</string>
+    <string name="weekly">Hebdomadaire</string>
+    <string name="monthly">Mensuel</string>
+    <string name="yearly">Annuel</string>
+    <string name="day">Jour</string>
+    <string name="week">Semaine</string>
+    <string name="month">Mois</string>
+    <string name="year">Année</string>
+    <string name="endlessly">Indéfiniment</string>
+    <string name="no_loop">Pas de boucle</string>
+    <string name="repeat">Répéter</string>
+    <string name="please_set_a_date_first">Veuillez d\'abord définir une date</string>
+
+    <!--SetDueDateDialog-->
+    <string name="time">Heure</string>
+    <string name="notify">Notifier</string>
+
+    <!--SetTimeDialog-->
+    <string name="set_time">Définir l\'heure</string>
+    <string name="no_time">Pas de temps</string>
+
+    <!--ConfirmDialog-->
+    <string name="delete_category">Si vous supprimez cette catégorie Toutes les tâches appartenant à cette catégorie seront supprimées. Voulez-vous supprimer ?</string>
+
+    <!--AuthenticationActivity-->
+    <string name="login_to_collect_database">Connectez-vous pour collecter des informations. et utiliser d\'autres fonctions</string>
+    <string name="return_to_the_menu_page">Retour à la page du menu</string>
+
+    <!--CategoryActivity-->
+    <string name="category_management">Gestion des catégories</string>
+    <string name="categories_displayed_on_the_home_page">Catégories affichées sur la page d\'accueil</string>
+
+    <!--HistoryActivity-->
+    <string name="achieve_the_goal">Atteindre l\'objectif</string>
+    <string name="time_of_completion">Heure d\'achèvement</string>
+    <string name="clock">Horloge</string>
+
+    <!--ThemeActivity-->
+    <string name="pure_color">Couleur pure</string>
+    <string name="tap_to_select_a_theme">Appuyez pour sélectionner un thème.</string>
+
+    <!--LanguageActivity-->
+    <string name="choose_the_language">Choisissez la langue</string>
+    <string name="keep_going">Continuez</string>
+
+    <!--Menu de la feuille du bas-->
+    <string name="picture">photo</string>
+    <string name="video">Vidéo</string>
+    <string name="record_sound">Enregistrer le son</string>
+    <string name="attached_list">Liste jointe</string>
+
+    <!--Menu dans la tâche-->
+    <string name="share">Partager</string>
+    <string name="mark_as_finished">Marquer comme terminé</string>
+    <string name="mark_undo">Marquer l\'annulation</string>
+
+    <!--icon-->
+    <string name="all">Tous</string>
+    <string name="finance">La finance</string>
+    <string name="car">Voiture</string>
+    <string name="utilities">Utilitaires</string>
+    <string name="family_and_children">Famille et enfants</string>
+    <string name="entertainment">Divertissement</string>
+    <string name="health">Santé</string>
+    <string name="home">Accueil</string>
+    <string name="personal_use">Usage personnel</string>
+    <string name="donate">Faire un don</string>
+    <string name="accommodation_hotel">Hébergement-hôtel</string>
+    <string name="garden">Jardin</string>
+    <string name="shopping">Achats</string>
+    <string name="food_and_drink">Nourriture et boisson</string>
+    <string name="education">Éducation</string>
+    <string name="friends_and_lovers">Amis et amants</string>
+    <string name="sport">Sport</string>
+    <string name="pet">Animal de compagnie</string>
+    <string name="travel">Voyage</string>
+
+    <string name="save">Enregistrer</string>
+    <string name="do_you_want_to_end_this_recording">Voulez-vous mettre fin à cet enregistrement</string>
+    <string name="are_you_sure_you_want_to_delete_the_recording">Voulez-vous vraiment supprimer l\'enregistrement</string>
+
+    <!--Toast -->
+    <string name="please_enter_a_job">Veuillez entrer un travail</string>
+    <string name="successfully_added">Ajouté avec succès</string>
+    <string name="canceled_successfully">Annulé avec succès</string>
+    <string name="category_added">Catégorie ajoutée</string>
+    <string name="add_failed">Échec de l\'ajout</string>
+    <string name="fixed_it">Résolu</string>
+    <string name="fail">Échec</string>
+    <string name="added_to_star">Ajouté à l\'étoile</string>
+
+    <!--Other-->
+    <string name="work">Travail</string>
+    <string name="activities_to_do">Activités à faire</string>
+    <string name="wish">Souhait</string>
+
+    <string name="do_not_have">Non</string>
+    <string name="have">Avoir</string>
+    <string name="add">Ajouter</string>
+
+
+    <string name="create_a_new_category">Créer une nouvelle catégorie</string>
+    <string name="enter_a_category_name">Entrez un nom de catégorie</string>
+    <string name="the_category_name_is_too_long">Le nom de la catégorie est trop long</string>
+    <string name="the_category_has_been_deleted">La catégorie a été supprimée</string>
+    <string name="show">Afficher</string>
+    <string name="hide">Masquer</string>
+    <string name="edit">Modifier</string>
+    <string name="leave">Quitter</string>
+    <string name="do_you_want_to_leave_the_app_now">Voulez-vous quitter l\'application maintenant?</string>
+    <string name="tap_again_to_exit_see_you_again_tomorrow">Appuyez à nouveau pour quitter. à demain</string>
+    <string name="loading">Frais</string>
+    <string name="you_want_to_leave_this_account">Vous voulez quitter ce compte?</string>
+    <string name="please_set_the_task_time_first">Veuillez d\'abord définir l\'heure de la tâche</string>
+    <string name="quit">Quitter</string>
+    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="tap_to_record_sound">Appuyez pour enregistrer le son</string>
+
+</resources>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:orientation="horizontal"
+    android:padding="15dp">
+
+    <ImageView
+        android:id="@+id/imageIV"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_star"
+        android:layout_marginEnd="15dp"
+        />
+
+    <TextView
+        android:id="@+id/nameTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:textColor="@color/colorBlack"
+        android:text="หมวดหมู่"
+        />
+
+    <ImageView
+        android:id="@+id/hideIV"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_invisible_filled"
+        android:layout_marginEnd="10dp"
+        app:tint="@color/colorWhiteDarkDark"
+        android:padding="3dp"
+        />
+
+    <TextView
+        android:id="@+id/countTaskTV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textColor="@color/colorBlack"
+        android:layout_marginEnd="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/itemMoveIV"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_menu_press"
+        android:layout_marginEnd="10dp"
+        />
+
+    <ImageView
+        android:id="@+id/menuIV"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_menu_threepoint"
+        android:layout_marginEnd="10dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        />
+
+
+
+</LinearLayout>

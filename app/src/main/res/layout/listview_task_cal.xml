@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    android:id="@+id/itemCV"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="0dp"
+    app:cardCornerRadius="10dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginBottom="5dp"
+    android:layout_marginStart="15dp"
+    android:layout_marginEnd="15dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/colorWhiteDark"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="?attr/selectableItemBackground"
+        android:paddingStart="5dp"
+        android:paddingEnd="5dp"
+        >
+
+        <ImageView
+            android:id="@+id/iconCateIV"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="15dp"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="65dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:layout_marginStart="15dp"
+            >
+
+            <TextView
+                android:id="@+id/nameTV"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="nameTV"
+                android:textColor="@color/colorBlack"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:id="@+id/textDueDateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="07:03"
+                    android:textSize="12dp"
+                    android:layout_gravity="center"
+                    android:layout_marginEnd="5dp"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconSubtaskIV"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_subtask_filled"
+                    android:layout_marginEnd="5dp"
+                    app:tint="@color/colorWhiteDarkDark"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconAttackTaskIV"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_attach"
+                    android:layout_marginEnd="5dp"
+                    app:tint="@color/colorWhiteDarkDark"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconReminderIV"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_notification"
+                    android:layout_marginEnd="5dp"
+                    app:tint="@color/colorWhiteDarkDark"
+                    />
+
+                <ImageView
+                    android:id="@+id/iconRepeatIV"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_repeat"
+                    android:layout_marginEnd="5dp"
+                    app:tint="@color/colorWhiteDarkDark"
+                    />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <RelativeLayout
+            android:id="@+id/itemFavoriteRL"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:padding="10dp"
+            >
+            <ImageView
+                android:id="@+id/favoriteIV"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:src="@drawable/ic_star"
+                app:tint="@color/colorWhiteDarkDark"
+                />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

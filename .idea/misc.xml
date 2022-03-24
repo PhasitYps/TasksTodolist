@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/background_with_shadow_radius.xml" value="0.18854166666666666" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/bg_circle_accent.xml" value="0.18958333333333333" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/bg_circle_black.xml" value="0.1625" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/bg_circle_primary.xml" value="0.1625" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/bg_circle_white.xml" value="0.1625" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/drawable/ripple_selector.xml" value="0.18854166666666666" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_authentication.xml" value="0.12360688956433637" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_category.xml" value="0.12360688956433637" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_history.xml" value="0.12360688956433637" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_input_tasks.xml" value="0.176" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_main.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_select_symbol.xml" value="0.1046875" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_synchronizetion.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_theme.xml" value="0.176" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/activity_theme_look.xml" value="0.12360688956433637" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/animate_scale.xml" value="0.17239583333333333" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/bottom_sheet_audio_record.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/bottom_sheet_menu.xml" value="0.144" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_add_repeat.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_confirm.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_due_date.xml" value="0.11684782608695653" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_leaveapp.xml" value="0.176" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_loading.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_logout.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_new_category.xml" value="0.4" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_process_sync.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_set_time.xml" value="0.2210144927536232" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_setting_notify.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/dialog_setting_reminder.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/fragment_calendar.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/fragment_menu.xml" value="0.2" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/fragment_task.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_attach.xml" value="0.16799999999999998" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_attach_audio.xml" value="0.13405797101449277" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_attach_image.xml" value="0.13405797101449277" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_attach_video.xml" value="0.13405797101449277" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_notify_type.xml" value="0.1796875" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_pager_themelook.xml" value="0.176" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_subtask.xml" value="0.176" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_task.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_task_cal.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_task_history.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_task_statistics.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/listview_theme_color.xml" value="0.6" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/layout/view_notification_pin_reminder.xml" value="0.264" />
+        <entry key="..\:/ProjectsAndroidStudio/TasksTodolist/app/src/main/res/xml/animate_scale.xml" value="0.17239583333333333" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/drawable/background_with_shadow_radius.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/drawable/bg_gradient_green.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/drawable/bg_gradient_red.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/drawable/bg_gradient_violet.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/drawable/bg_radius_10_right_bottom_gray.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/layout/activity_upgrade_premium.xml" value="0.264" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/layout/fragment_menu.xml" value="0.264" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist-master/app/src/main/res/layout/fragment_statistics.xml" value="0.264" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_upgrade_premium.xml" value="0.14635416666666667" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

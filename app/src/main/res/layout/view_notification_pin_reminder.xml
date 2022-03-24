@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="74dp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:gravity="center"
+    android:id="@+id/notification_background"
+    android:orientation="horizontal">
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:background="@drawable/background_with_shadow_radius"
+        >
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_margin="3dp"
+            android:src="@drawable/ic_todolist" />
+
+    </RelativeLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:layout_marginStart="15dp"
+        >
+        <TextView
+            android:id="@+id/textTV"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/add_task"
+            style="@style/TextAppearance.Compat.Notification.Title" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="เพลิดเพลินกับวันของคุณ!"
+            style="@style/TextAppearance.Compat.Notification.Info" />
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/addTaskIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_plus_blue"
+        android:padding="10dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:background="@drawable/ripple_selector"
+        android:layout_marginStart="15dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/cancelIV"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:padding="10dp"
+        android:src="@drawable/ic_cancel_circle_filled_gray"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="15dp"
+        android:focusable="true"
+        android:clickable="true"
+        android:background="@drawable/ripple_selector"
+        />
+
+
+</LinearLayout>

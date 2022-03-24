@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="20dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/colorWhite"
+                android:orientation="horizontal"
+                android:padding="15dp"
+                >
+
+                <ImageView
+                    android:id="@+id/calLeftIV"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_sort_left_filled" />
+
+                <TextView
+                    android:id="@+id/dateTV"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:padding="10dp"
+                    android:text="9 มีนาคม 2564"
+                    android:textColor="@color/colorBlack"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/calRightIV"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_gravity="center"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:padding="10dp"
+                    android:src="@drawable/ic_sort_right_filled" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingEnd="20dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:paddingTop="10dp">
+
+                    <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                        android:id="@+id/calCCV"
+                        android:layout_width="fill_parent"
+                        android:layout_height="250dp"
+                        app:compactCalendarBackgroundColor="@color/colorWhite"
+                        app:compactCalendarCurrentDayBackgroundColor="@color/colorWhite"
+                        app:compactCalendarCurrentDayTextColor="?attr/colorAccent"
+                        app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorAccent"
+                        app:compactCalendarCurrentSelectedDayTextColor="@color/colorWhite"
+                        app:compactCalendarMultiEventIndicatorColor="#fff"
+                        app:compactCalendarTargetHeight="250dp"
+                        app:compactCalendarTextColor="@color/colorBlack"
+                        app:compactCalendarTextSize="14dp" />
+
+                    <com.google.android.material.chip.ChipGroup
+                        android:id="@+id/selectDayCG"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:singleSelection="false">
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/notDueDateChip"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:tag="0"
+                            android:text="@string/yesterday"
+                            android:textColor="@color/selector_text_state"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/selector_choice_state" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/selectDay2CC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:tag="1"
+                            android:text="@string/today"
+                            android:textColor="@color/selector_text_state"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/selector_choice_state" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/selectDay3CC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:tag="2"
+                            android:text="@string/tomorrow"
+                            android:textColor="@color/selector_text_state"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/selector_choice_state" />
+
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/selectDay4CC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:tag="3"
+                            android:text="@string/tree_days_later"
+                            android:textColor="@color/selector_text_state"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/selector_choice_state" />
+
+                        <com.google.android.material.chip.Chip
+                            android:id="@+id/selectDay5CC"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:checkable="true"
+                            android:clickable="true"
+                            android:tag="4"
+                            android:text="@string/sunday"
+                            android:textColor="@color/selector_text_state"
+                            app:checkedIconVisible="false"
+                            app:chipBackgroundColor="@color/selector_choice_state" />
+
+
+                    </com.google.android.material.chip.ChipGroup>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/dataRCV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

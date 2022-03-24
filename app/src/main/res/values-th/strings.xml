@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TasksTodolist</string>
+    <string name="no">ไม่</string>
+    <string name="done">เสร็จสิ้น</string>
+    <string name="cancel">ยกเลิก</string>
+    <string name="delete">ลบ</string>
+    <string name="apply">ใช้</string>
+
+    <!--MenuTaskFragment-->
+    <string name="today">วันนี้</string>
+    <string name="other">อื่นๆ</string>
+    <string name="task_completed_today">งานที่เสร็จสมบูรณ์วันนี้</string>
+    <string name="task_pending_today">งานที่รอดำเนินการวันนี้</string>
+    <string name="check_all_completed_tasks">ตรวจสอบงานที่เสร็จสมบูรณ์ทั้งหมด</string>
+
+    <!--MenuCalendarFragment-->
+    <string name="yesterday">เมื่อวาน</string>
+    <string name="tomorrow">พรุ่งนี้</string>
+    <string name="tree_days_later">3 วันถัดไป</string>
+    <string name="sunday">วันอาทิตย์</string>
+
+    <!--MenuStatisticsFragment-->
+    <string name="task_overview">ภาพรวมของงาน</string>
+    <string name="completed_tasks">งานที่เสร็จสมบูรณ์</string>
+    <string name="pending_tasks">งานที่รอดำเนินการ</string>
+    <string name="achieve_daily_goals">บรรลุเป้าหมายประจำวัน</string>
+    <string name="task_in_the_next_7_days">งานในอีก 7วันถัดไป</string>
+
+    <!--Create a new category-->
+    <string name="create_a_new_category">สร้างหมวดหมู่ใหม่</string>
+    <string name="enter_a_category_name">ป้อนชื่อหมวดหมู่</string>
+    <string name="the_category_name_is_too_long">ชื่อหมวดหมู่ยาวเกินกำหนด</string>
+
+    <!--MenuMenuFragment-->
+    <string name="star_task">ติดดาว</string>
+    <string name="category">หมวดหมู่</string>
+    <string name="theme">ธีม</string>
+    <string name="account_sync">การซิงค์บัญชี</string>
+    <string name="language">ภาษา</string>
+    <string name="menu">เมนู</string>
+    <string name="click_for_login_google">คลิกสำหรับยืนยันตัวตนด้วย Google</string>
+
+    <!--InputTaskActivity-->
+    <string name="create_new">สร้างใหม่</string>
+    <string name="enter_a_new_task_here">ป้อนงานใหม่ที่นี่</string>
+    <string name="add_subtasks">เพิ่มงานย่อย</string>
+    <string name="due_date">วันที่ครบกำหนด</string>
+    <string name="time_and_notification">เวลา เเจ้งเตือน</string>
+    <string name="notification_at">เเจ้งเตือนที่</string>
+    <string name="repeat_every">ทำซ้ำทุก</string>
+    <string name="attachment">เอกสารเเนบ</string>
+    <string name="add_task">เพิ่มงาน</string>
+    <string name="not_repeat">ไม่ วนซ้ำ</string>
+    <string name="no_date">ไม่มีวันที่</string>
+    <string name="enter_subtasks">ป้อนงานย่อย</string>
+
+    <!--AddRpeatDialog-->
+    <string name="set_as_repeat_task">ตั้งเป็นงานซ้ำ</string>
+    <string name="repeat_ending_at">การทำซ้ำสิ้นสุดที่</string>
+    <string name="hour">ชั่วโมง</string>
+    <string name="daily">รายวัน</string>
+    <string name="weekly">รายสัปดาห์</string>
+    <string name="monthly">รายเดือน</string>
+    <string name="yearly">รายปี</string>
+    <string name="day">วัน</string>
+    <string name="week">สัปดาห์</string>
+    <string name="month">เดือน</string>
+    <string name="year">ปี</string>
+    <string name="endlessly">ไม่รู้จบ</string>
+
+    <!--SetDueDateDialog-->
+    <string name="time">เวลา</string>
+    <string name="notify">เเจ้งเตือน</string>
+
+    <!--SetTimeDialog-->
+    <string name="set_time">ตั้งเวลา</string>
+
+    <!--ConfirmDialog-->
+    <string name="delete_category">ถ้าลบหมวดหมู่นี้ งานที่อยู่ในหมวดหมู่นี้จะถูกลบออกทั้งหมด ต้องการลบหรือไม่</string>
+
+    <!--AuthenticationActivity-->
+    <string name="login_to_collect_database">ล็อกอินสำหรับเก็บข้อมูล และใช้ฟังก์ชันอื่นๆ</string>
+    <string name="return_to_the_menu_page">ย้อนกลับไปหน้าเมนู</string>
+
+    <!--CategoryActivity-->
+    <string name="category_management">การจัดการหมวดหมู่</string>
+    <string name="categories_displayed_on_the_home_page">หมวดหมู่ที่เเสดงในหน้าเเรก</string>
+    <string name="the_category_has_been_deleted">ลบหมวดหมู่เรียบร้อย</string>
+    <string name="show">เเสดง</string>
+    <string name="hide">ซ่อน</string>
+    <string name="edit">เเก้ไข</string>
+
+    <!--HistoryActivity-->
+    <string name="achieve_the_goal">บรรลุเป้าหมาย</string>
+    <string name="time_of_completion">เวลาที่สำเร็จสมบูรณ์</string>
+
+    <!--ThemeActivity-->
+    <string name="pure_color">สีบริสุทธิ์</string>
+    <string name="tap_to_select_a_theme">เเตะเพื่อเลือกธีม</string>
+
+    <!--LanguageActivity-->
+    <string name="choose_the_language">เลือกภาษา</string>
+    <string name="keep_going">นำไปใช้</string>
+
+    <!--icon-->
+    <string name="all">ทั้งหมด</string>
+    <string name="finance">การเงิน</string>
+    <string name="car">รถ</string>
+    <string name="utilities">สาธารณูปโภค</string>
+    <string name="family_and_children">ครอบครัวและลูกๆ</string>
+    <string name="entertainment">ความบันเทิง</string>
+    <string name="health">สุขภาพ</string>
+    <string name="home">บ้าน</string>
+    <string name="personal_use">ของใช้ส่วนตัว</string>
+    <string name="donate">บริจาค</string>
+    <string name="accommodation_hotel">ที่พัก-โรงแรม</string>
+    <string name="garden">สวน</string>
+
+    <string name="shopping">ช้อปปิ้ง</string>
+    <string name="food_and_drink">อาหารและเครื่องดื่ม</string>
+    <string name="education">การศึกษา</string>
+    <string name="friends_and_lovers">เพื่อนและคนรัก</string>
+    <string name="sport">กีฬา</string>
+    <string name="pet">สัตว์เลี้ยง</string>
+    <string name="travel">การท่องเที่ยว</string>
+
+    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="work">งาน</string>
+    <string name="activities_to_do">กิจกรรมที่ต้องทำ</string>
+    <string name="wish">สิ่งปรารถนา</string>
+    <string name="save">บันทึก</string>
+    <string name="do_you_want_to_end_this_recording">คุณต้องการจบการบันทึกนี้หรือไม่</string>
+    <string name="are_you_sure_you_want_to_delete_the_recording">คุณเเน่ใจหรือไม่ว่าจะลบการบันทึก</string>
+    <string name="picture">รูปภาพ</string>
+    <string name="video">วิดิโอ</string>
+    <string name="record_sound">บันทึกเสียง</string>
+    <string name="category_added">เพิ่มหมวดหมู่เเล้ว</string>
+    <string name="add_failed">การเพิ่มล้มเหลว</string>
+    <string name="fixed_it">เเก้ไขเเล้ว</string>
+    <string name="fail">ล้มเหลว</string>
+    <string name="please_enter_a_job">กรุณาป้อนงาน</string>
+    <string name="successfully_added">เพิ่มเรียบร้อย</string>
+    <string name="no_category">ไม่มีหมวดหมู่</string>
+    <string name="this_task_is_marked_complete">งานนี้ถูกทำเครื่องหมายว่าเสร็จสมบูรณ์</string>
+    <string name="canceled_successfully">ยกเลิกเรียบร้อยเเล้ว</string>
+    <string name="share">เเชร์</string>
+    <string name="mark_as_finished">ทำเครื่องหมายว่าเสร็จเเล้ว</string>
+    <string name="mark_undo">ทำเครื่องหมายว่าเลิกทำ</string>
+    <string name="repeat">ทำซ้ำ</string>
+    <string name="please_set_a_date_first">กรุณากำหนดวันที่ก่อน</string>
+    <string name="do_not_have">ไม่มี</string>
+    <string name="no_loop">ไม่ วนซ้ำ</string>
+    <string name="add">เพิ่ม</string>
+    <string name="have">มี</string>
+    <string name="attached_list">รายการเเนบ</string>
+    <string name="no_time">ไม่มีเวลา</string>
+    <string name="clock">นาฬิกา</string>
+    <string name="added_to_star">เพิ่มในรายการโปรดเรียบร้อย</string>
+    <string name="drive">ไดรฟ์</string>
+    <string name="sign_out">ออกจากระบบ</string>
+
+    <string name="tap_to_record_sound">เเตะเพื่อเริ่มบันทึก</string>
+    <string name="quit">ละทิ้ง</string>
+    <string name="leave">ออก</string>
+    <string name="do_you_want_to_leave_the_app_now">คุณต้องการออกจากเเอปตอนนี้?</string>
+    <string name="tap_again_to_exit_see_you_again_tomorrow">เเตะอีกครั้งเพื่อออกเเอป เเล้วพบกันใหม่ในวันพรุ่งนี้</string>
+    <string name="loading">รอสักครู่</string>
+    <string name="you_want_to_leave_this_account">คุณต้องการออกจากบัญชีนี้?</string>
+    <string name="please_set_the_task_time_first">โปรดตั้งเวลาการทำงานก่อน</string>
+
+
+</resources>
