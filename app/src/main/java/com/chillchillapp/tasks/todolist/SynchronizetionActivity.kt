@@ -11,7 +11,7 @@ import android.widget.Toast
 import androidx.work.WorkManager
 import com.chillchillapp.tasks.todolist.dialog.ProcessSyncDialog
 import com.chillchillapp.tasks.todolist.dialog.SignOutDialog
-import com.chillchillapp.tasks.todolist.master.SynchroniteHelper
+import com.chillchillapp.tasks.todolist.master.SyncHelper
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.tasks.Task
 import com.google.api.client.extensions.android.http.AndroidHttp
@@ -194,7 +194,7 @@ class SynchronizetionActivity : BaseActivity() {
                 startTime = System.currentTimeMillis()
                 valueMax = 0
                 showProcessSyncDialog()
-                val syncHelper = SynchroniteHelper(this)
+                val syncHelper = SyncHelper(this)
                 syncHelper.syncing()
 
                 setWorkDataLive()

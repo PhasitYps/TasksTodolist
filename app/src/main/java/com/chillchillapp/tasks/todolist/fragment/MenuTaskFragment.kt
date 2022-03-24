@@ -7,6 +7,7 @@ import android.graphics.Paint
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.RoundedBitmapDrawableFactory
@@ -23,6 +24,10 @@ import com.chillchillapp.tasks.todolist.database.FunctionTaskSub
 import com.chillchillapp.tasks.todolist.database.FunctionTask
 import com.chillchillapp.tasks.todolist.model.ModelCategory
 import com.chillchillapp.tasks.todolist.model.ModelTask
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_task.*
 import java.lang.Exception
@@ -52,6 +57,8 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         addChipCategoryView()
         setEvent()
     }
+
+
 
     override fun onResume() {
         super.onResume()
@@ -207,6 +214,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     private fun setTaskAdap(){
 
         val adapter = AdapTask(activity!! , todayTaskIsNotDoneList)
+        adapter.setAds()
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         taskRCV.adapter = adapter
         taskRCV.layoutManager = layoutManager
@@ -225,6 +233,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
 
     private fun setTaskOtherAdap(){
         val adapter = AdapTask(activity!! , otherTaskList)
+        adapter.setAds()
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         otherTaskRCV.adapter = adapter
         otherTaskRCV.layoutManager = layoutManager

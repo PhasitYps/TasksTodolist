@@ -60,7 +60,7 @@ class MainActivity : BaseActivity() , Communicator{
                     if(isInternetAvailable()){
 
                         showProcessSyncing()
-                        val syncHelper = SynchroniteHelper(this)
+                        val syncHelper = SyncHelper(this)
                         syncHelper.syncing()
 
                         WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(KEY_SYNC)

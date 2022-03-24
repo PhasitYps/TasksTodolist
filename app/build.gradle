@@ -121,7 +121,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:<latest_version>'
 
     //ads
-    //implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
 
 
 

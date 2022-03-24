@@ -39,6 +39,10 @@ import com.chillchillapp.tasks.todolist.master.RepeatHelper
 import com.chillchillapp.tasks.todolist.master.MediaRecord
 import com.chillchillapp.tasks.todolist.model.*
 import com.chillchillapp.tasks.todolist.widget.Timer
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.masoudss.lib.WaveformSeekBar
@@ -60,6 +64,8 @@ import kotlin.collections.ArrayList
 
 
 class InputTasksActivity : BaseActivity(){
+
+    private val TAG = "InputTasksActivity"
 
     //variable user input
     private var taskId: Long? = null
@@ -105,11 +111,37 @@ class InputTasksActivity : BaseActivity(){
         initBase()
         setTheme()
         setContentView(R.layout.activity_input_tasks)
+        setAds()
 
         init()
         setAdap()
         addChipCategoryView()
         setEvent()
+    }
+
+    private var mInterstitialAd: InterstitialAd? = null
+    private fun setAds(){
+
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(this,getString(R.string.Ads_Interstitial_AddTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError?.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d(TAG, "Ad was loaded.")
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
+    private fun showAds(){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(this)
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+        }
     }
 
     override fun onResume() {
@@ -676,6 +708,8 @@ class InputTasksActivity : BaseActivity(){
 
             Toast.makeText(this, getString(R.string.successfully_added), Toast.LENGTH_SHORT).show()
             notifyUpdate()
+
+            showAds()
             finish()
         }else{
             Toast.makeText(this, getString(R.string.fail), Toast.LENGTH_SHORT).show()

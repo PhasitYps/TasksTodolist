@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Handler
 import android.text.SpannableString
 import android.text.style.StrikethroughSpan
+import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -23,6 +24,10 @@ import com.chillchillapp.tasks.todolist.*
 import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.master.RepeatHelper
 import com.chillchillapp.tasks.todolist.model.ModelTask
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.interstitial.InterstitialAd
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -30,9 +35,36 @@ import kotlin.collections.ArrayList
 
 class AdapTask(private val activity: Activity, private var taskList: ArrayList<ModelTask>) : RecyclerView.Adapter<AdapTask.ViewHolder>() {
 
+    private val TAG = "AdapTask"
+
     interface OnUpdateTaskListener {
         fun onUpdateStateListenner()
         fun onUpdateRepeatListener()
+    }
+
+    private var mInterstitialAd: InterstitialAd? = null
+    fun setAds(){
+
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(activity, activity.getString(R.string.Ads_Interstitial_AddTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError?.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d(TAG, "Ad was loaded.")
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
+    private fun showAds(){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(activity)
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+        }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -232,11 +264,17 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
         }
 
         holder.itemStateRL.setOnClickListener {
-            taskList[position].state = if(taskList[position].state != 1L){
-                1
-            }else{
-                0
+
+            when(taskList[position].state){
+                0L->{
+                    taskList[position].state = 1
+                    showAds()
+                }
+                1L->{
+                    taskList[position].state = 0
+                }
             }
+
             setState(holder, position)
 
             // is repeat
