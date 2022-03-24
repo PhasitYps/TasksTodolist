@@ -3,8 +3,8 @@
 
     <string name="My_App_Id" translatable="false">ca-app-pub-2642595516414490~6580571594</string>
 
-    <string name="Ads_Interstitial_AddTask_UnitId" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
-    <string name="Ads_Interstitial_FinishTask_UnitId" translatable="false">ca-app-pub-3940256099942544/1033173712</string>
+    <string name="Ads_Interstitial_AddTask_UnitId" translatable="false">ca-app-pub-3940256099942544/1033173712</string> <!--ca-app-pub-2642595516414490/1256253062-->
+    <string name="Ads_Interstitial_FinishTask_UnitId" translatable="false">ca-app-pub-3940256099942544/1033173712</string> <!--ca-app-pub-2642595516414490/2924557951-->
 
     <string name="web_client_id" translatable="false">580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com</string>
 

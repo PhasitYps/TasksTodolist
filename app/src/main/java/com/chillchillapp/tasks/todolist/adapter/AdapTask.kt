@@ -47,7 +47,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
 
         var adRequest = AdRequest.Builder().build()
 
-        InterstitialAd.load(activity, activity.getString(R.string.Ads_Interstitial_AddTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(activity, activity.getString(R.string.Ads_Interstitial_FinishTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
             override fun onAdFailedToLoad(adError: LoadAdError) {
                 Log.d(TAG, adError?.message)
                 mInterstitialAd = null
