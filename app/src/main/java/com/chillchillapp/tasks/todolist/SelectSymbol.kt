@@ -288,6 +288,8 @@ class SelectSymbol : BaseActivity() {
 
         Log.i("jjjjjjjjj", "imageSymbolList: " + imageSymbolList.size)
 
+
+
         Collections.sort(imageSymbolList, object : Comparator<ModelSymbol?> {
 
             override fun compare(modelSymbol: ModelSymbol?, t1: ModelSymbol?): Int {
@@ -298,6 +300,8 @@ class SelectSymbol : BaseActivity() {
                 return java.lang.Double.compare(fileId1, fileId2)
             }
         })
+
+        imageSymbolList.sortBy { it.isLock }
     }
 
     private fun isAssetExists(pathInAssetsDir: String): Boolean {
@@ -457,6 +461,6 @@ class SelectSymbol : BaseActivity() {
     }
 
     private fun isPurchases(): Boolean{
-        return true
+        return false
     }
 }
