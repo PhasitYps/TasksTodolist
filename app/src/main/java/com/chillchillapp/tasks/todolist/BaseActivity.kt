@@ -9,41 +9,53 @@ import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
 import android.util.DisplayMetrics
+import android.util.Log
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.chillchillapp.tasks.todolist.master.Prefs
 import java.io.File
 import java.text.SimpleDateFormat
 import java.util.*
 
 
+
 open class BaseActivity: AppCompatActivity() {
 
-    var sp: SharedPreferences? = null
-    var editor: SharedPreferences.Editor? = null
+    /*var sp: SharedPreferences? = null
+    var editor: SharedPreferences.Editor? = null*/
+
+    var prefs: Prefs? = null
 
     private val themeColorDefault = R.style.BlueTheme
-    var styple: Int? = 0
 
     fun initBase(){
-        sp = getSharedPreferences("Setting", Context.MODE_PRIVATE)
-        editor = sp!!.edit()
+        prefs = Prefs(this)
+
+        //sp = getSharedPreferences("Setting", Context.MODE_PRIVATE)
+        //editor = sp!!.edit()
     }
 
     fun setTheme(){
-        styple = sp?.getInt(KEY_CURRENT_THEME_COLOR, themeColorDefault)
-        setTheme(styple!!)
+
+        val theme = prefs!!.intCurrentThemeColor
+        if(theme != 0){
+            setTheme(theme)
+        }else{
+            setTheme(themeColorDefault)
+        }
+
     }
 
     fun initLanguage(){
-        val language = sp!!.getString(KEY_CURRENT_LANGUAGE, "")
-        if(language != ""){
+        var language = prefs!!.strCurrentLanguage
+        if(language != "local"){
             setLocale(language)
         }
     }
 
-    private fun setLocale(lang: String?) {
+    fun setLocale(lang: String?) {
         val locale = Locale(lang)
         Locale.setDefault(locale)
         val dm: DisplayMetrics = resources.displayMetrics

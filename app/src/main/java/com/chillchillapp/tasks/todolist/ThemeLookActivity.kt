@@ -129,9 +129,10 @@ class ThemeLookActivity : BaseActivity() {
         useThemeCC.setOnClickListener {
 
             val theme = colorThemeList[indexSelect].style
-            editor!!.putInt(KEY_CURRENT_THEME_COLOR, theme)
-            editor!!.commit()
+            prefs!!.intCurrentThemeColor = theme
 
+            /*editor!!.putInt(KEY_CURRENT_THEME_COLOR, theme)
+            editor!!.commit()*/
             restart()
         }
     }

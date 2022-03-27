@@ -42,7 +42,7 @@ class LanguageActivity : BaseActivity() {
         languageList.add(ModelLanguage("file:///android_asset/flag/ic_flag_thailand.png", "ภาษาไทย", "th", 0))
 
 
-        val language = sp!!.getString(KEY_CURRENT_LANGUAGE, "")
+        val language = prefs!!.strCurrentLanguage
         languageList.forEachIndexed{ i, m ->
             if(language == m.local){
                 indexSelect = i
@@ -68,9 +68,7 @@ class LanguageActivity : BaseActivity() {
     }
 
     private fun setCurrentLanguage(land: String){
-        editor!!.putString(KEY_CURRENT_LANGUAGE, land)
-        editor!!.commit()
-
+        prefs!!.strCurrentLanguage = land
         restart()
     }
 

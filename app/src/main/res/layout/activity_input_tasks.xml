@@ -107,17 +107,17 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         >
+
                         <EditText
                             android:id="@+id/nameEDT"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:background="@color/colorWhite"
-                            android:textStyle="normal"
-                            android:textSize="20dp"
-                            android:textColor="@color/colorBlack"
-                            android:padding="15dp"
                             android:hint="@string/enter_a_new_task_here"
-                            />
+                            android:padding="15dp"
+                            android:textColor="@color/colorBlack"
+                            android:textSize="20dp"
+                            android:textStyle="normal" />
                     </RelativeLayout>
 
                     <RelativeLayout

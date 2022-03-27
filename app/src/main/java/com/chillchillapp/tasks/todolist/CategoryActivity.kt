@@ -169,8 +169,7 @@ class CategoryActivity : BaseActivity() {
     }
 
     private fun notifyUpdate(){
-        editor!!.putLong("update", 1)
-        editor!!.commit()
+        prefs!!.boolUpdateTask = true
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {

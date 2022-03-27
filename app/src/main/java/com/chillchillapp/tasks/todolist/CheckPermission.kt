@@ -39,6 +39,7 @@ class CheckPermission : BaseActivity() {
 
         showPinReminderNotification()
 
+
         if(!isSetCategoryDefault()){
             insertCatgory()
         }
@@ -139,8 +140,7 @@ class CheckPermission : BaseActivity() {
             audioDir.mkdir()
         }
 
-        editor!!.putInt(KEY_INSERT_CATEGORY_DEFAULT, 1)
-        editor!!.commit()
+        prefs!!.intInsertCategoryDefault = 1
     }
 
     var T: Timer? = null
@@ -177,7 +177,7 @@ class CheckPermission : BaseActivity() {
     }
 
     private fun isSetCategoryDefault(): Boolean{
-        val setData = sp!!.getInt(KEY_INSERT_CATEGORY_DEFAULT, 0)
+        val setData = prefs!!.intInsertCategoryDefault
         return setData == 1
     }
 

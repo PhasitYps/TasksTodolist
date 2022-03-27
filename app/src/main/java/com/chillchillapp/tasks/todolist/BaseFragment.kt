@@ -8,13 +8,16 @@ import androidx.annotation.AttrRes
 import androidx.annotation.LayoutRes
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import com.chillchillapp.tasks.todolist.master.Prefs
 import java.text.SimpleDateFormat
 import java.util.*
 
 open class BaseFragment(@LayoutRes contentLayoutId: Int): Fragment(contentLayoutId) {
 
-    var sp: SharedPreferences? = null
-    var editor: SharedPreferences.Editor? = null
+    var prefs: Prefs? = null
+
+    /*var sp: SharedPreferences? = null
+    var editor: SharedPreferences.Editor? = null*/
 
     val KEY_FUNCTION = "function"
     val KEY_UPDATE = "Update"
@@ -22,8 +25,11 @@ open class BaseFragment(@LayoutRes contentLayoutId: Int): Fragment(contentLayout
 
 
     fun initBase(){
-        sp = requireActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE)
-        editor = sp!!.edit()
+
+        prefs = Prefs(requireContext())
+
+        /*sp = requireActivity().getSharedPreferences("Setting", Context.MODE_PRIVATE)
+        editor = sp!!.edit()*/
     }
 
 

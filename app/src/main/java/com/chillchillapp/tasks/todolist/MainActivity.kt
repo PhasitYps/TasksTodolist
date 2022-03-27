@@ -34,7 +34,12 @@ class MainActivity : BaseActivity() , Communicator{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()
-        initLanguage()
+
+        var language = prefs!!.strCurrentLanguage
+        if(language != "local"){
+            setLocale(language)
+        }
+
         setTheme()
         setContentView(R.layout.activity_main)
 
@@ -54,7 +59,7 @@ class MainActivity : BaseActivity() , Communicator{
         getDriveService().let { drive->
             if(drive != null){
 
-                val autoSync = sp!!.getBoolean(KEY_AUTO_SYNC, false)
+                val autoSync = prefs!!.boolAutoSync
                 if(autoSync){
 
                     if(isInternetAvailable()){
@@ -86,8 +91,10 @@ class MainActivity : BaseActivity() , Communicator{
                                 if(valueMax == 100){
                                     changeMenu(fragmentCurrent)
                                     hideProcessSyncing()
-                                    editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
-                                    editor!!.commit()
+
+                                    prefs!!.longLastAutoSync = System.currentTimeMillis()
+                                    /*editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
+                                    editor!!.commit()*/
 
                                 }
                             })

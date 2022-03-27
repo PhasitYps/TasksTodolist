@@ -27,7 +27,8 @@ class ThemeActivity : BaseActivity() {
         setTheme()
         setContentView(R.layout.activity_theme)
 
-        init()
+        currentThemeColor = prefs!!.intCurrentThemeColor
+
         addThemeColor()
         setAdapColorTheme()
         setEvent()
@@ -35,7 +36,6 @@ class ThemeActivity : BaseActivity() {
     }
 
     private fun init(){
-        currentThemeColor = sp!!.getInt(KEY_CURRENT_THEME_COLOR, R.style.BlueTheme)
     }
 
     private fun setEvent(){

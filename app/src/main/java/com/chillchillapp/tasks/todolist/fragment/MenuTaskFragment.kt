@@ -36,6 +36,8 @@ import kotlin.collections.ArrayList
 @SuppressLint("UseRequireInsteadOfGet")
 class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
 
+    private val TAG = "MenuTaskFragment"
+
     private var categoryId = ""
     private var communicator: Communicator? = null
 
@@ -51,6 +53,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBase()
+        setAds()
 
         init()
         database()
@@ -58,6 +61,30 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         setEvent()
     }
 
+    private var mInterstitialAd: InterstitialAd? = null
+    fun setAds(){
+
+        var adRequest = AdRequest.Builder().build()
+
+        InterstitialAd.load(activity, requireActivity().getString(R.string.Ads_Interstitial_FinishTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
+            override fun onAdFailedToLoad(adError: LoadAdError) {
+                Log.d(TAG, adError?.message)
+                mInterstitialAd = null
+            }
+
+            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+                Log.d(TAG, "Ad was loaded.")
+                mInterstitialAd = interstitialAd
+            }
+        })
+    }
+    private fun showAds(){
+        if (mInterstitialAd != null) {
+            mInterstitialAd?.show(activity)
+        } else {
+            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+        }
+    }
 
 
     override fun onResume() {
@@ -66,15 +93,18 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     }
 
     private fun checkUpdate(){
-        val update = sp?.getLong("update", 0)
 
-        if(update != 0L){
+        val update = prefs!!.boolUpdateTask
+        //val update = sp?.getLong("update", 0)
+
+        if(update){
             Handler().postDelayed( {
-                uploadData()
+                updateData()
             }, 500)
 
-            editor?.putLong("update", 0)
-            editor?.commit()
+            prefs!!.boolUpdateTask
+            /*editor?.putLong("update", 0)
+            editor?.commit()*/
         }
     }
 
@@ -92,13 +122,14 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         categoryId = arguments!!.getString("categoryId", "")
         communicator = activity as Communicator
 
-        val displayTaskOther = sp!!.getInt("displayTaskOther", 1)
+        val displayTaskOther = prefs!!.boolDisplayTaskOther
+        //val displayTaskOther = sp!!.getInt("displayTaskOther", 1)
         when(displayTaskOther){
-            1->{
+            true->{
                 otherTaskRCV.visibility = View.VISIBLE
                 iconDisplayOtherIV.setImageDrawable(getDrawable(context!!, R.drawable.ic_sort_up_filled))
             }
-            0->{
+            false->{
                 otherTaskRCV.visibility = View.GONE
                 iconDisplayOtherIV.setImageDrawable(getDrawable(context!!, R.drawable.ic_sort_down_filled))
             }
@@ -109,18 +140,18 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     private fun database(){
         allTaskList = functionTask.getTaskToday()
 
-        setTaskAdap()
+        setTaskTodayAdap()
         setTaskOtherAdap()
     }
 
     private fun updateTaskUI(){
-        setData()
+        getData()
         setView()
     }
 
     private var numTaskIsDone = 0
     private var numTaskIsDoneNot = 0
-    private fun setData(){
+    private fun getData(){
 
         val calStart = Calendar.getInstance()
         calStart[Calendar.MILLISECOND] = 0
@@ -198,34 +229,42 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         numNotDoneTV.text = numTaskIsDoneNot.toString()
     }
 
-    private fun uploadData(){
+    private fun updateData(){
 
         allTaskList = functionTask.getTaskToday()
 
         try {
             addChipCategoryView()
+            updateTaskUI()
         }catch (e: Exception){
 
         }
-        updateTaskUI()
 
     }
 
-    private fun setTaskAdap(){
+    private fun setTaskTodayAdap(){
 
         val adapter = AdapTask(activity!! , todayTaskIsNotDoneList)
-        adapter.setAds()
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         taskRCV.adapter = adapter
         taskRCV.layoutManager = layoutManager
 
         adapter.setOnUpdateStateListener(object : AdapTask.OnUpdateTaskListener {
             override fun onUpdateStateListenner() {
-                updateTaskUI()
+
+                Handler().postDelayed({
+                    updateTaskUI()
+                    showAds()
+                }, 500)
+
             }
 
             override fun onUpdateRepeatListener() {
-                uploadData()
+
+                Handler().postDelayed({
+                    updateData()
+                    showAds()
+                }, 500)
             }
         })
 
@@ -233,7 +272,6 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
 
     private fun setTaskOtherAdap(){
         val adapter = AdapTask(activity!! , otherTaskList)
-        adapter.setAds()
         val layoutManager = LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
         otherTaskRCV.adapter = adapter
         otherTaskRCV.layoutManager = layoutManager
@@ -244,7 +282,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
             }
 
             override fun onUpdateRepeatListener() {
-                uploadData()
+                updateData()
             }
         })
     }
@@ -274,14 +312,19 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
                 View.GONE->{
                     otherTaskRCV.visibility = View.VISIBLE
                     iconDisplayOtherIV.setImageDrawable(getDrawable(context!!, R.drawable.ic_sort_up_filled))
-                    editor!!.putInt("displayTaskOther", 1)
-                    editor!!.commit()
+
+                    prefs!!.boolDisplayTaskOther = true
+                    /*editor!!.putInt("displayTaskOther", 1)
+                    editor!!.commit()*/
                 }
                 View.VISIBLE->{
                     otherTaskRCV.visibility = View.GONE
                     iconDisplayOtherIV.setImageDrawable(getDrawable(context!!, R.drawable.ic_sort_down_filled))
-                    editor!!.putInt("displayTaskOther", 0)
-                    editor!!.commit()
+
+                    prefs!!.boolDisplayTaskOther = false
+
+                    /*editor!!.putInt("displayTaskOther", 0)
+                    editor!!.commit()*/
                 }
             }
         }

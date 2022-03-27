@@ -139,16 +139,20 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
     }
 
     private fun checkUpdate(){
-        val update = sp?.getLong("update", 0)
 
-        if(update != 0L){
+        val update = prefs!!.boolUpdateTask
+        //val update = sp?.getLong("update", 0)
+
+        if(update){
             Handler().postDelayed( {
                 addEventInCalendar()
                 addDataCurrentDay()
             }, 500)
 
-            editor?.putLong("update", 0)
-            editor?.commit()
+            prefs!!.boolUpdateTask = false
+
+            /*editor?.putLong("update", 0)
+            editor?.commit()*/
         }
     }
 

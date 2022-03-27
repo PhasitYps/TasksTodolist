@@ -42,31 +42,6 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
         fun onUpdateRepeatListener()
     }
 
-    private var mInterstitialAd: InterstitialAd? = null
-    fun setAds(){
-
-        var adRequest = AdRequest.Builder().build()
-
-        InterstitialAd.load(activity, activity.getString(R.string.Ads_Interstitial_FinishTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d(TAG, adError?.message)
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                Log.d(TAG, "Ad was loaded.")
-                mInterstitialAd = interstitialAd
-            }
-        })
-    }
-    private fun showAds(){
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(activity)
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.")
-        }
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.listview_task, parent, false)
         return ViewHolder(view)
@@ -268,7 +243,6 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
             when(taskList[position].state){
                 0L->{
                     taskList[position].state = 1
-                    showAds()
                 }
                 1L->{
                     taskList[position].state = 0
@@ -282,19 +256,20 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
             when(modelRepeat.id){
                 null->{
                     updateTask(taskList[position])
-                    Handler().postDelayed({
+                    listener?.onUpdateStateListenner()
+                    /*Handler().postDelayed({
                         listener?.onUpdateStateListenner()
-                    }, 500)
+                    }, 500)*/
                 }
                 else->{
 
-
                     masterRepeat.copyTask(taskList[position].id)
                     masterRepeat.setUpdateRepeat(taskList[position].id)
+                    listener?.onUpdateRepeatListener()
 
-                    Handler().postDelayed({
+                    /*Handler().postDelayed({
                         listener?.onUpdateRepeatListener()
-                    }, 500)
+                    }, 500)*/
                 }
             }
         }

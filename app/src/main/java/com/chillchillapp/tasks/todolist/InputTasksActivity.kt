@@ -37,6 +37,7 @@ import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.dialog.*
 import com.chillchillapp.tasks.todolist.master.RepeatHelper
 import com.chillchillapp.tasks.todolist.master.MediaRecord
+import com.chillchillapp.tasks.todolist.master.Prefs
 import com.chillchillapp.tasks.todolist.model.*
 import com.chillchillapp.tasks.todolist.widget.Timer
 import com.google.android.gms.ads.AdRequest
@@ -112,6 +113,7 @@ class InputTasksActivity : BaseActivity(){
         setTheme()
         setContentView(R.layout.activity_input_tasks)
         setAds()
+
 
         init()
         setAdap()
@@ -435,6 +437,8 @@ class InputTasksActivity : BaseActivity(){
             }
         }
 
+
+
         when(isSetRepeat()){
             true->{
                 val type = when(repeatType){
@@ -544,7 +548,7 @@ class InputTasksActivity : BaseActivity(){
             popupMenu.menu.add(getString(R.string.mark_undo))
         }
         popupMenu.menu.add(getString(R.string.delete))
-        popupMenu.menu.add(getString(R.string.share))
+        //popupMenu.menu.add(getString(R.string.share))
         popupMenu.show()
 
         //val item2 = popupMenu.menu.getItem(1)
@@ -1126,8 +1130,7 @@ class InputTasksActivity : BaseActivity(){
     }
 
     private fun notifyUpdate(){
-        editor!!.putLong("update", 1)
-        editor!!.commit()
+        prefs!!.boolUpdateTask = true
     }
 
     private fun setRepeatDialog(){

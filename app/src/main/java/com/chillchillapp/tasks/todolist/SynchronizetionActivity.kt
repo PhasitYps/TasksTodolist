@@ -33,7 +33,7 @@ class SynchronizetionActivity : BaseActivity() {
         initBase()
         setContentView(R.layout.activity_synchronizetion)
 
-        val autoSync = sp!!.getBoolean(KEY_AUTO_SYNC, false)
+        val autoSync = prefs!!.boolAutoSync
         if(autoSync){
             autoSyncSW.isChecked = true
         }
@@ -94,8 +94,9 @@ class SynchronizetionActivity : BaseActivity() {
 
                     if(message != KEY_FAIL){
 
-                        editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
-                        editor!!.commit()
+                        prefs!!.longLastAutoSync = System.currentTimeMillis()
+                        /*editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
+                        editor!!.commit()*/
 
                         setTextLastSyncTime()
                         Toast.makeText(this, "ซิงค์งานเข้ากับบัญชี google ไดฟ์เรียบร้อย", Toast.LENGTH_SHORT).show()
@@ -141,12 +142,14 @@ class SynchronizetionActivity : BaseActivity() {
                 }else{
                     Toast.makeText(this, "Network error, Pleace check your connection and try again.", Toast.LENGTH_SHORT).show()
                 }
-                editor!!.putBoolean(KEY_AUTO_SYNC, true)
-                editor!!.commit()
+                prefs!!.boolAutoSync = true
+                /*editor!!.putBoolean(KEY_AUTO_SYNC, true)
+                editor!!.commit()*/
             }else{
                 //set not auto sync
-                editor!!.putBoolean(KEY_AUTO_SYNC, false)
-                editor!!.commit()
+                prefs!!.boolAutoSync = false
+                /*editor!!.putBoolean(KEY_AUTO_SYNC, false)
+                editor!!.commit()*/
             }
         }
 
@@ -237,7 +240,7 @@ class SynchronizetionActivity : BaseActivity() {
     }
 
     private fun setTextLastSyncTime(){
-        val syncLastTime = sp!!.getLong(KEY_LAST_SYNC_TIME, 0L)
+        val syncLastTime = prefs!!.longLastAutoSync
 
         syncLastTV.text = if(syncLastTime != null && syncLastTime != 0L){
             "Last sync time: " + formatDate("dd/MM/yyyy HH:mm:ss", Date(syncLastTime))
