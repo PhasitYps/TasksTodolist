@@ -59,10 +59,12 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         database()
         addChipCategoryView()
         setEvent()
+
+
     }
 
     private var mInterstitialAd: InterstitialAd? = null
-    fun setAds(){
+    private fun setAds(){
 
         var adRequest = AdRequest.Builder().build()
 
@@ -81,6 +83,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     private fun showAds(){
         if (mInterstitialAd != null) {
             mInterstitialAd?.show(activity)
+            mInterstitialAd = null
         } else {
             Log.d("TAG", "The interstitial ad wasn't ready yet.")
         }

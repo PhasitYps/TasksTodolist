@@ -29,11 +29,21 @@ import com.github.mikephil.charting.data.BarEntry
 import com.github.mikephil.charting.formatter.IAxisValueFormatter
 import com.github.mikephil.charting.formatter.IValueFormatter
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.google.android.gms.ads.AdListener
+import com.google.android.gms.ads.AdLoader
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.LoadAdError
+import com.google.android.gms.ads.nativead.NativeAd
+import com.google.android.gms.ads.nativead.NativeAdOptions
 
 import kotlinx.android.synthetic.main.fragment_statistics.*
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
+import android.text.TextUtils
+
+
+
 
 
 @SuppressLint("UseRequireInsteadOfGet")
@@ -51,6 +61,8 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         super.onViewCreated(view, savedInstanceState)
         initBase()
 
+        setAds()
+
         init()
         setAdap()
         currentDate()
@@ -64,17 +76,26 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
 
     }
 
-    /*private fun setAds(){
-        val adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
+
+    private fun setAds(){
+        var adLoader: AdLoader? = null
+        adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
             .forNativeAd { nativeAd : NativeAd ->
                 // Show the ad.
-                if (requireActivity().isDestroyed) {
+                try {
+                    if (requireActivity().isDestroyed) {
+                        nativeAd.destroy()
+                        return@forNativeAd
+                    }
+
+                    nativeAd(nativeAd)
+
+                    if (!adLoader!!.isLoading) {
+                        nativeAdView.visibility = View.VISIBLE
+                    }
+                }catch (e: Exception){
                     nativeAd.destroy()
-                    return@forNativeAd
                 }
-
-                nativeAd(nativeAd)
-
 
             }
             .withAdListener(object : AdListener() {
@@ -89,7 +110,71 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
             .build()
 
         adLoader.loadAd(AdRequest.Builder().build())
-    }*/
+    }
+
+    private fun nativeAd(nativeAd : NativeAd){
+        val store = nativeAd.store
+        val advertiser = nativeAd.advertiser
+        val headline = nativeAd.headline
+        val body = nativeAd.body
+        val cta = nativeAd.callToAction
+        val starRating = nativeAd.starRating
+        val icon = nativeAd.icon
+
+        mediaView.setMediaContent(nativeAd.mediaContent)
+        mediaView.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
+
+        val secondaryText: String
+
+        nativeAdView.callToActionView = callToActionView
+        nativeAdView.headlineView = primaryView
+        nativeAdView.mediaView = mediaView
+        secondaryView.visibility = View.VISIBLE
+        secondaryText = if (adHasOnlyStore(nativeAd)) {
+            nativeAdView.storeView = secondaryView
+            store
+        } else if (!TextUtils.isEmpty(advertiser)) {
+            nativeAdView.advertiserView = secondaryView
+            advertiser
+        } else {
+            ""
+        }
+
+        primaryView.text = headline
+        callToActionView.text = cta
+
+        //  Set the secondary view to be the star rating if available.
+        /*if (starRating != null && starRating > 0) {
+            secondaryView.visibility = View.GONE;
+
+        } else {
+            secondaryView.text = secondaryText
+            secondaryView.visibility = View.VISIBLE
+        }*/
+
+        secondaryView.text = secondaryText
+        secondaryView.visibility = View.VISIBLE
+
+        if (icon != null) {
+            iconView.visibility = View.VISIBLE;
+            iconView.setImageDrawable(icon.drawable)
+        } else {
+            iconView.visibility = View.GONE
+        }
+
+        if (tertiaryView != null) {
+            tertiaryView.text = body
+            nativeAdView.bodyView = tertiaryView
+        }
+
+        nativeAdView.setNativeAd(nativeAd);
+    }
+
+    private fun adHasOnlyStore(nativeAd: NativeAd): Boolean {
+        val store = nativeAd.store
+        val advertiser = nativeAd.advertiser
+        return !TextUtils.isEmpty(store) && TextUtils.isEmpty(advertiser)
+    }
 
 
     private fun checkUpdate(){
@@ -405,8 +490,8 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
     data class ModelDataOfWeek(
         var startDate: Date? = null,
         var dateName: String? = "",
-        var countTask: Double? = 0.0
+        var countTask: Double? = 0.0,
 
-    )
+        )
 
 }
