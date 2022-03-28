@@ -145,8 +145,12 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
 
         if(update){
             Handler().postDelayed( {
-                addEventInCalendar()
-                addDataCurrentDay()
+
+                if(!requireActivity().isDestroyed){
+                    addEventInCalendar()
+                    addDataCurrentDay()
+                }
+
             }, 500)
 
             prefs!!.boolUpdateTask = false

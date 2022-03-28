@@ -131,8 +131,7 @@
                     <com.google.android.gms.ads.nativead.MediaView
                         android:id="@+id/mediaView"
                         android:layout_width="match_parent"
-                        android:layout_height="70dp"
-
+                        android:layout_height="120dp"
                         />
 
                     <LinearLayout
