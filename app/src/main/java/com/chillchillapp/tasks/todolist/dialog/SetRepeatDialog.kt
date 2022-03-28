@@ -28,7 +28,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
         this.l = l
     }
 
-    private var repeatType: Int? = null //type
+    private var repeatType: String? = null //type
     private var repeatNextTime: Int? = null //num next
     private var repeatNum: Long? = null //num repeat
 
@@ -36,11 +36,11 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
     private var hour = -1
     private var minute = -1
 
-    val TYPE_HOUR = 0
-    val TYPE_DAY = 1
-    val TYPE_WEEK = 2
-    val TYPE_MONTH = 3
-    val TYPE_YEAR = 4
+    private val TYPE_HOUR = "hour"
+    private val TYPE_DAY = "day"
+    private val TYPE_WEEK = "week"
+    private val TYPE_MONTH = "month"
+    private val TYPE_YEAR = "year"
 
     private var indexSelect: Int = 1
 
@@ -51,7 +51,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
     fun setInit(m0: ModelRepeat, m1: ModelTask){
         repeatType = m0.repeatType
         repeatNextTime = m0.repeatNext
-        repeatNum = m0.numberOfTime
+        repeatNum = m0.numberOfRepeat
 
         hour = m1.hour!!
         minute = m1.minute!!
@@ -84,11 +84,11 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
         typeRepeatCG.removeAllViews()
         typeList.clear()
 
-        typeList.add(ModelSetting( activity.getString(R.string.hour), TYPE_HOUR))
-        typeList.add(ModelSetting( activity.getString(R.string.daily), TYPE_DAY))
-        typeList.add(ModelSetting( activity.getString(R.string.weekly), TYPE_WEEK))
-        typeList.add(ModelSetting( activity.getString(R.string.monthly), TYPE_MONTH))
-        typeList.add(ModelSetting( activity.getString(R.string.yearly), TYPE_YEAR))
+        typeList.add(ModelSetting( activity.getString(R.string.hour), null, TYPE_HOUR))
+        typeList.add(ModelSetting( activity.getString(R.string.daily), null, TYPE_DAY))
+        typeList.add(ModelSetting( activity.getString(R.string.weekly),null, TYPE_WEEK))
+        typeList.add(ModelSetting( activity.getString(R.string.monthly),null, TYPE_MONTH))
+        typeList.add(ModelSetting( activity.getString(R.string.yearly),null, TYPE_YEAR))
 
         for (i in typeList.indices) {
             val chip = Chip(activity)
@@ -102,7 +102,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
             chip.isCheckable = true
             chip.tag = i
 
-            if(repeatType == typeList[i].value){
+            if(repeatType == typeList[i].repeatType){
                 indexSelect = i
 
                 chip.isChecked = true
@@ -140,7 +140,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
                         if (!isChecked){
                             isChecked = true
                             val i = tag.toString().toInt()
-                            repeatType = typeList[i].value
+                            repeatType = typeList[i].repeatType
 
                             changeEventType()
                         }
@@ -159,7 +159,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
 
             chip.setOnClickListener {
                 chip.isChecked = true
-                repeatType = typeList[i].value
+                repeatType = typeList[i].repeatType
                 indexSelect = i
 
                 changeEventType()
@@ -185,7 +185,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
             }
 
             (it as Chip).isChecked = true
-            repeatType = typeList[i].value
+            repeatType = typeList[i].repeatType
             indexSelect = i
 
             changeEventType()
@@ -212,7 +212,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
                     val modelRepeat = ModelRepeat()
                     modelRepeat.repeatType = repeatType
                     modelRepeat.repeatNext = repeatNextTime
-                    modelRepeat.numberOfTime = repeatNum
+                    modelRepeat.numberOfRepeat = repeatNum
 
                     l?.OnChangeDataListener(modelRepeat)
                 }
@@ -220,7 +220,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
                     val modelRepeat = ModelRepeat()
                     modelRepeat.repeatType = null
                     modelRepeat.repeatNext = null
-                    modelRepeat.numberOfTime = null
+                    modelRepeat.numberOfRepeat = null
 
                     l?.OnChangeDataListener(modelRepeat)
                 }
@@ -269,7 +269,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
 
     private fun addEndList(){
         endList.clear()
-        endList.add(ModelSetting(activity.getString(R.string.endlessly), 0))
+        endList.add(ModelSetting(activity.getString(R.string.endlessly), -1))
 
         for(i in 1..10){
             endList.add(ModelSetting("$i ${activity.getString(R.string.time)}", i))
@@ -380,6 +380,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
 
     inner class ModelSetting(
         var text: String = "",
-        var value: Int? = 0
+        var value: Int? = 0,
+        var repeatType: String? = ""
     )
 }

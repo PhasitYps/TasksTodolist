@@ -3,10 +3,8 @@ package com.chillchillapp.tasks.todolist.adapter
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.os.Handler
 import android.text.SpannableString
 import android.text.style.StrikethroughSpan
-import android.util.Log
 import android.util.TypedValue
 import android.view.LayoutInflater
 import android.view.View
@@ -24,10 +22,6 @@ import com.chillchillapp.tasks.todolist.*
 import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.master.RepeatHelper
 import com.chillchillapp.tasks.todolist.model.ModelTask
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
-import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -263,8 +257,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
                 }
                 else->{
 
-                    masterRepeat.copyTask(taskList[position].id)
-                    masterRepeat.setUpdateRepeat(taskList[position].id)
+                    masterRepeat.insertByRepeat(taskList[position].id)
                     listener?.onUpdateRepeatListener()
 
                     /*Handler().postDelayed({

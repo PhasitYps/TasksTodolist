@@ -44,8 +44,6 @@ import android.text.TextUtils
 
 
 
-
-
 @SuppressLint("UseRequireInsteadOfGet")
 class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
 
@@ -79,7 +77,7 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
 
     private fun setAds(){
         var adLoader: AdLoader? = null
-        adLoader = AdLoader.Builder(requireContext(), "ca-app-pub-3940256099942544/2247696110")
+        adLoader = AdLoader.Builder(requireContext(), requireActivity().getString(R.string.Ads_Native_Static_UnitId))
             .forNativeAd { nativeAd : NativeAd ->
                 // Show the ad.
                 try {

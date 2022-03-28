@@ -37,7 +37,6 @@ import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.dialog.*
 import com.chillchillapp.tasks.todolist.master.RepeatHelper
 import com.chillchillapp.tasks.todolist.master.MediaRecord
-import com.chillchillapp.tasks.todolist.master.Prefs
 import com.chillchillapp.tasks.todolist.model.*
 import com.chillchillapp.tasks.todolist.widget.Timer
 import com.google.android.gms.ads.AdRequest
@@ -84,7 +83,7 @@ class InputTasksActivity : BaseActivity(){
     private var reminderList = ArrayList<ModelTaskReminder>()
     //variable repeat
     private var repeatId: Long? = null
-    private var repeatType: Int? = null
+    private var repeatType: String? = null
     private var repeatNext: Int? = null
     private var repeatNumberOfTime: Long? = null
     private var programCount: Long? = null
@@ -343,7 +342,7 @@ class InputTasksActivity : BaseActivity(){
                 repeatId = modelRepeat.id
                 repeatType = modelRepeat.repeatType
                 repeatNext = modelRepeat.repeatNext
-                repeatNumberOfTime = modelRepeat.numberOfTime
+                repeatNumberOfTime = modelRepeat.numberOfRepeat
                 programCount = modelRepeat.programCount
             }
 
@@ -371,11 +370,11 @@ class InputTasksActivity : BaseActivity(){
 
     }
 
-    private val TYPE_HOUR = 0
-    private val TYPE_DAY = 1
-    private val TYPE_WEEK = 2
-    private val TYPE_MONTH = 3
-    private val TYPE_YEAR = 4
+    private val TYPE_HOUR = "hour"
+    private val TYPE_DAY = "day"
+    private val TYPE_WEEK = "week"
+    private val TYPE_MONTH = "month"
+    private val TYPE_YEAR = "year"
     private fun updateUI(){
 
         if (name.isNotEmpty()){
@@ -436,8 +435,6 @@ class InputTasksActivity : BaseActivity(){
                 stateNotifyTV.text = getString(R.string.do_not_have)
             }
         }
-
-
 
         when(isSetRepeat()){
             true->{
@@ -581,8 +578,7 @@ class InputTasksActivity : BaseActivity(){
             if(taskId != null){
 
                 //insert new Task
-                repeatHelper.copyTask(taskId)
-                repeatHelper.setUpdateRepeat(taskId)
+                repeatHelper.insertByRepeat(taskId)
                 Toast.makeText(this, getString(R.string.this_task_is_marked_complete), Toast.LENGTH_SHORT).show()
             }
         }else{
@@ -840,7 +836,7 @@ class InputTasksActivity : BaseActivity(){
         modelRepeat.taskId = taskId
         modelRepeat.repeatType = repeatType
         modelRepeat.repeatNext = repeatNext
-        modelRepeat.numberOfTime = repeatNumberOfTime
+        modelRepeat.numberOfRepeat = repeatNumberOfTime
         modelRepeat.programCount = 0
         modelRepeat.createDate = createDate
         modelRepeat.updateDate = updateDate
@@ -1098,7 +1094,7 @@ class InputTasksActivity : BaseActivity(){
                     m.taskId = taskID
                     m.repeatType = repeatType
                     m.repeatNext = repeatNext
-                    m.numberOfTime = repeatNumberOfTime
+                    m.numberOfRepeat = repeatNumberOfTime
                     m.programCount = programCount
                     m.createDate = createDate
                     m.updateDate = updateDate
@@ -1117,7 +1113,7 @@ class InputTasksActivity : BaseActivity(){
                         m.taskId = taskId
                         m.repeatType = repeatType
                         m.repeatNext = repeatNext
-                        m.numberOfTime = repeatNumberOfTime
+                        m.numberOfRepeat = repeatNumberOfTime
                         m.programCount = programCount
                         m.updateDate = updateDate
 
@@ -1143,7 +1139,7 @@ class InputTasksActivity : BaseActivity(){
         val modelRepeat = ModelRepeat()
         modelRepeat.repeatType = repeatType
         modelRepeat.repeatNext = repeatNext
-        modelRepeat.numberOfTime = repeatNumberOfTime
+        modelRepeat.numberOfRepeat = repeatNumberOfTime
 
         val d = SetRepeatDialog(this)
         d.setInit(modelRepeat, modelTask)
@@ -1151,7 +1147,7 @@ class InputTasksActivity : BaseActivity(){
             override fun OnChangeDataListener(m: ModelRepeat) {
                 repeatType = m.repeatType
                 repeatNext = m.repeatNext
-                repeatNumberOfTime = m.numberOfTime
+                repeatNumberOfTime = m.numberOfRepeat
                 programCount = 0
 
                 Log.i("fhhhhh", "repeatNumberOfTime: " + repeatNumberOfTime)

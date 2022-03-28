@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import com.chillchillapp.tasks.todolist.R
 import com.chillchillapp.tasks.todolist.database.*
+import com.chillchillapp.tasks.todolist.model.ModelTask
 import java.io.File
 import java.util.*
 
@@ -12,23 +13,24 @@ class RepeatHelper(private val activity: Activity){
 
     private var dbHelper: DBFunctionHelper = DBFunctionHelper(activity, SQLITE_NAME)
 
-    private val TYPE_HOUR = 0
-    private val TYPE_DAY = 1
-    private val TYPE_WEEK = 2
-    private val TYPE_MONTH = 3
-    private val TYPE_YEAR = 4
+    private val TYPE_HOUR = "hour"
+    private val TYPE_DAY = "day"
+    private val TYPE_WEEK = "week"
+    private val TYPE_MONTH = "month"
+    private val TYPE_YEAR = "year"
     private val FOLDER_IMAGE = "image"
     private val FOLDER_VIDEO = "video"
     private val FOLDER_AUDIO = "audio"
 
 
-    fun copyTask(taskId: Long?){
+    fun insertByRepeat(taskId: Long?){
 
         if(taskId == null){
             Toast.makeText(activity, activity.getString(R.string.fail), Toast.LENGTH_SHORT).show()
             return
         }
 
+        //create new task is done
         val newTask = dbHelper.functionTask.getTaskById(taskId!!)
         newTask.state = 1L
         newTask.completeDate = System.currentTimeMillis()
@@ -101,21 +103,9 @@ class RepeatHelper(private val activity: Activity){
         }else{
             Toast.makeText(activity, activity.getString(R.string.fail), Toast.LENGTH_SHORT).show()
         }
-    }
-
-    fun setUpdateRepeat(taskId: Long?){
-
-        if(taskId == null){
-            Toast.makeText(activity, activity.getString(R.string.fail), Toast.LENGTH_SHORT).show()
-            return
-        }
 
         val model = dbHelper.functionTask.getTaskById(taskId!!)
 
-        if(model.id == null){
-            Toast.makeText(activity, activity.getString(R.string.fail), Toast.LENGTH_SHORT).show()
-            return
-        }
         model.state = 0L
         model.completeDate = null
         model.updateDate = System.currentTimeMillis()
@@ -123,12 +113,12 @@ class RepeatHelper(private val activity: Activity){
         val modelRepeat = dbHelper.functionRepeat.getByTaskId(taskId)
 
         val calCurrent = Calendar.getInstance()
-        val cal = Calendar.getInstance()
+        val calDueDate = Calendar.getInstance()
 
-        cal.timeInMillis = model.dueDate!!
+        calDueDate.timeInMillis = model.dueDate!!
         if(model.hour != -1 && model.minute != -1){
-            cal[Calendar.HOUR_OF_DAY] = model.hour!!
-            cal[Calendar.MINUTE] = model.minute!!
+            calDueDate[Calendar.HOUR_OF_DAY] = model.hour!!
+            calDueDate[Calendar.MINUTE] = model.minute!!
         }
         var repeatType: Int? = when(modelRepeat.repeatType){
             TYPE_HOUR-> {
@@ -150,32 +140,32 @@ class RepeatHelper(private val activity: Activity){
         }
 
         do {
-            cal.add(repeatType!!, modelRepeat.repeatNext!!)
+            calDueDate.add(repeatType!!, modelRepeat.repeatNext!!)
 
-        }while (calCurrent.timeInMillis > cal.timeInMillis)
+        }while (calCurrent.timeInMillis > calDueDate.timeInMillis)
 
-        var calDueDate = Calendar.getInstance()
 
         //set value
-        calDueDate.timeInMillis = cal.timeInMillis
-        calDueDate[Calendar.HOUR_OF_DAY] = 0
-        calDueDate[Calendar.MINUTE] = 0
-        calDueDate[Calendar.SECOND] = 0
-        calDueDate[Calendar.MILLISECOND] = 0
         if(model.hour != -1 && model.minute != -1){
-            val hour = cal[Calendar.HOUR_OF_DAY]
-            val minute = cal[Calendar.MINUTE]
+            val hour = calDueDate[Calendar.HOUR_OF_DAY]
+            val minute = calDueDate[Calendar.MINUTE]
 
             model.hour = hour
             model.minute = minute
         }
 
-        model.dueDate = cal.timeInMillis
-        modelRepeat.programCount = modelRepeat.programCount!! + 1L
+        calDueDate[Calendar.HOUR_OF_DAY] = 0
+        calDueDate[Calendar.MINUTE] = 0
+        calDueDate[Calendar.SECOND] = 0
+        calDueDate[Calendar.MILLISECOND] = 0
+
+
+        model.dueDate = calDueDate.timeInMillis
+        modelRepeat.programCount = modelRepeat.programCount!! + 1L //is done +1
         modelRepeat.updateDate = System.currentTimeMillis()
 
         Log.i("fhhhhh", "programCount: " + modelRepeat.programCount)
-        Log.i("fhhhhh", "numberOfTime: " + modelRepeat.numberOfTime)
+        Log.i("fhhhhh", "numberOfTime: " + modelRepeat.numberOfRepeat)
 
         //update value
         val subTaskList = dbHelper.functionTaskSub.getDataByTaskId(model.id)
@@ -185,18 +175,21 @@ class RepeatHelper(private val activity: Activity){
             dbHelper.functionTaskSub.update(m)
         }
 
+        //...
         when {
-            modelRepeat.numberOfTime == 0L -> { //repeat not know end
+            modelRepeat.numberOfRepeat == -1L -> { //repeat not know end
                 dbHelper.functionTask.update(model)
                 dbHelper.functionRepeat.update(modelRepeat)
 
             }
-            modelRepeat.programCount!! < modelRepeat.numberOfTime!! -> {//repeat know end
+            modelRepeat.programCount!! == (modelRepeat.numberOfRepeat!! - 1) -> {//repeat know end
+                dbHelper.functionTask.update(model)
+                dbHelper.functionRepeat.deleteByTaskId(taskId)
+            }
+
+            modelRepeat.programCount!! < (modelRepeat.numberOfRepeat!! - 1) -> {//repeat know end
                 dbHelper.functionTask.update(model)
                 dbHelper.functionRepeat.update(modelRepeat)
-            }
-            else -> {//repeat finish
-                model.remove(activity)
             }
         }
 

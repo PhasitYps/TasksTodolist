@@ -368,11 +368,11 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
 
     }
 
-    private val TYPE_HOUR = 0
-    private val TYPE_DAY = 1
-    private val TYPE_WEEK = 2
-    private val TYPE_MONTH = 3
-    private val TYPE_YEAR = 4
+    private val TYPE_HOUR = "hour"
+    private val TYPE_DAY = "day"
+    private val TYPE_WEEK = "week"
+    private val TYPE_MONTH = "month"
+    private val TYPE_YEAR = "year"
     private fun getCurrentMonthDueDateRepeat(): ArrayList<Long>{
 
         val calStartMonth = Calendar.getInstance()
@@ -434,7 +434,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                 }
             }
 
-            if(modelRepeat.numberOfTime == 0L){
+            if(modelRepeat.numberOfRepeat == 0L){
                 //ไม่รู้จบ
                 do {
                     calDue.add(repeatType!!, modelRepeat.repeatNext!!)
@@ -469,7 +469,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                     }
                     modelRepeat.programCount = modelRepeat.programCount!! + 1
 
-                }while (modelRepeat.programCount!! < modelRepeat.numberOfTime!! && calDue.timeInMillis < calEndMonth.timeInMillis)
+                }while (modelRepeat.programCount!! < modelRepeat.numberOfRepeat!! && calDue.timeInMillis < calEndMonth.timeInMillis)
             }
         }
 
@@ -562,7 +562,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                 }
             }
 
-            if(repeatList[i].numberOfTime == 0L){
+            if(repeatList[i].numberOfRepeat == 0L){
                 //ไม่รู้จบ
                 do {
                     calDue.add(repeatType!!, repeatList[i].repeatNext!!)
@@ -613,7 +613,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                     }
                     repeatList[i].programCount = repeatList[i].programCount!! + 1
 
-                }while (repeatList[i].programCount!! < repeatList[i].numberOfTime!! && calDue.timeInMillis < calEndDay.timeInMillis)
+                }while (repeatList[i].programCount!! < repeatList[i].numberOfRepeat!! && calDue.timeInMillis < calEndDay.timeInMillis)
             }
         }
 
@@ -675,7 +675,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                 }
             }
 
-            if(repeatList[i].numberOfTime == 0L){
+            if(repeatList[i].numberOfRepeat == 0L){
                 //ไม่รู้จบ
                 do {
                     calDue.add(repeatType!!, repeatList[i].repeatNext!!)
@@ -726,7 +726,7 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
                     }
                     repeatList[i].programCount = repeatList[i].programCount!! + 1
 
-                }while (repeatList[i].programCount!! < repeatList[i].numberOfTime!! && calDue.timeInMillis < calEndMonth.timeInMillis)
+                }while (repeatList[i].programCount!! < repeatList[i].numberOfRepeat!! && calDue.timeInMillis < calEndMonth.timeInMillis)
             }
         }
 
