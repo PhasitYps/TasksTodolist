@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TasksTodolist</string>
+
     <string name="no">Hindi</string>
     <string name="done">Tapos na</string>
     <string name="cancel">Kanselahin</string>

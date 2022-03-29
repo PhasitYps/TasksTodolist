@@ -10,7 +10,8 @@
 
     <string name="web_client_id" translatable="false">580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com</string>
 
-    <string name="app_name">TasksTodolist</string>
+    <!--To Do List Tasks & Planner จดบันทึกเเละวางเเผนเเต่ละวันของคุณอย่างง่าย -->
+    <string name="app_name" translatable="false">TasksTodolist</string>
     <string name="no">No</string>
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>

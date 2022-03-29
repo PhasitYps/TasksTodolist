@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">TasksTodolist</string>
+
     <string name="no">No</string>
     <string name="done">Done</string>
     <string name="cancel">Cancel</string>

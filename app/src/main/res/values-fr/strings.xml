@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">TasksTodolist</string>
+
     <string name="no">Non</string>
     <string name="done">Terminé</string>
     <string name="cancel">Annuler</string>
