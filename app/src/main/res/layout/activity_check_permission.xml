@@ -29,6 +29,7 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:src="@drawable/ic_todolist"
+                android:layout_margin="5dp"
                 />
 
         </androidx.cardview.widget.CardView>

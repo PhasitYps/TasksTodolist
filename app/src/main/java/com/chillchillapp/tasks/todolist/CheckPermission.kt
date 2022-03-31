@@ -29,8 +29,6 @@ import java.io.File
 
 class CheckPermission : BaseActivity() {
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()
@@ -158,7 +156,7 @@ class CheckPermission : BaseActivity() {
                     count++
                 }
             }
-        }, 0, 200)
+        }, 0, 500)
     }
 
     private fun convertAssetToBytesArray(path: String): ByteArray{
