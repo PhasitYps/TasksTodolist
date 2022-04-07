@@ -156,7 +156,7 @@ class CheckPermission : BaseActivity() {
                     count++
                 }
             }
-        }, 0, 500)
+        }, 0, 1000)
     }
 
     private fun convertAssetToBytesArray(path: String): ByteArray{
