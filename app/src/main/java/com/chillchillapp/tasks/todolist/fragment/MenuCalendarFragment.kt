@@ -146,9 +146,13 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
         if(update){
             Handler().postDelayed( {
 
-                if(!requireActivity().isDestroyed){
-                    addEventInCalendar()
-                    addDataCurrentDay()
+                try {
+                    if(!requireActivity().isDestroyed){
+                        addEventInCalendar()
+                        addDataCurrentDay()
+                    }
+                }catch (e:Exception){
+                    Log.i("MenuCalendarFragment", "e: $e")
                 }
 
             }, 500)

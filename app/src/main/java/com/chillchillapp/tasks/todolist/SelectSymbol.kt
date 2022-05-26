@@ -302,6 +302,8 @@ class SelectSymbol : BaseActivity() {
         })
 
         imageSymbolList.sortBy { it.isLock }
+
+
     }
 
     private fun isAssetExists(pathInAssetsDir: String): Boolean {

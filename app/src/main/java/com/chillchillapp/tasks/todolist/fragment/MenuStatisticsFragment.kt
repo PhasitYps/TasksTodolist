@@ -59,12 +59,14 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         super.onViewCreated(view, savedInstanceState)
         initBase()
 
-        setAds()
 
+        setAds()
         init()
         setAdap()
         currentDate()
         setEvent()
+
+
     }
 
     override fun onResume() {
@@ -182,7 +184,11 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
 
         if(update){
             Handler().postDelayed( {
-                currentDate()
+                try{
+                    currentDate()
+                }catch (e:Exception){
+                    Log.i("MenuStatisticsFragment", "e: $e")
+                }
             }, 500)
 
             prefs!!.boolUpdateTask = false
