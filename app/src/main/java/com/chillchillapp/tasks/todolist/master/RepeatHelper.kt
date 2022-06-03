@@ -5,7 +5,6 @@ import android.util.Log
 import android.widget.Toast
 import com.chillchillapp.tasks.todolist.R
 import com.chillchillapp.tasks.todolist.database.*
-import com.chillchillapp.tasks.todolist.model.ModelTask
 import java.io.File
 import java.util.*
 
@@ -92,7 +91,8 @@ class RepeatHelper(private val activity: Activity){
 
                 val cal = Calendar.getInstance()
                 cal.timeInMillis = newTask.dueDate!!
-                m.setTime(cal, newTask.hour!!, newTask.minute!!)
+                m.setNotifyTime(cal, newTask.hour!!, newTask.minute!!)
+                m.status = "active"
 
                 dbHelper.functionReminder.insert(m)
             }

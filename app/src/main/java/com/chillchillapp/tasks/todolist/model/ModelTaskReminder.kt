@@ -1,6 +1,6 @@
 package com.chillchillapp.tasks.todolist.model
 
-import android.net.Uri
+import android.app.Activity
 import java.util.*
 
 class ModelTaskReminder (
@@ -9,19 +9,21 @@ class ModelTaskReminder (
     var optionId: String? = null,
     var reminderCount: Long? = null,
     var reminderType: Int? = null,
-    var baseTime: Long? = null,
+    var notifyTime: Long? = null,
+    var status: String? = null,
     var updateDate: Long? = null,
     var createDate: Long? = null
 ){
-    fun setTime(calDueDate: Calendar, h: Int, m: Int){
+    fun setNotifyTime(calDueDate: Calendar, h: Int, m: Int){
         val calNotify = Calendar.getInstance()
         calNotify.timeInMillis = calDueDate.timeInMillis
         calNotify.set(Calendar.HOUR_OF_DAY, h)
         calNotify.set(Calendar.MINUTE, m)
         calNotify.set(Calendar.SECOND, 0)
         calNotify.set(Calendar.MILLISECOND, 0)
-        calNotify.add(reminderType!!, -(reminderCount)!!.toInt())
+        calNotify.add(reminderType!!, -reminderCount!!.toInt())
 
-        this.baseTime = calNotify.timeInMillis
+        this.notifyTime = calNotify.timeInMillis
     }
+
 }

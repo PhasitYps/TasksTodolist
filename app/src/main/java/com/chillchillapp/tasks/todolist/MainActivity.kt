@@ -293,5 +293,6 @@ class MainActivity : BaseActivity() , Communicator{
     private fun setUpdateReminder(){
         val notificationManageMaster = NotificationHelper(this)
         notificationManageMaster.setUpdateReminder()
+
     }
 }

@@ -347,7 +347,30 @@ class InputTasksActivity : BaseActivity(){
             }
 
             subTaskList.addAll(functionTaskSub.getDataByTaskId(taskId))
-            reminderList.addAll(functionReminder.getReminderByTaskId(taskId))
+            functionReminder.getReminderByTaskId(taskId).forEach { m->
+                val choice = ArrayList<ModelTaskReminder>()
+                choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
+                choice.add(ModelTaskReminder(null, null, "op2", 5, Calendar.MINUTE,null, null))
+                choice.add(ModelTaskReminder(null, null, "op3", 10, Calendar.MINUTE,null, null))
+                choice.add(ModelTaskReminder(null, null, "op4", 15, Calendar.MINUTE,null, null))
+                choice.add(ModelTaskReminder(null, null, "op5", 30, Calendar.MINUTE,null, null))
+                choice.add(ModelTaskReminder(null, null, "op6", 1, Calendar.DATE,null, null))
+                choice.add(ModelTaskReminder(null, null, "op7", 2, Calendar.DATE,null, null))
+                choice.forEach { mc ->
+                    mc.setNotifyTime(calDueDate, currentHour, currentMinute)
+
+                    if (mc.notifyTime == m.notifyTime) {
+                        m.optionId = mc.optionId
+                        m.reminderCount = mc.reminderCount
+                        m.reminderType = mc.reminderType
+                        reminderList.add(m)
+
+                        return@forEach
+
+                    }
+                }
+
+            }
             functionAttach.getDataByTaskId(taskId).forEach { m->
 
                 val modelAttach = ModelInputAttach(m, convertUri(m.path!!))
@@ -847,12 +870,13 @@ class InputTasksActivity : BaseActivity(){
     }
 
     private fun insertReminder(taskId: Long){
-        functionReminder.deleteByTaskId(taskId)
+        //functionReminder.deleteByTaskId(taskId)
 
         for(m in reminderList){
             m.taskId = taskId
 
-            m.setTime(calDueDate, currentHour, currentMinute)
+            m.setNotifyTime(calDueDate, currentHour, currentMinute)
+            m.status = "active"
             m.createDate = System.currentTimeMillis()
             m.updateDate = System.currentTimeMillis()
 
@@ -911,7 +935,6 @@ class InputTasksActivity : BaseActivity(){
         val reminder = functionReminder.getReminderByTaskId(taskId)
         reminder.forEach { m->
             val searchList = reminderList.filter { it.id == m.id }
-
              if(searchList.isEmpty()){
                  functionReminder.delete(m)
              }
@@ -920,14 +943,15 @@ class InputTasksActivity : BaseActivity(){
         for(m in reminderList){
 
             if(m.id != null){
-                m.setTime(calDueDate, currentHour, currentMinute)
+                m.setNotifyTime(calDueDate, currentHour, currentMinute)
                 m.updateDate = System.currentTimeMillis()
                 functionReminder.update(m)
             }else{
                 m.taskId = taskId
-                m.setTime(calDueDate, currentHour, currentMinute)
+                m.setNotifyTime(calDueDate, currentHour, currentMinute)
                 m.updateDate = System.currentTimeMillis()
                 m.createDate = System.currentTimeMillis()
+                m.status = "active"
 
                 functionReminder.insert(m)
             }

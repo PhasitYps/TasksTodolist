@@ -19,7 +19,7 @@ import android.graphics.BitmapFactory
 
 import android.util.Log
 import com.chillchillapp.tasks.todolist.KEY_NOTIFICATION
-import com.chillchillapp.tasks.todolist.database.COL_REMINDER_BASETIME
+import com.chillchillapp.tasks.todolist.database.COL_REMINDER_NOTIFYTIME
 import com.chillchillapp.tasks.todolist.database.FunctionTaskReminder
 
 
@@ -55,18 +55,18 @@ class NotificationHelper(private var context: Context) {
         Log.i("hhhhhhhhhhhhf", "number of notification: " + reminderList.size)
 
         if(reminderList.isNotEmpty()){
-            reminderList.sortBy { it.baseTime }
+            reminderList.sortBy { it.notifyTime }
 
             val model = reminderList.first()
             val intent = Intent(context, MyCustomReceiver::class.java)
             intent.action = KEY_NOTIFICATION
-            intent.putExtra(COL_REMINDER_BASETIME, model.baseTime)
+            intent.putExtra(COL_REMINDER_NOTIFYTIME, model.notifyTime)
             val pendingIntent = PendingIntent.getBroadcast(context, 0 , intent, 0)
 
             val alarmManager = context.getSystemService(AppCompatActivity.ALARM_SERVICE) as AlarmManager
-            alarmManager.setExact(AlarmManager.RTC_WAKEUP, model.baseTime!!, pendingIntent)
+            alarmManager.setExact(AlarmManager.RTC_WAKEUP, model.notifyTime!!, pendingIntent)
 
-            Log.i("hhhhhhhhhhhhf", "set time alarm at: " + formatDate("HH:mm:ss", Date(model.baseTime!!)))
+            Log.i("hhhhhhhhhhhhf", "set time alarm at: " + formatDate("HH:mm:ss", Date(model.notifyTime!!)))
 
         }
     }
@@ -84,31 +84,60 @@ class NotificationHelper(private var context: Context) {
 
         val functionCategory = FunctionCategory(context)
         val modelCategory = functionCategory.getById(model.categoryId)
-        val bitmap = BitmapFactory.decodeByteArray(modelCategory.image, 0, modelCategory.image!!.size)
 
-        val build = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationCompat.Builder(context, taskReminderChannel)
-                .setSmallIcon(R.drawable.ic_todolist)
-                .setLargeIcon(bitmap)
-                .setContentTitle(model.name)
-                .setContentText(formatDate("HH:mm", calDueDate.time))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
-        } else {
-            NotificationCompat.Builder(context)
-                .setSmallIcon(R.drawable.ic_todolist)
-                .setLargeIcon(bitmap)
-                .setContentTitle(model.name)
-                .setContentText(formatDate("HH:mm", calDueDate.time))
-                .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
-                .setAutoCancel(true)
-                .setContentIntent(pendingIntent)
+        if(modelCategory.image != null){
+            val bitmap = BitmapFactory.decodeByteArray(modelCategory.image, 0, modelCategory.image!!.size)
+
+            val build = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationCompat.Builder(context, taskReminderChannel)
+                    .setSmallIcon(R.drawable.ic_todolist)
+                    .setLargeIcon(bitmap)
+                    .setContentTitle(model.name)
+                    .setContentText(formatDate("HH:mm", calDueDate.time))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+            } else {
+                NotificationCompat.Builder(context)
+                    .setSmallIcon(R.drawable.ic_todolist)
+                    .setLargeIcon(bitmap)
+                    .setContentTitle(model.name)
+                    .setContentText(formatDate("HH:mm", calDueDate.time))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+            }
+
+            return build
+
+        }else{
+            val build = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                NotificationCompat.Builder(context, taskReminderChannel)
+                    .setSmallIcon(R.drawable.ic_todolist)
+                    .setContentTitle(model.name)
+                    .setContentText(formatDate("HH:mm", calDueDate.time))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+            } else {
+                NotificationCompat.Builder(context)
+                    .setSmallIcon(R.drawable.ic_todolist)
+                    .setContentTitle(model.name)
+                    .setContentText(formatDate("HH:mm", calDueDate.time))
+                    .setPriority(NotificationCompat.PRIORITY_HIGH)
+                    .setVisibility(NotificationCompat.VISIBILITY_PUBLIC)
+                    .setAutoCancel(true)
+                    .setContentIntent(pendingIntent)
+            }
+
+            return build
         }
 
-        return build
+
+
     }
 
     private fun formatDate(formateStr: String, date: Date): String{

@@ -29,10 +29,8 @@ class FunctionTaskReminder(private var context: Context, private var sqlitePath:
         val values = ContentValues()
 
         values.put(COL_TASK_ID, model.taskId)
-        values.put(COL_REMINDER_OPTION, model.optionId)
-        values.put(COL_REMINDER_TYPE, model.reminderType)
-        values.put(COL_REMINDER_COUNT, model.reminderCount)
-        values.put(COL_REMINDER_BASETIME, model.baseTime)
+        values.put(COL_REMINDER_STATUS, model.status)
+        values.put(COL_REMINDER_NOTIFYTIME, model.notifyTime)
         values.put(COL_UPDATEDATE, model.updateDate)
         values.put(COL_CREATEDATE, model.createDate)
 
@@ -46,10 +44,8 @@ class FunctionTaskReminder(private var context: Context, private var sqlitePath:
         val values = ContentValues()
         val id = model.id
         values.put(COL_TASK_ID, model.taskId)
-        values.put(COL_REMINDER_OPTION, model.optionId)
-        values.put(COL_REMINDER_TYPE, model.reminderType)
-        values.put(COL_REMINDER_COUNT, model.reminderCount)
-        values.put(COL_REMINDER_BASETIME, model.baseTime)
+        values.put(COL_REMINDER_STATUS, model.status)
+        values.put(COL_REMINDER_NOTIFYTIME, model.notifyTime)
         values.put(COL_UPDATEDATE, model.updateDate)
         values.put(COL_CREATEDATE, model.createDate)
 
@@ -72,7 +68,7 @@ class FunctionTaskReminder(private var context: Context, private var sqlitePath:
         val calEnd = Calendar.getInstance()
         calEnd.add(Calendar.DATE, 1)
 
-        val cursor = db!!.rawQuery("select * from $tableName where $COL_REMINDER_BASETIME >= ${calStart.timeInMillis} and $COL_REMINDER_BASETIME < ${calEnd.timeInMillis}",null)
+        val cursor = db!!.rawQuery("select * from $tableName where $COL_REMINDER_NOTIFYTIME >= ${calStart.timeInMillis} and $COL_REMINDER_NOTIFYTIME < ${calEnd.timeInMillis}",null)
         return query(cursor)
     }
 
@@ -86,7 +82,7 @@ class FunctionTaskReminder(private var context: Context, private var sqlitePath:
         cal.set(Calendar.SECOND, 0)
         cal.set(Calendar.MILLISECOND, 0)
 
-        val cursor = db!!.rawQuery("select * from $tableName where $COL_REMINDER_BASETIME like ${cal.timeInMillis}",null)
+        val cursor = db!!.rawQuery("select * from $tableName where $COL_REMINDER_NOTIFYTIME like ${cal.timeInMillis}",null)
         return query(cursor)
     }
 
@@ -103,10 +99,8 @@ class FunctionTaskReminder(private var context: Context, private var sqlitePath:
                 val m = ModelTaskReminder()
                 m.id = (cursor.getLong(cursor.getColumnIndex(COL_REMINDER_ID)))
                 m.taskId = cursor.getLong(cursor.getColumnIndex(COL_TASK_ID))
-                m.optionId = cursor.getString(cursor.getColumnIndex(COL_REMINDER_OPTION))
-                m.reminderType = (cursor.getInt(cursor.getColumnIndex(COL_REMINDER_TYPE)))
-                m.reminderCount = (cursor.getLong(cursor.getColumnIndex(COL_REMINDER_COUNT)))
-                m.baseTime = cursor.getLong(cursor.getColumnIndex(COL_REMINDER_BASETIME))
+                m.status = cursor.getString(cursor.getColumnIndex(COL_REMINDER_STATUS))
+                m.notifyTime = cursor.getLong(cursor.getColumnIndex(COL_REMINDER_NOTIFYTIME))
                 m.createDate = (cursor.getLong(cursor.getColumnIndex(COL_CREATEDATE)))
                 m.updateDate = (cursor.getLong(cursor.getColumnIndex(COL_UPDATEDATE)))
 
