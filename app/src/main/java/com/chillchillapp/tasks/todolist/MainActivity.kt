@@ -10,11 +10,14 @@ import android.view.Window
 import android.widget.Toast
 import androidx.work.WorkManager
 import com.chillchillapp.tasks.todolist.`interface`.Communicator
+import com.chillchillapp.tasks.todolist.database.FunctionTask
+import com.chillchillapp.tasks.todolist.database.FunctionTaskReminder
 import com.chillchillapp.tasks.todolist.fragment.MenuCalendarFragment
 import com.chillchillapp.tasks.todolist.fragment.MenuMenuFragment
 import com.chillchillapp.tasks.todolist.fragment.MenuStatisticsFragment
 import com.chillchillapp.tasks.todolist.fragment.MenuTaskFragment
 import com.chillchillapp.tasks.todolist.master.*
+import com.chillchillapp.tasks.todolist.model.ModelTaskReminder
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
@@ -25,6 +28,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.bgSyncingLL
 import kotlinx.android.synthetic.main.activity_main.syncProgressBar
 import kotlinx.android.synthetic.main.dialog_leaveapp.*
+import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity() , Communicator{
@@ -48,6 +52,45 @@ class MainActivity : BaseActivity() , Communicator{
         setEvent()
 
         d("hhjjjjjhhhhh", "app run")
+
+
+//        val functionReminder = FunctionTaskReminder(this)
+//        val functionTask = FunctionTask(this)
+//        val model = functionTask.getTaskById(2)
+//        val reminderList = functionReminder.getReminderByTaskId(model.id)
+//
+//        for(m in reminderList){
+//            val choice = java.util.ArrayList<ModelTaskReminder>()
+//            choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
+//            choice.add(ModelTaskReminder(optionId =  "op2", reminderCount = 5, reminderType = Calendar.MINUTE))
+//            choice.add(ModelTaskReminder(optionId =  "op3", reminderCount = 10, reminderType = Calendar.MINUTE))
+//            choice.add(ModelTaskReminder(optionId =  "op4", reminderCount = 15, reminderType = Calendar.MINUTE))
+//            choice.add(ModelTaskReminder(optionId =  "op5", reminderCount = 30, reminderType = Calendar.MINUTE))
+//            choice.add(ModelTaskReminder(optionId =  "op6", reminderCount = 1, reminderType = Calendar.DATE))
+//            choice.add(ModelTaskReminder(optionId =  "op7", reminderCount = 2, reminderType = Calendar.DATE))
+//
+//            choice.forEachIndexed{i, mc ->
+//                d("sadasdaegejr", "index: $i")
+//                val cal = Calendar.getInstance()
+//                cal.timeInMillis = model.dueDate!!
+//                mc.setNotifyTime(cal, model.hour!!, model.minute!!)
+//
+//                if (mc.notifyTime == m.notifyTime) {
+//                    m.optionId = mc.optionId
+//                    m.reminderCount = mc.reminderCount
+//                    m.reminderType = mc.reminderType
+//                    d("sadasdaegejr", "return: $i")
+//                    return@forEachIndexed
+//                }
+//            }
+//
+//            d("sadasdaegejr", "next task")
+//
+//        }
+//
+//        for(m in reminderList){
+//            d("sadasdaegejr", "reminder: " + m.optionId)
+//        }
 
 
 

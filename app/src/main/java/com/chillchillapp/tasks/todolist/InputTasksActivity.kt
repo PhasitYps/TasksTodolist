@@ -69,7 +69,6 @@ class InputTasksActivity : BaseActivity(){
 
     //variable user input
     private var taskId: Long? = null
-    private var name: String = ""
     private var categoryId = ""
     private var calDueDate = Calendar.getInstance()
     private var currentHour: Int = 0
@@ -326,7 +325,6 @@ class InputTasksActivity : BaseActivity(){
         val modelTask = functionTask.getTaskById(taskId!!)
 
         if(modelTask.id != null){
-            name = modelTask.name!!
             categoryId = modelTask.categoryId.toString()
             calDueDate.timeInMillis = modelTask.dueDate!!
             currentHour = modelTask.hour!!
@@ -350,12 +348,12 @@ class InputTasksActivity : BaseActivity(){
             functionReminder.getReminderByTaskId(taskId).forEach { m->
                 val choice = ArrayList<ModelTaskReminder>()
                 choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
-                choice.add(ModelTaskReminder(null, null, "op2", 5, Calendar.MINUTE,null, null))
-                choice.add(ModelTaskReminder(null, null, "op3", 10, Calendar.MINUTE,null, null))
-                choice.add(ModelTaskReminder(null, null, "op4", 15, Calendar.MINUTE,null, null))
-                choice.add(ModelTaskReminder(null, null, "op5", 30, Calendar.MINUTE,null, null))
-                choice.add(ModelTaskReminder(null, null, "op6", 1, Calendar.DATE,null, null))
-                choice.add(ModelTaskReminder(null, null, "op7", 2, Calendar.DATE,null, null))
+                choice.add(ModelTaskReminder(optionId =  "op2", reminderCount = 5, reminderType = Calendar.MINUTE))
+                choice.add(ModelTaskReminder(optionId =  "op3", reminderCount = 10, reminderType = Calendar.MINUTE))
+                choice.add(ModelTaskReminder(optionId =  "op4", reminderCount = 15, reminderType = Calendar.MINUTE))
+                choice.add(ModelTaskReminder(optionId =  "op5", reminderCount = 30, reminderType = Calendar.MINUTE))
+                choice.add(ModelTaskReminder(optionId =  "op6", reminderCount = 1, reminderType = Calendar.DATE))
+                choice.add(ModelTaskReminder(optionId =  "op7", reminderCount = 2, reminderType = Calendar.DATE))
                 choice.forEach { mc ->
                     mc.setNotifyTime(calDueDate, currentHour, currentMinute)
 
@@ -386,6 +384,9 @@ class InputTasksActivity : BaseActivity(){
                     }
                 }
             }
+
+            nameEDT.setText(modelTask.name!!)
+            nameEDT.hint = modelTask.name!!
         }else{
             Toast.makeText(this, "มีบางอย่างผิดพลาด", Toast.LENGTH_SHORT).show()
             finish()
@@ -399,11 +400,6 @@ class InputTasksActivity : BaseActivity(){
     private val TYPE_MONTH = "month"
     private val TYPE_YEAR = "year"
     private fun updateUI(){
-
-        if (name.isNotEmpty()){
-            nameEDT.setText(name)
-            nameEDT.hint = name
-        }
 
         when(isSetDueDate()){
             true->{

@@ -5,6 +5,7 @@ import android.util.Log
 import android.widget.Toast
 import com.chillchillapp.tasks.todolist.R
 import com.chillchillapp.tasks.todolist.database.*
+import com.chillchillapp.tasks.todolist.model.ModelTaskReminder
 import java.io.File
 import java.util.*
 
@@ -40,7 +41,7 @@ class RepeatHelper(private val activity: Activity){
             val lastId = dbHelper.functionTask.getLastId()
 
             //1.copy subtask
-            val subTaskList = dbHelper.functionTaskSub.getDataByTaskId(newTask.id)
+            val subTaskList = dbHelper.functionTaskSub.getDataByTaskId(taskId)
             for(m in subTaskList){
                 m.taskId = lastId
                 m.createDate = System.currentTimeMillis()
@@ -49,7 +50,7 @@ class RepeatHelper(private val activity: Activity){
             }
 
             //2.copy attach
-            val attachList = dbHelper.functionTaskAttach.getDataByTaskId(newTask.id)
+            val attachList = dbHelper.functionTaskAttach.getDataByTaskId(taskId)
             for(m in attachList){
                 m.createDate = System.currentTimeMillis()
                 m.updateDate = System.currentTimeMillis()
@@ -83,35 +84,51 @@ class RepeatHelper(private val activity: Activity){
             }
 
             //3.copy reminder
-            val reminderList = dbHelper.functionReminder.getReminderByTaskId(newTask.id)
+            val reminderList = dbHelper.functionReminder.getReminderByTaskId(taskId)
             for (m in reminderList){
                 m.taskId = lastId
                 m.updateDate = System.currentTimeMillis()
                 m.createDate = System.currentTimeMillis()
-
-                val cal = Calendar.getInstance()
-                cal.timeInMillis = newTask.dueDate!!
-                m.setNotifyTime(cal, newTask.hour!!, newTask.minute!!)
-                m.status = "active"
 
                 dbHelper.functionReminder.insert(m)
             }
 
             //4.not repeat
 
-
         }else{
             Toast.makeText(activity, activity.getString(R.string.fail), Toast.LENGTH_SHORT).show()
         }
 
         val model = dbHelper.functionTask.getTaskById(taskId!!)
-
         model.state = 0L
         model.completeDate = null
         model.updateDate = System.currentTimeMillis()
 
-        val modelRepeat = dbHelper.functionRepeat.getByTaskId(taskId)
+        val reminderList = dbHelper.functionReminder.getReminderByTaskId(model.id)
+        for(m in reminderList){
+            val choice = ArrayList<ModelTaskReminder>()
+            choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
+            choice.add(ModelTaskReminder(optionId =  "op2", reminderCount = 5, reminderType = Calendar.MINUTE))
+            choice.add(ModelTaskReminder(optionId =  "op3", reminderCount = 10, reminderType = Calendar.MINUTE))
+            choice.add(ModelTaskReminder(optionId =  "op4", reminderCount = 15, reminderType = Calendar.MINUTE))
+            choice.add(ModelTaskReminder(optionId =  "op5", reminderCount = 30, reminderType = Calendar.MINUTE))
+            choice.add(ModelTaskReminder(optionId =  "op6", reminderCount = 1, reminderType = Calendar.DATE))
+            choice.add(ModelTaskReminder(optionId =  "op7", reminderCount = 2, reminderType = Calendar.DATE))
+            choice.forEach { mc ->
+                val cal = Calendar.getInstance()
+                cal.timeInMillis = model.dueDate!!
+                mc.setNotifyTime(cal, model.hour!!, model.minute!!)
 
+                if (mc.notifyTime == m.notifyTime) {
+                    m.optionId = mc.optionId
+                    m.reminderCount = mc.reminderCount
+                    m.reminderType = mc.reminderType
+                    return@forEach
+                }
+            }
+        }
+
+        val modelRepeat = dbHelper.functionRepeat.getByTaskId(taskId)
         val calCurrent = Calendar.getInstance()
         val calDueDate = Calendar.getInstance()
 
@@ -159,7 +176,6 @@ class RepeatHelper(private val activity: Activity){
         calDueDate[Calendar.SECOND] = 0
         calDueDate[Calendar.MILLISECOND] = 0
 
-
         model.dueDate = calDueDate.timeInMillis
         modelRepeat.programCount = modelRepeat.programCount!! + 1L //is done +1
         modelRepeat.updateDate = System.currentTimeMillis()
@@ -167,7 +183,7 @@ class RepeatHelper(private val activity: Activity){
         Log.i("fhhhhh", "programCount: " + modelRepeat.programCount)
         Log.i("fhhhhh", "numberOfTime: " + modelRepeat.numberOfRepeat)
 
-        //update value
+        //update subtask
         val subTaskList = dbHelper.functionTaskSub.getDataByTaskId(model.id)
         for (m in subTaskList){
             m.state = 0L
@@ -175,24 +191,27 @@ class RepeatHelper(private val activity: Activity){
             dbHelper.functionTaskSub.update(m)
         }
 
-        //...
+        Log.i("fhhhhh", "numberOfTime: " + modelRepeat.numberOfRepeat)
+        //update reminder
+        for (m in reminderList){
+            m.setNotifyTime(calDueDate, model.hour!!, model.minute!!)
+            dbHelper.functionReminder.update(m)
+        }
+
+        //way repeat?
         when {
             modelRepeat.numberOfRepeat == -1L -> { //repeat not know end
                 dbHelper.functionTask.update(model)
                 dbHelper.functionRepeat.update(modelRepeat)
-
             }
             modelRepeat.programCount!! == (modelRepeat.numberOfRepeat!! - 1) -> {//repeat know end
                 dbHelper.functionTask.update(model)
                 dbHelper.functionRepeat.deleteByTaskId(taskId)
             }
-
             modelRepeat.programCount!! < (modelRepeat.numberOfRepeat!! - 1) -> {//repeat know end
                 dbHelper.functionTask.update(model)
                 dbHelper.functionRepeat.update(modelRepeat)
             }
         }
-
     }
-
 }
