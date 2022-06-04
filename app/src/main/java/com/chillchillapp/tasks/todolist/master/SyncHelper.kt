@@ -104,8 +104,8 @@ class SyncHelper(private val activity: Activity) {
                 Log.d("hhjjjjjhhhhh", "SyncingWorker end")
 
                 return Result.success(workDataOf("Process" to 40))
-            }catch (e: UserRecoverableAuthIOException){
-                Log.d("SyncHelper", "ExecutionException: " + e)
+            }catch (e: Exception){
+                Log.d("SyncHelper", "Exception: " + e)
                 return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
             }
 
