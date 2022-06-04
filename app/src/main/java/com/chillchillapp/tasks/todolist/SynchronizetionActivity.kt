@@ -60,15 +60,14 @@ class SynchronizetionActivity : BaseActivity() {
 
                 d("ffffgdd", "Work Live Data: " + workInfoList.size)
                 val processList = ArrayList<Int>()
-
                 workInfoList.forEach {
 
                     if(it.state.isFinished){
 
                         val fail = it.outputData.getString(KEY_FAIL)
 
-                        if(fail != null){
-                            message = fail
+                        if(fail == KEY_FAIL){
+                            message = KEY_FAIL
                             processList.add(100)
                             return@forEach
                         }else{
@@ -80,7 +79,6 @@ class SynchronizetionActivity : BaseActivity() {
 
                     }
                 }
-
                 val value = max(processList)
 
                 if(value > valueMax){
@@ -90,18 +88,16 @@ class SynchronizetionActivity : BaseActivity() {
                     d("ffffgdd", "valueMax: $valueMax")
                 }
 
+                //finish
                 if(valueMax == 100){
 
                     if(message != KEY_FAIL){
 
                         prefs!!.longLastAutoSync = System.currentTimeMillis()
-                        /*editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
-                        editor!!.commit()*/
-
                         setTextLastSyncTime()
-                        Toast.makeText(this, "ซิงค์งานเข้ากับบัญชี google ไดฟ์เรียบร้อย", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
                     }else{
-                        Toast.makeText(this, "ซิงค์งานเข้ากับบัญชี google ไดฟ์ของคุณไม่สำเร็จ โปรดตรวจสอบเครือข่ายของคุณเเละลองอีกครั้ง", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(this, getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
                     }
 
                     var endTime = System.currentTimeMillis()

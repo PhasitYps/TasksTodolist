@@ -8,7 +8,10 @@ import androidx.work.*
 import com.chillchillapp.tasks.todolist.*
 import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.model.ModelTask
+import com.google.android.gms.auth.UserRecoverableAuthException
+import com.google.api.client.googleapis.extensions.android.gms.auth.UserRecoverableAuthIOException
 import java.io.File
+import java.util.concurrent.ExecutionException
 
 class SyncHelper(private val activity: Activity) {
 
@@ -35,73 +38,78 @@ class SyncHelper(private val activity: Activity) {
     class SyncingWorker(private var context: Context, workerParams: WorkerParameters): Worker(context, workerParams){
         override fun doWork(): Result {
 
-            Log.d("hhjjjjjhhhhh", "SyncingWorker start")
+            try {
+                Log.d("hhjjjjjhhhhh", "SyncingWorker start")
 
-            val driveHelper = DriveManageHelper(context)
-            val fileList = driveHelper.getFileList(SQLITE_NAME, arrayOf(driveHelper.MIME_TYPE_SQLite3))
+                val driveHelper = DriveManageHelper(context)
+                val fileList = driveHelper.getFileList(SQLITE_NAME, arrayOf(driveHelper.MIME_TYPE_SQLite3))
 
-            val SyncFolder = File(context.filesDir, FOLDER_SYNC)
-            if(!SyncFolder.isDirectory){
-                SyncFolder.mkdir()
-            }
-
-            val dbDrive = File(SyncFolder, SQLITE_NAME)
-            if(!dbDrive.exists()){
-                dbDrive.createNewFile()
-            }
-
-            when(fileList.files.size){
-
-                0->{
-
-                    val uploadConstraints = Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.CONNECTED)
-                        .build()
-
-                    val backUpWorker = OneTimeWorkRequestBuilder<BackUpWorker>()
-                        .setConstraints(uploadConstraints)
-                        .build()
-
-                    WorkManager.getInstance(context)
-                        .beginUniqueWork(KEY_SYNC, ExistingWorkPolicy.APPEND, backUpWorker)
-                        .enqueue()
-
+                val SyncFolder = File(context.filesDir, FOLDER_SYNC)
+                if(!SyncFolder.isDirectory){
+                    SyncFolder.mkdir()
                 }
-                else->{
 
-                    val workData = workDataOf(KEY_DATABASE_ID to fileList.files[0].id)
-
-                    val uploadConstraints = Constraints.Builder()
-                        .setRequiredNetworkType(NetworkType.CONNECTED)
-                        .build()
-
-                    val downloadWorker = OneTimeWorkRequestBuilder<Syncing.DowloadWorker>()
-                        .setConstraints(uploadConstraints)
-                        .setInputData(workData)
-                        .build()
-
-                    val syncingWorker = OneTimeWorkRequestBuilder<Syncing.SyncingWorker>()
-                        .setConstraints(uploadConstraints)
-                        .build()
-
-                    val uploadWorker = OneTimeWorkRequestBuilder<Syncing.UploadWorker>()
-                        .setConstraints(uploadConstraints)
-                        .setInputData(workData)
-                        .build()
-
-                    WorkManager.getInstance(context)
-                        .beginUniqueWork(KEY_SYNC, ExistingWorkPolicy.APPEND, downloadWorker)
-                        .then(syncingWorker)
-                        .then(uploadWorker)
-                        .enqueue()
+                val dbDrive = File(SyncFolder, SQLITE_NAME)
+                if(!dbDrive.exists()){
+                    dbDrive.createNewFile()
                 }
+
+                when(fileList.files.size){
+
+                    0->{
+
+                        val uploadConstraints = Constraints.Builder()
+                            .setRequiredNetworkType(NetworkType.CONNECTED)
+                            .build()
+
+                        val backUpWorker = OneTimeWorkRequestBuilder<BackUpWorker>()
+                            .setConstraints(uploadConstraints)
+                            .build()
+
+                        WorkManager.getInstance(context)
+                            .beginUniqueWork(KEY_SYNC, ExistingWorkPolicy.APPEND, backUpWorker)
+                            .enqueue()
+
+                    }
+                    else->{
+
+                        val workData = workDataOf(KEY_DATABASE_ID to fileList.files[0].id)
+
+                        val uploadConstraints = Constraints.Builder()
+                            .setRequiredNetworkType(NetworkType.CONNECTED)
+                            .build()
+
+                        val downloadWorker = OneTimeWorkRequestBuilder<Syncing.DowloadWorker>()
+                            .setConstraints(uploadConstraints)
+                            .setInputData(workData)
+                            .build()
+
+                        val syncingWorker = OneTimeWorkRequestBuilder<Syncing.SyncingWorker>()
+                            .setConstraints(uploadConstraints)
+                            .build()
+
+                        val uploadWorker = OneTimeWorkRequestBuilder<Syncing.UploadWorker>()
+                            .setConstraints(uploadConstraints)
+                            .setInputData(workData)
+                            .build()
+
+                        WorkManager.getInstance(context)
+                            .beginUniqueWork(KEY_SYNC, ExistingWorkPolicy.APPEND, downloadWorker)
+                            .then(syncingWorker)
+                            .then(uploadWorker)
+                            .enqueue()
+                    }
+                }
+
+                Log.d("hhjjjjjhhhhh", "SyncingWorker end")
+
+                return Result.success(workDataOf("Process" to 40))
+            }catch (e: UserRecoverableAuthIOException){
+                Log.d("SyncHelper", "ExecutionException: " + e)
+                return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
             }
 
-            Log.d("hhjjjjjhhhhh", "SyncingWorker end")
-
-            return Result.success(workDataOf("Process" to 40))
         }
-
     }
 
     class BackUpWorker(private var context: Context, workerParams: WorkerParameters): Worker(context, workerParams){
@@ -143,7 +151,7 @@ class SyncHelper(private val activity: Activity) {
                 return Result.success(workDataOf("Process" to 100))
             }catch (e: java.lang.Exception){
                 Log.d("hhjjjjjhhhhh", "e: " + e)
-                return Result.failure()
+                return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
             }
         }
     }
@@ -156,12 +164,19 @@ class SyncHelper(private val activity: Activity) {
 
                 Log.d("hhjjjjjhhhhh", "DowloadWorker start")
 
-                val driveHelper = DriveManageHelper(context)
-                val dbDrive = File( File(context.filesDir, FOLDER_SYNC), SQLITE_NAME)
-                val databaseId = inputData.getString(KEY_DATABASE_ID)
+                try {
+                    val driveHelper = DriveManageHelper(context)
+                    val dbDrive = File( File(context.filesDir, FOLDER_SYNC), SQLITE_NAME)
+                    val databaseId = inputData.getString(KEY_DATABASE_ID)
 
-                driveHelper.dowloadFileByIdTo(databaseId!!, driveHelper.MIME_TYPE_SQLite3, dbDrive)
-                return Result.success(workDataOf("Process" to 70))
+                    driveHelper.dowloadFileByIdTo(databaseId!!, driveHelper.MIME_TYPE_SQLite3, dbDrive)
+                    return Result.success(workDataOf("Process" to 70))
+                }catch (e: Exception){
+                    Log.d("hhjjjjjhhhhh", "DowloadWorker: "  + e)
+                    return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
+                }
+
+
             }
         }
 
@@ -172,90 +187,92 @@ class SyncHelper(private val activity: Activity) {
 
                 Log.d("hhjjjjjhhhhh", "SyncingWorker start")
 
-                val driveHelper = DriveManageHelper(context)
-                val dbLocal = context.getDatabasePath(SQLITE_NAME)
-                val dbDrive = File(File(context.filesDir, FOLDER_SYNC), SQLITE_NAME)
+                try {
+                    val driveHelper = DriveManageHelper(context)
+                    val dbLocal = context.getDatabasePath(SQLITE_NAME)
+                    val dbDrive = File(File(context.filesDir, FOLDER_SYNC), SQLITE_NAME)
 
-                val dbAttach = attachSync(dbLocal, dbDrive)
-                dbAttach!!.endTransaction()
+                    val dbAttach = attachSync(dbLocal, dbDrive)
+                    dbAttach!!.endTransaction()
 
-                val localDB = DBFunctionHelper(context, dbLocal.path)
-                val driveDB = DBFunctionHelper(context, dbDrive.path)
+                    val localDB = DBFunctionHelper(context, dbLocal.path)
+                    val driveDB = DBFunctionHelper(context, dbDrive.path)
 
-                val categoryExceptList = localDB.functionCategory.getModelExceptList(dbAttach!!)
-                val taskExceptList = localDB.functionTask.getModelExceptList(dbAttach!!)
-                //val attachExceptList = localDB.functionTaskAttach.getModelExceptList(dbAttach!!)
+                    val categoryExceptList = localDB.functionCategory.getModelExceptList(dbAttach!!)
+                    val taskExceptList = localDB.functionTask.getModelExceptList(dbAttach!!)
+                    //val attachExceptList = localDB.functionTaskAttach.getModelExceptList(dbAttach!!)
 
-                for(m in categoryExceptList){
+                    for(m in categoryExceptList){
 
-                    val data = localDB.functionCategory.query("select * from $TABLE_CATEGORY where $COL_CREATEDATE like '${m.createDate}'")
+                        val data = localDB.functionCategory.query("select * from $TABLE_CATEGORY where $COL_CREATEDATE like '${m.createDate}'")
 
-                    when(data.isEmpty()){
-                        true->{
-                            localDB.functionCategory.insert(m)
-                        }
-                        false->{
+                        when(data.isEmpty()){
+                            true->{
+                                localDB.functionCategory.insert(m)
+                            }
+                            false->{
 
-                            when{
-                                m.status == KEY_REMOVE->{
-                                    localDB.functionCategory.updateById(data[0].id, m)
-                                }
-                                m.status != KEY_REMOVE->{
-                                    if(m.updateDate!! > data[0].updateDate!!){
+                                when{
+                                    m.status == KEY_REMOVE->{
                                         localDB.functionCategory.updateById(data[0].id, m)
+                                    }
+                                    m.status != KEY_REMOVE->{
+                                        if(m.updateDate!! > data[0].updateDate!!){
+                                            localDB.functionCategory.updateById(data[0].id, m)
+                                        }
                                     }
                                 }
                             }
                         }
                     }
-                }
 
-                for(m in taskExceptList){
+                    for(m in taskExceptList){
 
-                    val taskInLocal = localDB.functionTask.getDataByCreateDate(m.createDate!!)
+                        val taskInLocal = localDB.functionTask.getDataByCreateDate(m.createDate!!)
 
-                    when(taskInLocal.isEmpty()){
-                        true->{
-                            Log.d("jjjjjjj", "insert on Server: ")
-                            insertTask(m, driveDB, localDB)
-                        }
-                        false->{
-                            when(m.status){
+                        when(taskInLocal.isEmpty()){
+                            true->{
+                                Log.d("jjjjjjj", "insert on Server: ")
+                                insertTask(m, driveDB, localDB)
+                            }
+                            false->{
+                                when(m.status){
 
-                                KEY_REMOVE->{
-                                    Log.d("jjjjjjj", "update on Local: ")
-                                    updateTask(taskInLocal[0].id!!, m, driveDB, localDB)
-                                }
-                                KEY_ACTIVE->{
+                                    KEY_REMOVE->{
+                                        Log.d("jjjjjjj", "update on Local: ")
+                                        updateTask(taskInLocal[0].id!!, m, driveDB, localDB)
+                                    }
+                                    KEY_ACTIVE->{
 
-                                    when{
-                                        m.updateDate!! > taskInLocal[0].updateDate!!->{
-                                            Log.d("jjjjjjj", "update on Local: ")
-                                            updateTask(taskInLocal[0].id!!, m, driveDB, localDB)
-                                        }
+                                        when{
+                                            m.updateDate!! > taskInLocal[0].updateDate!!->{
+                                                Log.d("jjjjjjj", "update on Local: ")
+                                                updateTask(taskInLocal[0].id!!, m, driveDB, localDB)
+                                            }
 
-                                        m.updateDate!! < taskInLocal[0].updateDate!! || m.updateDate!! == taskInLocal[0].updateDate!!->{
-                                            val attachList = localDB.functionTaskAttach.getDataByTaskId(taskInLocal[0].id)
-                                            for(m in attachList){
+                                            m.updateDate!! < taskInLocal[0].updateDate!! || m.updateDate!! == taskInLocal[0].updateDate!!->{
+                                                val attachList = localDB.functionTaskAttach.getDataByTaskId(taskInLocal[0].id)
+                                                for(m in attachList){
 
-                                                val file = File(m.path)
-                                                when(m.type){
-                                                    FOLDER_IMAGE->{
-                                                        val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_IMAGE_JPG, driveHelper.MIME_TYPE_FILE_IMAGE_PNG))
-                                                        if(fileList.files.isEmpty()){
-                                                            driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_IMAGE_JPG)
+                                                    val file = File(m.path)
+                                                    when(m.type){
+                                                        FOLDER_IMAGE->{
+                                                            val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_IMAGE_JPG, driveHelper.MIME_TYPE_FILE_IMAGE_PNG))
+                                                            if(fileList.files.isEmpty()){
+                                                                driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_IMAGE_JPG)
+                                                            }
                                                         }
-                                                    }
-                                                    FOLDER_VIDEO->{
-                                                        val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_VIDEO))
-                                                        if(fileList.files.isEmpty()){
-                                                            driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_VIDEO)
+                                                        FOLDER_VIDEO->{
+                                                            val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_VIDEO))
+                                                            if(fileList.files.isEmpty()){
+                                                                driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_VIDEO)
+                                                            }
                                                         }
-                                                    }
-                                                    FOLDER_AUDIO->{
-                                                        val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_AUDIO))
-                                                        if(fileList.files.isEmpty()){
-                                                            driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_AUDIO)
+                                                        FOLDER_AUDIO->{
+                                                            val fileList = driveHelper.getFileList(m.name!!, arrayOf(driveHelper.MIME_TYPE_FILE_AUDIO))
+                                                            if(fileList.files.isEmpty()){
+                                                                driveHelper.uploadFile(file, driveHelper.MIME_TYPE_FILE_AUDIO)
+                                                            }
                                                         }
                                                     }
                                                 }
@@ -266,9 +283,12 @@ class SyncHelper(private val activity: Activity) {
                             }
                         }
                     }
-                }
 
-                return Result.success(workDataOf("Process" to 95))
+                    return Result.success(workDataOf("Process" to 95))
+                }catch (e: Exception){
+                    Log.d("hhjjjjjhhhhh", "SyncingWorker: "  + e)
+                    return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
+                }
             }
 
             private val DATABASE_BookTaskTodoListAttach = "BookTaskTodoListAttach"
@@ -420,13 +440,20 @@ class SyncHelper(private val activity: Activity) {
 
                 Log.d("hhjjjjjhhhhh", "UploadWorker start")
 
-                val databaseId = inputData.getString(KEY_DATABASE_ID)
-                val driveHelper = DriveManageHelper(context)
-                val dbLocal = context.getDatabasePath(SQLITE_NAME)
+                try {
+                    val databaseId = inputData.getString(KEY_DATABASE_ID)
+                    val driveHelper = DriveManageHelper(context)
+                    val dbLocal = context.getDatabasePath(SQLITE_NAME)
 
-                driveHelper.update(databaseId!!, dbLocal, driveHelper.MIME_TYPE_SQLite3)
+                    driveHelper.update(databaseId!!, dbLocal, driveHelper.MIME_TYPE_SQLite3)
 
-                return Result.success(workDataOf("Process" to 100))
+                    return Result.success(workDataOf("Process" to 100))
+                }catch (e: Exception){
+                    Log.d("hhjjjjjhhhhh", "UploadWorker: "  + e)
+                    return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
+                }
+
+
             }
         }
 

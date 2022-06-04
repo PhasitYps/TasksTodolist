@@ -131,22 +131,6 @@ val DATABASE_CREATERepeat = ("create table IF NOT EXISTS " + TABLE_REPEAT + "( "
         + COL_CREATEDATE + " integer" + ");"
         )
 
-/*val TABLE_SYNC = "SyncTB"
-val COL_SYNC_ID = "SyncID"
-val COL_SYNC_FILE_ID = "SyncFileID"
-val COL_SYNC_UID = "SyncUID"
-val COL_SYNC_DATABASE_ID = "SyncDatabaseID"
-
-val DATABASE_CREATESync = ("create table IF NOT EXISTS " + TABLE_SYNC + "( "
-        + COL_SYNC_ID + " integer primary key autoincrement,"
-        + COL_SYNC_FILE_ID + " text,"
-        + COL_SYNC_UID + " text,"
-        + COL_SYNC_DATABASE_ID + " text,"
-        + COL_UPDATEDATE + " integer,"
-        + COL_CREATEDATE + " integer" + ");"
-        )*/
-
-
 class SQLiteMaster(var context: Context, private var sqliteName: String = SQLITE_NAME): SQLiteOpenHelper(context, sqliteName, null, DATABASE_VERSION){
 
     //Environment.getExternalStorageDirectory().toString() + "/" + SQLite_Name
@@ -165,13 +149,6 @@ class SQLiteMaster(var context: Context, private var sqliteName: String = SQLITE
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         Log.i("ttttt", "onUpgrade Table")
-
-        db!!.execSQL(DATABASE_CREATECategory)
-        db!!.execSQL(DATABASE_CREATETask)
-        db!!.execSQL(DATABASE_CREATETaskSub)
-        db!!.execSQL(DATABASE_CREATETaskAttach)
-        db!!.execSQL(DATABASE_CREATERepeat)
-        db!!.execSQL(DATABASE_CREATETaskReminder)
 
     }
 }

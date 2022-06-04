@@ -191,5 +191,7 @@
     <string name="add">Add</string>
     <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
 
+    <string name="The_work_hasbeen_synced_to_your_google_dive_account">The work has been synced to your google dive account.</string>
+    <string name="Failed_to_sync_tasks_to_your_google_dive_account">Failed to sync tasks to your google dive account.</string>
 
 </resources>

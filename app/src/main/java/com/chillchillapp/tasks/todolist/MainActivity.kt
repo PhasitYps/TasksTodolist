@@ -68,6 +68,7 @@ class MainActivity : BaseActivity() , Communicator{
                         val syncHelper = SyncHelper(this)
                         syncHelper.syncing()
 
+                        var message = ""
                         WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(KEY_SYNC)
                             .observe(this, { workInfoList->
 
@@ -77,25 +78,38 @@ class MainActivity : BaseActivity() , Communicator{
                                 workInfoList.forEach {
 
                                     if(it.state.isFinished){
+                                        val fail = it.outputData.getString(KEY_FAIL)
 
-                                        val process = it.outputData.getInt("Process", 0)
-                                        processList.add(process)
-                                        d("ffffgdd", "Process: $process")
+                                        if(fail == KEY_FAIL){
+                                            message = KEY_FAIL
+                                            processList.add(100)
+                                            return@forEach
+                                        }else{
+                                            val process = it.outputData.getInt("Process", 0)
+                                            processList.add(process)
+                                            d("ffffgdd", "Process: $process")
+                                        }
+
                                     }
                                 }
 
                                 val valueMax = max(processList)
-                                d("ffffgdd", "valueMax: $valueMax")
                                 progressBarHelper?.setProcess(valueMax)
+                                d("ffffgdd", "valueMax: $valueMax")
 
                                 if(valueMax == 100){
-                                    changeMenu(fragmentCurrent)
-                                    hideProcessSyncing()
 
-                                    prefs!!.longLastAutoSync = System.currentTimeMillis()
-                                    /*editor!!.putLong(KEY_LAST_SYNC_TIME, System.currentTimeMillis())
-                                    editor!!.commit()*/
+                                    if(message == KEY_FAIL){
+                                        changeMenu(fragmentCurrent)
+                                        hideProcessSyncing()
 
+                                        prefs!!.longLastAutoSync = System.currentTimeMillis()
+                                        Toast.makeText(this, getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
+
+                                    }else{
+                                        hideProcessSyncing()
+                                        Toast.makeText(this, getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
+                                    }
                                 }
                             })
 
