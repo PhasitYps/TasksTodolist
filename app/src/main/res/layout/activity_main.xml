@@ -127,6 +127,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/Tasks"
                             android:visibility="visible"
+                            android:textColor="@color/colorBlack"
                             android:textSize="12dp"
                             />
 
@@ -161,6 +162,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Calendar"
+                            android:textColor="@color/colorBlack"
                             android:textSize="12dp"
                             android:visibility="visible"
                             />
@@ -227,6 +229,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Statistics"
+                            android:textColor="@color/colorBlack"
                             android:textSize="12dp"
                             android:visibility="visible"
                             />
@@ -263,6 +266,7 @@
                             android:layout_height="wrap_content"
                             android:text="@string/Menu"
                             android:visibility="visible"
+                            android:textColor="@color/colorBlack"
                             android:textSize="12dp"
                             />
 
