@@ -126,7 +126,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Tasks"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             />
 
                     </LinearLayout>
@@ -160,7 +160,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Calendar"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             />
 
                     </LinearLayout>
@@ -224,7 +224,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="statistics"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             />
 
                     </LinearLayout>
@@ -258,7 +258,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Menu"
-                            android:visibility="gone"
+                            android:visibility="visible"
                             />
 
                     </LinearLayout>
