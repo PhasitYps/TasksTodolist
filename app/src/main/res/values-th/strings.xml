@@ -171,6 +171,10 @@
     <string name="please_set_the_task_time_first">โปรดตั้งเวลาการทำงานก่อน</string>
     <string name="The_work_hasbeen_synced_to_your_google_dive_account">ซิงค์งานเข้ากับบัญชี google ไดฟ์เรียบร้อย</string>
     <string name="Failed_to_sync_tasks_to_your_google_dive_account">ซิงค์งานเข้ากับบัญชี google ไดฟ์ของคุณไม่สำเร็จ</string>
+    <string name="Tasks">หน้าหลัก</string>
+    <string name="Calendar">ปฏิทิน</string>
+    <string name="Statistics">สถิติ</string>
+    <string name="Menu">เมนู</string>
 
 
 </resources>

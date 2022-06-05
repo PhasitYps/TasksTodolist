@@ -125,8 +125,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Tasks"
+                            android:text="@string/Tasks"
                             android:visibility="visible"
+                            android:textSize="12dp"
                             />
 
                     </LinearLayout>
@@ -159,7 +160,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Calendar"
+                            android:text="@string/Calendar"
+                            android:textSize="12dp"
                             android:visibility="visible"
                             />
 
@@ -191,6 +193,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="Calendar"
+                            android:textSize="12dp"
                             />
 
                     </LinearLayout>
@@ -223,7 +226,8 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="statistics"
+                            android:text="@string/Statistics"
+                            android:textSize="12dp"
                             android:visibility="visible"
                             />
 
@@ -257,8 +261,9 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Menu"
+                            android:text="@string/Menu"
                             android:visibility="visible"
+                            android:textSize="12dp"
                             />
 
                     </LinearLayout>

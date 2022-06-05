@@ -193,5 +193,9 @@
 
     <string name="The_work_hasbeen_synced_to_your_google_dive_account">The work has been synced to your google dive account.</string>
     <string name="Failed_to_sync_tasks_to_your_google_dive_account">Failed to sync tasks to your google dive account.</string>
+    <string name="Tasks">Tasks</string>
+    <string name="Calendar">Calendar</string>
+    <string name="Statistics">Statistics</string>
+    <string name="Menu">Menu</string>
 
 </resources>
