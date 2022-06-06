@@ -38,11 +38,7 @@ class MainActivity : BaseActivity() , Communicator{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()
-
-        var language = prefs!!.strCurrentLanguage
-        if(language != "local"){
-            setLocale(language)
-        }
+        initLanguage()
 
         setTheme()
         setContentView(R.layout.activity_main)

@@ -49,7 +49,7 @@
     <string name="theme">Theme</string>
     <string name="language">Language</string>
     <string name="menu">Menu</string>
-    <string name="click_for_login_google">click for login google</string>
+    <string name="click_for_login_google">Click for login google</string>
 
     <!--InputTaskActivity-->
     <string name="create_new">Create New</string>

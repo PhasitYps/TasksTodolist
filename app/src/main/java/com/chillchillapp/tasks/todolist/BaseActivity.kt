@@ -58,10 +58,15 @@ open class BaseActivity: AppCompatActivity() {
     fun setLocale(lang: String?) {
         val locale = Locale(lang)
         Locale.setDefault(locale)
-        val dm: DisplayMetrics = resources.displayMetrics
-        val conf: Configuration = resources.configuration
-        conf.locale = locale
-        resources.updateConfiguration(conf, dm)
+
+        val configuration: Configuration = resources.configuration
+        configuration.locale = locale
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1) {
+            configuration.setLayoutDirection(locale)
+        }
+
+        resources.updateConfiguration(configuration, resources.displayMetrics)
+
     }
 
     fun getCurrentLanguage(): String? {

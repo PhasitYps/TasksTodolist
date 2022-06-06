@@ -44,7 +44,7 @@ class LanguageActivity : BaseActivity() {
 
         val language = prefs!!.strCurrentLanguage
         languageList.forEachIndexed{ i, m ->
-            if(language == m.local){
+            if(language == m.locale){
                 indexSelect = i
             }
         }
@@ -59,7 +59,7 @@ class LanguageActivity : BaseActivity() {
     private fun setEvent(){
 
         doneTV.setOnClickListener {
-            setCurrentLanguage(languageList[indexSelect].local!!)
+            setCurrentLanguage(languageList[indexSelect].locale!!)
         }
 
         backIV.setOnClickListener {
@@ -129,7 +129,7 @@ class LanguageActivity : BaseActivity() {
     open class ModelLanguage(
         var nationalFlag: String? = "",
         var name: String? = "",
-        var local: String? = "",
+        var locale: String? = "",
         var state: Int? = 0
     )
 }
