@@ -189,5 +189,6 @@
     <string name="syncing">กำลังซิงค์ข้อมูล</string>
     <string name="Select">เลือก</string>
     <string name="Select_Language">เลือกภาษา</string>
+    <string name="It_is_recommended_to_turn_on_automatic_backup">It is recommended to turn on automatic backup.</string>
 
 </resources>

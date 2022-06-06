@@ -208,8 +208,8 @@
     <string name="Not_synced">Not synced</string>
     <string name="account_sync">Account Sync</string>
     <string name="upgrade_pro">Upgrade Pro</string>
-
     <string name="Select">Select</string>
     <string name="Select_Language">Select Language</string>
+    <string name="It_is_recommended_to_turn_on_automatic_backup">It is recommended to turn on automatic backup.</string>
 
 </resources>

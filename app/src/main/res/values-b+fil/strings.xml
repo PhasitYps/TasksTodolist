@@ -194,5 +194,5 @@
     <string name="Menu">Menu</string>
     <string name="Select">Pumili</string>
     <string name="Select_Language">Piliin ang Wika</string>
-
+    <string name="It_is_recommended_to_turn_on_automatic_backup">Inirerekomenda na i-on ang awtomatikong pag-backup.</string>
 </resources>

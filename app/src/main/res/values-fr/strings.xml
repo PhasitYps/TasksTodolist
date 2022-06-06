@@ -196,5 +196,6 @@
     <string name="Menu">Menu</string>
     <string name="Select">Sélectionner</string>
     <string name="Select_Language">Choisir la langue</string>
+    <string name="It_is_recommended_to_turn_on_automatic_backup">Il est recommandé d\'activer la sauvegarde automatique.</string>
 
 </resources>
