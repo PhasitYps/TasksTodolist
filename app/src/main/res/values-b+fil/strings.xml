@@ -186,4 +186,11 @@
     <string name="sign_out">Mag-sign out</string>
     <string name="syncing">nagsi-sync</string>
 
+    <string name="The_work_hasbeen_synced_to_your_google_dive_account">Na-sync na ang trabaho sa iyong google drive account.</string>
+    <string name="Failed_to_sync_tasks_to_your_google_dive_account">Nabigong i-sync ang mga gawain sa iyong google dive account.</string>
+    <string name="Tasks">Mga gawain</string>
+    <string name="Calendar">Kalendaryo</string>
+    <string name="Statistics">Mga istatistika</string>
+    <string name="Menu">Menu</string>
+
 </resources>

@@ -145,4 +145,11 @@
     <string name="sign_out">Desconectar</string>
     <string name="syncing">sincronizando</string>
 
+    <string name="The_work_hasbeen_synced_to_your_google_dive_account">El trabajo se ha sincronizado con su cuenta de Google Drive.</string>
+    <string name="Failed_to_sync_tasks_to_your_google_dive_account">No se pudieron sincronizar las tareas con su cuenta de buceo de Google.</string>
+    <string name="Tasks">Tareas</string>
+    <string name="Calendar">Calendario</string>
+    <string name="Statistics">Estadísticas</string>
+    <string name="Menu">Menú</string>
+
 </resources>

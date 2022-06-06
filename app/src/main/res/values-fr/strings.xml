@@ -188,4 +188,11 @@
     <string name="sign_out">Déconnexion</string>
     <string name="syncing">synchronisation</string>
 
+    <string name="The_work_hasbeen_synced_to_your_google_dive_account">Le travail a été synchronisé avec votre compte Google Drive.</string>
+    <string name="Failed_to_sync_tasks_to_your_google_dive_account">Échec de la synchronisation des tâches avec votre compte Google Dive.</string>
+    <string name="Tasks">Tâches</string>
+    <string name="Calendar">Calendrier</string>
+    <string name="Statistics">Statistiques</string>
+    <string name="Menu">Menu</string>
+
 </resources>
