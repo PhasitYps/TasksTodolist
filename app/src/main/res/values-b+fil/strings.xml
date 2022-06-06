@@ -192,5 +192,7 @@
     <string name="Calendar">Kalendaryo</string>
     <string name="Statistics">Estatistika</string>
     <string name="Menu">Menu</string>
+    <string name="Select">Pumili</string>
+    <string name="Select_Language">Piliin ang Wika</string>
 
 </resources>

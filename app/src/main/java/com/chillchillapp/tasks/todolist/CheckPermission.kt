@@ -37,11 +37,6 @@ class CheckPermission : BaseActivity() {
 
         showPinReminderNotification()
 
-
-        if(!isSetCategoryDefault()){
-            insertCatgory()
-        }
-
         timerCount()
 
     }
@@ -110,42 +105,7 @@ class CheckPermission : BaseActivity() {
         FLAG_UPDATE_CURRENT คือ ถ้ามีอยู่แล้ว จะทำการไปอัพเดท*/
     }
 
-    private fun insertCatgory(){
-        val categoryList = ArrayList<ModelCategory>()
-        categoryList.add(ModelCategory(null, getString(R.string.Work), convertAssetToBytesArray("image_symbol/Home/Purchase/sym_ic_home (36).png"), 1, 1L, 0L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, getString(R.string.Personal_activities), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (40).png"),2, 2L, 1L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, getString(R.string.Education), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa18.png"), 3, 3L, 2L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, getString(R.string.Appointment), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (36).png"), 4, 4L, 3L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, getString(R.string.Shopping), convertAssetToBytesArray("image_symbol/Shopping/Purchase/sym_ic_shopping2.png"), 5, 5L, 4L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, getString(R.string.Birthday), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (27).png"), 6, 6L, 5L, KEY_ACTIVE))
 
-//        categoryList.add(ModelCategory(null, getString(R.string.work), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa47.png"), 1, 1L, 0L, KEY_ACTIVE))
-//        categoryList.add(ModelCategory(null, getString(R.string.activities_to_do), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa25.png"), 2, 2L, 1L, KEY_ACTIVE))
-//        categoryList.add(ModelCategory(null, getString(R.string.wish), convertAssetToBytesArray("image_symbol/Category/Revenue/ic_category_bonus.png"), 3, 3L, 2L, KEY_ACTIVE))
-
-
-        val functionCategory = FunctionCategory(this)
-        functionCategory.open()
-        for (m in categoryList){
-            functionCategory.insert(m)
-        }
-
-        val imageDir = File(filesDir, FOLDER_IMAGE)
-        val videoDir = File(filesDir, FOLDER_VIDEO)
-        val audioDir = File(filesDir, FOLDER_AUDIO)
-
-        if(!imageDir.exists()){
-            imageDir.mkdir()
-        }
-        if(!videoDir.exists()){
-            videoDir.mkdir()
-        }
-        if(!audioDir.exists()){
-            audioDir.mkdir()
-        }
-
-        prefs!!.intInsertCategoryDefault = 1
-    }
 
     var T: Timer? = null
     var count = 0
@@ -155,9 +115,16 @@ class CheckPermission : BaseActivity() {
             override fun run() {
                 runOnUiThread {
                     if (count == 1) {
-                        val intent = Intent(applicationContext, MainActivity::class.java)
-                        startActivity(intent)
-                        finish()
+
+                        if(!isSetCategoryDefault()){
+                            val intent = Intent(applicationContext, InitiateLanguageActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }else {
+                            val intent = Intent(applicationContext, MainActivity::class.java)
+                            startActivity(intent)
+                            finish()
+                        }
                     }
                     count++
                 }
@@ -165,15 +132,7 @@ class CheckPermission : BaseActivity() {
         }, 0, 1000)
     }
 
-    private fun convertAssetToBytesArray(path: String): ByteArray{
-        val inputStream: InputStream = assets.open(path)
-        val drawable = Drawable.createFromStream(inputStream, null)
-        val bitmap = (drawable as BitmapDrawable).bitmap
-        val stream = ByteArrayOutputStream()
-        bitmap.compress(Bitmap.CompressFormat.PNG, 50, stream)
 
-        return stream.toByteArray()
-    }
 
     override fun onDestroy() {
         super.onDestroy()

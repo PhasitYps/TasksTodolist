@@ -151,5 +151,7 @@
     <string name="Calendar">Calendario</string>
     <string name="Statistics">Estadísticas</string>
     <string name="Menu">Menú</string>
+    <string name="Select">Seleccione</string>
+    <string name="Select_Language">Seleccione el idioma</string>
 
 </resources>

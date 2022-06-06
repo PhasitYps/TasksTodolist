@@ -209,4 +209,7 @@
     <string name="account_sync">Account Sync</string>
     <string name="upgrade_pro">Upgrade Pro</string>
 
+    <string name="Select">Select</string>
+    <string name="Select_Language">Select Language</string>
+
 </resources>

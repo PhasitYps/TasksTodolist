@@ -194,5 +194,7 @@
     <string name="Calendar">Calendrier</string>
     <string name="Statistics">Statistiques</string>
     <string name="Menu">Menu</string>
+    <string name="Select">Sélectionner</string>
+    <string name="Select_Language">Choisir la langue</string>
 
 </resources>

@@ -1,15 +1,12 @@
 package com.chillchillapp.tasks.todolist
 
 import android.content.Context
-import android.content.SharedPreferences
 import android.content.res.Configuration
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
-import android.util.DisplayMetrics
-import android.util.Log
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
@@ -51,11 +48,12 @@ open class BaseActivity: AppCompatActivity() {
     fun initLanguage(){
         var language = prefs!!.strCurrentLanguage
         if(language != "local"){
-            setLocale(language)
+            changeLanguage(language)
         }
     }
 
-    fun setLocale(lang: String?) {
+    fun changeLanguage(lang: String?) {
+        prefs!!.strCurrentLanguage = lang
         val locale = Locale(lang)
         Locale.setDefault(locale)
 
