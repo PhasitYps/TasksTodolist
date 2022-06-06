@@ -174,6 +174,7 @@
     <string name="work">Work</string>
     <string name="activities_to_do">Activities to do</string>
     <string name="wish">Wish</string>
+
     <string name="leave">Leave</string>
     <string name="do_you_want_to_leave_the_app_now">Do you want to leave the app now?</string>
     <string name="tap_again_to_exit_see_you_again_tomorrow">Tap again to exit. see you again tomorrow</string>
@@ -189,7 +190,7 @@
     <string name="do_not_have">No</string>
     <string name="have">Have</string>
     <string name="add">Add</string>
-    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="alert_please_upgrade_premium_version">Please upgrade to premium version.</string>
 
     <string name="The_work_hasbeen_synced_to_your_google_dive_account">The work has been synced to your google dive account.</string>
     <string name="Failed_to_sync_tasks_to_your_google_dive_account">Failed to sync tasks to your google dive account.</string>
@@ -197,5 +198,13 @@
     <string name="Calendar">Calendar</string>
     <string name="Statistics">Statistics</string>
     <string name="Menu">Menu</string>
+
+    <string name="Work">Work</string>
+    <string name="Personal_activities">Personal activities</string>
+    <string name="Education">Education</string>
+    <string name="Appointment">Appointment</string>
+    <string name="Shopping">Shopping</string>
+    <string name="Birthday">Birthday</string>
+
 
 </resources>

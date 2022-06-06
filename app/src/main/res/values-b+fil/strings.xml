@@ -168,8 +168,15 @@
     <string name="loading">Naglo-load</string>
     <string name="you_want_to_leave_this_account">Gusto mong umalis sa account na ito?</string>
     <string name="please_set_the_task_time_first">Pakitakda muna ang oras ng gawain</string>
-    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="alert_please_upgrade_premium_version">mangyaring i-upgrade ang premium na bersyon</string>
     <string name="quit">Quit</string>
     <string name="tap_to_record_sound">I-tap para mag-record ng tunog</string>
+
+    <string name="Work">Trabaho</string>
+    <string name="Personal_activities">Mga personal na aktibidad</string>
+    <string name="Education">Edukasyon</string>
+    <string name="Appointment">Appointment</string>
+    <string name="Shopping">Pamimili</string>
+    <string name="Birthday">Birthday</string>
 
 </resources>

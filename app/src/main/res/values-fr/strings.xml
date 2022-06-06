@@ -171,7 +171,15 @@
     <string name="you_want_to_leave_this_account">Vous voulez quitter ce compte?</string>
     <string name="please_set_the_task_time_first">Veuillez d\'abord définir l\'heure de la tâche</string>
     <string name="quit">Quitter</string>
-    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="alert_please_upgrade_premium_version">Veuillez passer à la version premium.</string>
     <string name="tap_to_record_sound">Appuyez pour enregistrer le son</string>
+
+    <string name="Work">Travailler</string>
+    <string name="Personal_activities">Activités personnelles</string>
+    <string name="Education">Éducation</string>
+    <string name="Appointment">Rendez-vous</string>
+    <string name="Shopping">Achats</string>
+    <string name="Birthday">Date d\'anniversaire</string>
+
 
 </resources>

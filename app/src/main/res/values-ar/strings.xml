@@ -127,8 +127,15 @@
     <string name="you_want_to_leave_this_account"> ¿Quieres salir de esta cuenta? </string>
     <string name = "please_set_the_task_time_first"> Primero establezca la hora de la tarea </string>
 
-    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="alert_please_upgrade_premium_version">Actualice a la versión premium.</string>
     <string name="quit">dejar</string>
     <string name = "tap_to_record_sound"> Toca para grabar sonido</string>
+
+    <string name="Work">Trabajar</string>
+    <string name="Personal_activities">actividades personales</string>
+    <string name="Education">Educación</string>
+    <string name="Appointment">Cita</string>
+    <string name="Shopping">Compras</string>
+    <string name="Birthday">Cumpleaños</string>
 
 </resources>

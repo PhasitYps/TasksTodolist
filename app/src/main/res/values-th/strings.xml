@@ -126,7 +126,7 @@
     <string name="pet">สัตว์เลี้ยง</string>
     <string name="travel">การท่องเที่ยว</string>
 
-    <string name="alert_please_upgrade_premium_version">alert_please_upgrade_premium_version</string>
+    <string name="alert_please_upgrade_premium_version">กรุณาอัพเกรดเวอร์ชั่นพรีเมี่ยม</string>
     <string name="work">งาน</string>
     <string name="activities_to_do">กิจกรรมที่ต้องทำ</string>
     <string name="wish">สิ่งปรารถนา</string>
@@ -175,6 +175,13 @@
     <string name="Calendar">ปฏิทิน</string>
     <string name="Statistics">สถิติ</string>
     <string name="Menu">เมนู</string>
+
+    <string name="Work">งาน</string>
+    <string name="Personal_activities">กิจกรรมส่วนตัว</string>
+    <string name="Education">การศึกษา</string>
+    <string name="Appointment">นัดหมาย</string>
+    <string name="Shopping">ซื้อของ</string>
+    <string name="Birthday">วันเกิด</string>
 
 
 </resources>

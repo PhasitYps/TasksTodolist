@@ -112,13 +112,12 @@ class CheckPermission : BaseActivity() {
 
     private fun insertCatgory(){
         val categoryList = ArrayList<ModelCategory>()
-        categoryList.add(ModelCategory(null, "งาน", convertAssetToBytesArray("image_symbol/Home/Purchase/sym_ic_home (36).png"), 1, 1L, 0L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, "กิจกรรมส่วนตัว", convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (40).png"),2, 2L, 1L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, "การศึกษา", convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa18.png"), 3, 3L, 2L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, "นัดหมาย", convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (36).png"), 4, 4L, 3L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, "ซื้อของ", convertAssetToBytesArray("image_symbol/Shopping/Purchase/sym_ic_shopping2.png"), 5, 5L, 4L, KEY_ACTIVE))
-        categoryList.add(ModelCategory(null, "วันเกิด", convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (27).png"), 6, 6L, 5L, KEY_ACTIVE))
-
+        categoryList.add(ModelCategory(null, getString(R.string.Work), convertAssetToBytesArray("image_symbol/Home/Purchase/sym_ic_home (36).png"), 1, 1L, 0L, KEY_ACTIVE))
+        categoryList.add(ModelCategory(null, getString(R.string.Personal_activities), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (40).png"),2, 2L, 1L, KEY_ACTIVE))
+        categoryList.add(ModelCategory(null, getString(R.string.Education), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa18.png"), 3, 3L, 2L, KEY_ACTIVE))
+        categoryList.add(ModelCategory(null, getString(R.string.Appointment), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (36).png"), 4, 4L, 3L, KEY_ACTIVE))
+        categoryList.add(ModelCategory(null, getString(R.string.Shopping), convertAssetToBytesArray("image_symbol/Shopping/Purchase/sym_ic_shopping2.png"), 5, 5L, 4L, KEY_ACTIVE))
+        categoryList.add(ModelCategory(null, getString(R.string.Birthday), convertAssetToBytesArray("image_symbol/Friends_and_Lovers/Purchase/sym_ic_friends_lover (27).png"), 6, 6L, 5L, KEY_ACTIVE))
 
 //        categoryList.add(ModelCategory(null, getString(R.string.work), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa47.png"), 1, 1L, 0L, KEY_ACTIVE))
 //        categoryList.add(ModelCategory(null, getString(R.string.activities_to_do), convertAssetToBytesArray("image_symbol/Education/Purchase/sym_ic_educa25.png"), 2, 2L, 1L, KEY_ACTIVE))
