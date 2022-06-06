@@ -122,30 +122,41 @@ class SynchronizetionActivity : BaseActivity() {
 
         syncSafetyLL.setOnClickListener {
             if(isInternetAvailable()){
-                syncing()
+                getDriveService().let { drive ->
+                    if(drive != null){
+                        syncing()
+                    }
+                }
+
             }else{
                 Toast.makeText(this, "Network error, Pleace check your connection and try again.", Toast.LENGTH_SHORT).show()
             }
         }
 
-        autoSyncSW.setOnClickListener {
+        autoSyncSW.setOnCheckedChangeListener { compoundButton, b ->
+
             if(autoSyncSW.isChecked){
                 if(isInternetAvailable()){
                     //set auto sync
-                    syncing()
-                    
+                    getDriveService().let { drive ->
+                        if(drive != null){
+                            autoSyncSW.isChecked = true
+                            prefs!!.boolAutoSync = true
+
+                            syncing()
+                        }else{
+                            autoSyncSW.isChecked = false
+                        }
+                    }
 
                 }else{
                     Toast.makeText(this, "Network error, Pleace check your connection and try again.", Toast.LENGTH_SHORT).show()
                 }
-                prefs!!.boolAutoSync = true
-                /*editor!!.putBoolean(KEY_AUTO_SYNC, true)
-                editor!!.commit()*/
+
             }else{
                 //set not auto sync
                 prefs!!.boolAutoSync = false
-                /*editor!!.putBoolean(KEY_AUTO_SYNC, false)
-                editor!!.commit()*/
+
             }
         }
 
@@ -187,18 +198,13 @@ class SynchronizetionActivity : BaseActivity() {
     private fun syncing() {
         //synchronize
 
-        getDriveService().let { drive ->
-            if(drive != null){
+        startTime = System.currentTimeMillis()
+        valueMax = 0
+        showProcessSyncDialog()
+        val syncHelper = SyncHelper(this)
+        syncHelper.syncing()
 
-                startTime = System.currentTimeMillis()
-                valueMax = 0
-                showProcessSyncDialog()
-                val syncHelper = SyncHelper(this)
-                syncHelper.syncing()
-
-                setWorkDataLive()
-            }
-        }
+        setWorkDataLive()
     }
 
 
