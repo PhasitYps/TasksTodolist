@@ -168,14 +168,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    android:text="บันทึกการซิงค์อย่างปลอดภัย"
+                    android:text="@string/Sync_record"
                     />
 
                 <TextView
                     android:id="@+id/syncLastTV"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ยังไม่ได้ซิงค์"
+                    android:text="@string/Not_synced"
                     android:textSize="12dp"
                     />
 
@@ -215,13 +215,14 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/colorBlack"
-                    android:text="ซิงค์อัตโนมัติ"
+                    android:text="@string/Auto_sync"
                     />
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="เปิดการสำรองข้อมูลอัตโนมัติ เพื่อหลีกเลี่ยงการลืมซิงค์ข้อมูลด้วยตนเอง"
                     android:textSize="12dp"
+                    android:visibility="gone"
                     />
 
             </LinearLayout>

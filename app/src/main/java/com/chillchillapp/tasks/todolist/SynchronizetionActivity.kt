@@ -239,9 +239,9 @@ class SynchronizetionActivity : BaseActivity() {
         val syncLastTime = prefs!!.longLastAutoSync
 
         syncLastTV.text = if(syncLastTime != null && syncLastTime != 0L){
-            "Last sync time: " + formatDate("dd/MM/yyyy HH:mm:ss", Date(syncLastTime))
+            "${getString(R.string.Last_sync_time)}: " + formatDate("dd/MM/yyyy HH:mm:ss", Date(syncLastTime))
         }else{
-            "ยังไม่ได้ซิงค์"
+            getString(R.string.Not_synced)
         }
     }
 

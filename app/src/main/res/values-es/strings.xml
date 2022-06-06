@@ -126,16 +126,23 @@
     <string name="loading"> Cargando </string>
     <string name="you_want_to_leave_this_account"> ¿Quieres salir de esta cuenta? </string>
     <string name = "please_set_the_task_time_first"> Primero establezca la hora de la tarea </string>
-
+    <string name="drive">Drive</string>
     <string name="alert_please_upgrade_premium_version">Actualice a la versión premium.</string>
     <string name="quit">dejar</string>
     <string name = "tap_to_record_sound"> Toca para grabar sonido</string>
-
     <string name="Work">Trabajar</string>
     <string name="Personal_activities">actividades personales</string>
     <string name="Education">Educación</string>
     <string name="Appointment">Cita</string>
     <string name="Shopping">Compras</string>
     <string name="Birthday">Cumpleaños</string>
+    <string name="Sync_record">Sincronizar registro</string>
+    <string name="Auto_sync">Sincronización automática</string>
+    <string name="Last_sync_time">Hora de la última sincronización</string>
+    <string name="Not_synced">no sincronizado</string>
+    <string name="account_sync">Sincronización de cuenta</string>
+    <string name="upgrade_pro">Actualizar Pro</string>
+    <string name="sign_out">Desconectar</string>
+    <string name="syncing">sincronizando</string>
 
 </resources>

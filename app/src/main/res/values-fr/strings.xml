@@ -156,7 +156,7 @@
     <string name="have">Avoir</string>
     <string name="add">Ajouter</string>
 
-
+    <string name="drive">Drive</string>
     <string name="create_a_new_category">Créer une nouvelle catégorie</string>
     <string name="enter_a_category_name">Entrez un nom de catégorie</string>
     <string name="the_category_name_is_too_long">Le nom de la catégorie est trop long</string>
@@ -173,13 +173,19 @@
     <string name="quit">Quitter</string>
     <string name="alert_please_upgrade_premium_version">Veuillez passer à la version premium.</string>
     <string name="tap_to_record_sound">Appuyez pour enregistrer le son</string>
-
     <string name="Work">Travailler</string>
     <string name="Personal_activities">Activités personnelles</string>
     <string name="Education">Éducation</string>
     <string name="Appointment">Rendez-vous</string>
     <string name="Shopping">Achats</string>
     <string name="Birthday">Date d\'anniversaire</string>
-
+    <string name="Sync_record">Synchroniser l\'enregistrement</string>
+    <string name="Auto_sync">Synchronisation automatique</string>
+    <string name="Last_sync_time">Heure de la dernière synchronisation</string>
+    <string name="Not_synced">Non synchronisé</string>
+    <string name="account_sync">Synchronisation du compte</string>
+    <string name="upgrade_pro">Mettre à niveau Pro</string>
+    <string name="sign_out">Déconnexion</string>
+    <string name="syncing">synchronisation</string>
 
 </resources>

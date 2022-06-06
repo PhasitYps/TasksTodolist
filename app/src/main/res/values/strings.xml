@@ -47,9 +47,7 @@
     <string name="star_task">Star Task</string>
     <string name="category">Category</string>
     <string name="theme">Theme</string>
-    <string name="account_sync">Account Sync</string>
     <string name="language">Language</string>
-    <string name="upgrade_pro">Upgrade Pro</string>
     <string name="menu">Menu</string>
     <string name="click_for_login_google">click for login google</string>
 
@@ -198,13 +196,17 @@
     <string name="Calendar">Calendar</string>
     <string name="Statistics">Statistics</string>
     <string name="Menu">Menu</string>
-
     <string name="Work">Work</string>
     <string name="Personal_activities">Personal activities</string>
     <string name="Education">Education</string>
     <string name="Appointment">Appointment</string>
     <string name="Shopping">Shopping</string>
     <string name="Birthday">Birthday</string>
-
+    <string name="Sync_record">Sync record</string>
+    <string name="Auto_sync">Auto sync</string>
+    <string name="Last_sync_time">Last sync time</string>
+    <string name="Not_synced">Not synced</string>
+    <string name="account_sync">Account Sync</string>
+    <string name="upgrade_pro">Upgrade Pro</string>
 
 </resources>

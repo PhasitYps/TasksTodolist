@@ -175,13 +175,17 @@
     <string name="Calendar">ปฏิทิน</string>
     <string name="Statistics">สถิติ</string>
     <string name="Menu">เมนู</string>
-
     <string name="Work">งาน</string>
     <string name="Personal_activities">กิจกรรมส่วนตัว</string>
     <string name="Education">การศึกษา</string>
     <string name="Appointment">นัดหมาย</string>
     <string name="Shopping">ซื้อของ</string>
     <string name="Birthday">วันเกิด</string>
-
+    <string name="Sync_record">บันทึกการซิงค์ข้อมูล</string>
+    <string name="Auto_sync">ซิงค์ข้อมูลอัตโนมัติ</string>
+    <string name="Last_sync_time">ซิงค์ล่าสุดเมื่อ</string>
+    <string name="Not_synced">ยังไม่ได้ซิงค์ข้อมูล</string>
+    <string name="upgrade_pro">อัพเกรดเป็น Pro</string>
+    <string name="syncing">กำลังซิงค์ข้อมูล</string>
 
 </resources>

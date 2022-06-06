@@ -151,7 +151,7 @@
     <string name="work">Trabaho</string>
     <string name="activities_to_do">Mga aktibidad na gagawin</string>
     <string name="wish">Wish</string>
-
+    <string name="drive">Drive</string>
     <string name="do_not_have">Wala</string>
     <string name="have">Meron</string>
     <string name="add">Idagdag</string>
@@ -171,12 +171,19 @@
     <string name="alert_please_upgrade_premium_version">mangyaring i-upgrade ang premium na bersyon</string>
     <string name="quit">Quit</string>
     <string name="tap_to_record_sound">I-tap para mag-record ng tunog</string>
-
     <string name="Work">Trabaho</string>
     <string name="Personal_activities">Mga personal na aktibidad</string>
     <string name="Education">Edukasyon</string>
     <string name="Appointment">Appointment</string>
     <string name="Shopping">Pamimili</string>
     <string name="Birthday">Birthday</string>
+    <string name="Sync_record">I-sync ang record</string>
+    <string name="Auto_sync">Awtomatikong pag-sync</string>
+    <string name="Last_sync_time">Huling oras ng pag-sync</string>
+    <string name="Not_synced">Hindi naka-sync</string>
+    <string name="account_sync">Pag-sync ng Account</string>
+    <string name="upgrade_pro">I-upgrade ang Pro</string>
+    <string name="sign_out">Mag-sign out</string>
+    <string name="syncing">nagsi-sync</string>
 
 </resources>
