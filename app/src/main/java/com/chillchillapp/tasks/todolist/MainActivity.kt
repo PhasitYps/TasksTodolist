@@ -8,6 +8,7 @@ import android.view.KeyEvent
 import android.view.View
 import android.view.Window
 import android.widget.Toast
+import androidx.core.content.ContextCompat
 import androidx.work.WorkManager
 import com.chillchillapp.tasks.todolist.`interface`.Communicator
 import com.chillchillapp.tasks.todolist.database.FunctionTask
@@ -87,8 +88,6 @@ class MainActivity : BaseActivity() , Communicator{
 //        for(m in reminderList){
 //            d("sadasdaegejr", "reminder: " + m.optionId)
 //        }
-
-
 
     }
 
@@ -287,6 +286,11 @@ class MainActivity : BaseActivity() , Communicator{
 
                 menuTaskIV.background.setTint(themeColor(R.attr.colorAccent))
 
+                menuTaskTV.setTextColor(themeColor(R.attr.colorAccent))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
                 val bundle = Bundle()
                 bundle.putString("categoryId", categoryId)
 
@@ -307,6 +311,11 @@ class MainActivity : BaseActivity() , Communicator{
 
                 menuCalendarIV.background.setTint(themeColor(R.attr.colorAccent))
 
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuCalendarTV.setTextColor(themeColor(R.attr.colorAccent))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
                 supportFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment_container, MenuCalendarFragment())
                     commit()
@@ -321,6 +330,12 @@ class MainActivity : BaseActivity() , Communicator{
 
                 menuStatisticsIV.background.setTint(themeColor(R.attr.colorAccent))
 
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuStatisticsTV.setTextColor(themeColor(R.attr.colorAccent))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+
+
                 supportFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment_container, MenuStatisticsFragment())
                     commit()
@@ -334,6 +349,11 @@ class MainActivity : BaseActivity() , Communicator{
                 menuMenuIV.setBackgroundResource(R.drawable.ic_menu_press)
 
                 menuMenuIV.background.setTint(themeColor(R.attr.colorAccent))
+
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuMenuTV.setTextColor(themeColor(R.attr.colorAccent))
 
                 supportFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment_container, MenuMenuFragment())

@@ -345,7 +345,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
                 holder.nameTV.setTextColor(ContextCompat.getColor(activity, R.color.colorWhiteDarkDark))
 
                 val ss = strikethroughSpan(taskList[position].name!!)
-                holder.nameTV.setText(ss)
+                holder.nameTV.text = ss
 
             }
             "don't"->{
@@ -354,7 +354,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
                 holder.stateIV.setColorFilter(ContextCompat.getColor(activity, R.color.colorWhiteDarkDark))
                 holder.nameTV.setTextColor(ContextCompat.getColor(activity, R.color.colorBlack))
 
-                holder.nameTV.setText(taskList[position].name)
+                holder.nameTV.text = taskList[position].name
 
             }
         }

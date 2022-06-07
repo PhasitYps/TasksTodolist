@@ -123,6 +123,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/menuTaskTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Tasks"
@@ -159,6 +160,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/menuCalendarTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Calendar"
@@ -226,6 +228,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/menuStatisticsTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Statistics"
@@ -262,6 +265,7 @@
                             />
 
                         <TextView
+                            android:id="@+id/menuMenuTV"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/Menu"
