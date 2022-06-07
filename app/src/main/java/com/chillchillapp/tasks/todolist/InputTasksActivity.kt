@@ -2,9 +2,11 @@ package com.chillchillapp.tasks.todolist
 
 import android.Manifest
 import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
+import android.graphics.Canvas
 import android.graphics.drawable.Drawable
 import android.media.MediaPlayer
 import android.net.Uri
@@ -43,6 +45,13 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptor
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.masoudss.lib.WaveformSeekBar
@@ -63,7 +72,7 @@ import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
 
 
-class InputTasksActivity : BaseActivity(){
+class InputTasksActivity : BaseActivity() {
 
     private val TAG = "InputTasksActivity"
 
@@ -78,6 +87,8 @@ class InputTasksActivity : BaseActivity(){
     private var completeDate: Long? =  null
     private var state: Long = 0
     private var favorite: Long = 0
+    private var latitude: Double? = null
+    private var longitude: Double? = null
 
     private var reminderList = ArrayList<ModelTaskReminder>()
     //variable repeat
@@ -105,6 +116,8 @@ class InputTasksActivity : BaseActivity(){
     private lateinit var functionRepeat: FunctionRepeat
     private lateinit var functionReminder: FunctionTaskReminder
 
+    private var mMap: GoogleMap? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()
@@ -112,11 +125,11 @@ class InputTasksActivity : BaseActivity(){
         setContentView(R.layout.activity_input_tasks)
         setAds()
 
-
         init()
         setAdap()
         addChipCategoryView()
         setEvent()
+
     }
 
     private var mInterstitialAd: InterstitialAd? = null
@@ -291,6 +304,26 @@ class InputTasksActivity : BaseActivity(){
         }
     }
 
+    private fun initMap(){
+        val mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync{
+            mMap = it
+            mMap!!.mapType = GoogleMap.MAP_TYPE_HYBRID
+            mMap!!.uiSettings.isMapToolbarEnabled = false
+            mMap!!.uiSettings.isScrollGesturesEnabled = false
+            mMap!!.uiSettings.isZoomGesturesEnabled = false
+
+            val myLocation = LatLng(latitude!!, longitude!!)
+            mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_circle_60)))
+            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16f))
+
+        }
+
+
+    }
+
+
+
     private fun initValueInsert(){
 
         categoryId = intent.getStringExtra("categoryId").toString()
@@ -334,6 +367,8 @@ class InputTasksActivity : BaseActivity(){
             state = modelTask.state!!
             favorite = modelTask.favorite!!
             completeDate = modelTask.completeDate
+            latitude = modelTask.latitude
+            longitude = modelTask.longitude
 
             val modelRepeat = functionRepeat.getByTaskId(taskId)
             if(modelRepeat.id != null){
@@ -490,6 +525,23 @@ class InputTasksActivity : BaseActivity(){
                 stateView.visibility = View.VISIBLE
             }
         }
+
+        when(isSetMap()){
+            true->{
+                mapViewCV.visibility = View.VISIBLE
+                if(mMap == null){
+                    initMap()
+                }else{
+                    mMap!!.clear()
+                    val myLocation = LatLng(latitude!!, longitude!!)
+                    mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_circle_60)))
+                    mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16f))
+                }
+            }
+            false->{
+                mapViewCV.visibility = View.GONE
+            }
+        }
     }
 
     private fun setEvent(){
@@ -526,6 +578,11 @@ class InputTasksActivity : BaseActivity(){
             }
         }
 
+        settingLocationRL.setOnClickListener {
+            setLocationDialog()
+
+        }
+
         settingRepeatRL.setOnClickListener {
             if(isSetDueDate()){
                 setRepeatDialog()
@@ -533,6 +590,7 @@ class InputTasksActivity : BaseActivity(){
                 Toast.makeText(this, getString(R.string.please_set_a_date_first), Toast.LENGTH_SHORT).show()
             }
         }
+
 
         backIV.setOnClickListener {
             checkUpdate()
@@ -709,6 +767,8 @@ class InputTasksActivity : BaseActivity(){
         modelTask.favorite = favorite
         modelTask.state = state
         modelTask.status = KEY_ACTIVE
+        modelTask.latitude = latitude
+        modelTask.longitude = longitude
 
         if(functionTask.insert(modelTask) != 0L){
 
@@ -907,6 +967,8 @@ class InputTasksActivity : BaseActivity(){
         modelTask.state = state
         modelTask.completeDate = completeDate
         modelTask.status = KEY_ACTIVE
+        modelTask.latitude = latitude
+        modelTask.longitude = longitude
 
 
         if(functionTask.update(modelTask) != 0){
@@ -1230,6 +1292,31 @@ class InputTasksActivity : BaseActivity(){
                 updateUI()
             }
         })
+    }
+
+    private fun setLocationDialog(){
+
+        var dialog: SetLocationDialog? = null
+        if(latitude != null && longitude != null){
+            dialog = SetLocationDialog(this, LatLng(latitude!!, longitude!!))
+        }else{
+            val lat = prefs!!.floatLastLat.toDouble()
+            val lng = prefs!!.floatLastLng.toDouble()
+            dialog = SetLocationDialog(this, LatLng(lat, lng))
+        }
+
+        dialog.setMyEvent(object : SetLocationDialog.MyEvent{
+            override fun onMySelect(latLng: LatLng) {
+                latitude = latLng.latitude
+                longitude = latLng.longitude
+                updateUI()
+            }
+
+        })
+        dialog.show()
+
+
+
     }
 
     private var dataNameCategoty = ""
@@ -1624,10 +1711,22 @@ class InputTasksActivity : BaseActivity(){
         return repeatType != null
     }
 
+    private fun isSetMap(): Boolean{
+        return latitude != null && longitude != null
+    }
+
     private fun isSetReminder(): Boolean{
         return reminderList.size != 0
     }
 
+    private fun bitmapDescriptorFromDrawable(context: Context, resId: Int): BitmapDescriptor {
+        val vectorDrawable = ContextCompat.getDrawable(context, resId)
+        vectorDrawable!!.setBounds(0, 0, 100, 100)
+        val bitmap = Bitmap.createBitmap(100, 100, Bitmap.Config.ARGB_8888)
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
 
     /*private fun TextView.setTextDate(date: Date?) {
 

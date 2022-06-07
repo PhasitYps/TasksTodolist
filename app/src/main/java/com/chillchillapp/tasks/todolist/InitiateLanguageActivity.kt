@@ -156,12 +156,11 @@ class InitiateLanguageActivity : BaseActivity() {
             holder.nameTV.text = languageList[position].name
         }
         private fun setIconState(holder: AdapLanguage.ViewHolder, position: Int){
-            holder.stateIV.visibility = View.GONE
+
             if(indexSelect == position){
                 holder.stateIV.visibility = View.VISIBLE
-                holder.itemLL.background = ContextCompat.getDrawable(this@InitiateLanguageActivity, R.color.colorWhiteDark)
             }else{
-                holder.itemLL.background = ContextCompat.getDrawable(this@InitiateLanguageActivity, R.color.colorWhite)
+                holder.stateIV.visibility = View.GONE
             }
         }
 

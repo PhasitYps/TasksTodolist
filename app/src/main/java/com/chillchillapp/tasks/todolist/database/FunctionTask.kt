@@ -7,6 +7,8 @@ import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.util.Log
 import android.widget.Toast
+import androidx.core.database.getDoubleOrNull
+import androidx.core.database.getLongOrNull
 import com.chillchillapp.tasks.todolist.KEY_ACTIVE
 import com.chillchillapp.tasks.todolist.model.ModelTask
 import java.text.SimpleDateFormat
@@ -45,6 +47,8 @@ class FunctionTask(private var context: Context, private var sqlitePath: String?
         values.put(COL_TASK_DUEDATE, model.dueDate)
         values.put(COL_TASK_HOUR, model.hour)
         values.put(COL_TASK_MINUTE, model.minute)
+        values.put(COL_TASK_LATITUDE, model.latitude)
+        values.put(COL_TASK_LONGITUDE, model.longitude)
         values.put(COL_TASK_COMPLETEDATE, model.completeDate)
         values.put(COL_CREATEDATE, model.createDate)
         values.put(COL_UPDATEDATE, model.updateDate)
@@ -66,6 +70,8 @@ class FunctionTask(private var context: Context, private var sqlitePath: String?
         values.put(COL_TASK_DUEDATE, model.dueDate)
         values.put(COL_TASK_HOUR, model.hour)
         values.put(COL_TASK_MINUTE, model.minute)
+        values.put(COL_TASK_LATITUDE, model.latitude)
+        values.put(COL_TASK_LONGITUDE, model.longitude)
         values.put(COL_TASK_COMPLETEDATE, model.completeDate)
         values.put(COL_CREATEDATE, model.createDate)
         values.put(COL_UPDATEDATE, model.updateDate)
@@ -87,6 +93,8 @@ class FunctionTask(private var context: Context, private var sqlitePath: String?
         values.put(COL_TASK_DUEDATE, model.dueDate)
         values.put(COL_TASK_HOUR, model.hour)
         values.put(COL_TASK_MINUTE, model.minute)
+        values.put(COL_TASK_LATITUDE, model.latitude)
+        values.put(COL_TASK_LONGITUDE, model.longitude)
         values.put(COL_TASK_COMPLETEDATE, model.completeDate)
         values.put(COL_CREATEDATE, model.createDate)
         values.put(COL_UPDATEDATE, model.updateDate)
@@ -119,7 +127,9 @@ class FunctionTask(private var context: Context, private var sqlitePath: String?
             m.dueDate = (cursor.getLong(cursor.getColumnIndex(COL_TASK_DUEDATE)))
             m.hour = (cursor.getInt(cursor.getColumnIndex(COL_TASK_HOUR)))
             m.minute = (cursor.getInt(cursor.getColumnIndex(COL_TASK_MINUTE)))
-            m.completeDate = (cursor.getLong(cursor.getColumnIndex(COL_TASK_COMPLETEDATE)))
+            m.latitude = (cursor.getDoubleOrNull(cursor.getColumnIndex(COL_TASK_LATITUDE)))
+            m.longitude = (cursor.getDoubleOrNull(cursor.getColumnIndex(COL_TASK_LONGITUDE)))
+            m.completeDate = (cursor.getLongOrNull(cursor.getColumnIndex(COL_TASK_COMPLETEDATE)))
             m.createDate = (cursor.getLong(cursor.getColumnIndex(COL_CREATEDATE)))
             m.updateDate = (cursor.getLong(cursor.getColumnIndex(COL_UPDATEDATE)))
             m.status = (cursor.getString(cursor.getColumnIndex(COL_STATUS)))
@@ -320,7 +330,9 @@ class FunctionTask(private var context: Context, private var sqlitePath: String?
                 m.dueDate = (cursor.getLong(cursor.getColumnIndex(COL_TASK_DUEDATE)))
                 m.hour = (cursor.getInt(cursor.getColumnIndex(COL_TASK_HOUR)))
                 m.minute = (cursor.getInt(cursor.getColumnIndex(COL_TASK_MINUTE)))
-                m.completeDate = (cursor.getLong(cursor.getColumnIndex(COL_TASK_COMPLETEDATE)))
+                m.latitude = (cursor.getDoubleOrNull(cursor.getColumnIndex(COL_TASK_LATITUDE)))
+                m.longitude = (cursor.getDoubleOrNull(cursor.getColumnIndex(COL_TASK_LONGITUDE)))
+                m.completeDate = (cursor.getLongOrNull(cursor.getColumnIndex(COL_TASK_COMPLETEDATE)))
                 m.createDate = (cursor.getLong(cursor.getColumnIndex(COL_CREATEDATE)))
                 m.updateDate = (cursor.getLong(cursor.getColumnIndex(COL_UPDATEDATE)))
                 m.status = (cursor.getString(cursor.getColumnIndex(COL_STATUS)))

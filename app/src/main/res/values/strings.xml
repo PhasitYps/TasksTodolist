@@ -59,6 +59,7 @@
     <string name="time_and_notification">Time &amp; Reminder</string>
     <string name="notification_at">Reminder at</string>
     <string name="repeat_every">Repeat every</string>
+    <string name="Location">Location</string>
     <string name="attachment">Attachment</string>
     <string name="add_task">Add Task</string>
     <string name="not_repeat">Not Repeat</string>

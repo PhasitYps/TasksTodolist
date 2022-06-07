@@ -191,5 +191,6 @@
     <string name="Select_Language">เลือกภาษา</string>
     <string name="It_is_recommended_to_turn_on_automatic_backup">แนะนำเปิดการสำรองข้อมูลอัตโนมัติ</string>
     <string name="Successfully_added_to_favorites">เพิ่มในรายการโปรดเรียบร้อย</string>
+    <string name="Location">โลเคชั่น</string>
 
 </resources>

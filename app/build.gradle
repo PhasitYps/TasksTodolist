@@ -10,6 +10,8 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 
 
+
+
 android {
     compileSdkVersion 31
     buildToolsVersion "29.0.2"
@@ -81,8 +83,10 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
     implementation 'com.google.firebase:firebase-dynamic-links-ktx'
     implementation 'com.google.firebase:firebase-auth:21.0.1'*/
-
     implementation 'com.google.android.gms:play-services-auth:20.1.0' //20.0.0
+
+    //google map api
+    implementation 'com.google.android.gms:play-services-maps:18.0.2'
 
     //calendar
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'
@@ -103,7 +107,6 @@ dependencies {
         //exclude module: 'google-api-client'
         exclude module: 'guava-jdk5'
     }
-
         /*implementation 'com.google.http-client:google-http-client-gson:1.26.0'
       implementation('com.google.api-client:google-api-client-android:1.26.0')
       implementation('com.google.apis:google-api-services-drive:v3-rev136-1.25.0') {

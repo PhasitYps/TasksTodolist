@@ -6,7 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="?attr/colorPrimary"
     tools:context=".InitiateLanguageActivity">
 
     <LinearLayout
@@ -20,8 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_marginLeft="25dp"
-            android:layout_marginRight="25dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:gravity="center"
             >
             <ImageView
@@ -38,7 +37,7 @@
                 android:text="@string/Select_Language"
                 android:textColor="@color/colorBlack"
                 android:textSize="20dp"
-                android:textStyle="bold" />
+                android:textStyle="normal" />
 
         </LinearLayout>
 
@@ -46,10 +45,10 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             app:cardCornerRadius="10dp"
-            app:cardElevation="5dp"
+            app:cardElevation="0dp"
             app:cardPreventCornerOverlap="true"
             app:cardUseCompatPadding="true"
             >
@@ -85,6 +84,7 @@
         app:cardPreventCornerOverlap="true"
         app:cardUseCompatPadding="true"
         app:cardBackgroundColor="?attr/colorAccent"
+        android:layout_margin="10dp"
         >
         <RelativeLayout
             android:id="@+id/selectRL"

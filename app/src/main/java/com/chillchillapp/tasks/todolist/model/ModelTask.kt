@@ -19,6 +19,8 @@ class ModelTask(
     var dueDate: Long? = null, //วันครบกำหนด
     var hour: Int? = null,
     var minute: Int? = null,
+    var latitude: Double? = null,
+    var longitude: Double? = null,
     var status: String? = null,
     var typeView: Int? = null
 //12

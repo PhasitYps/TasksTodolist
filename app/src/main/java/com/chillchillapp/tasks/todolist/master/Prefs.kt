@@ -14,6 +14,8 @@ class Prefs(private var context: Context) {
     private val LONG_LAST_SYNC_TIME = "longLastSyncTime"
     private val BOOL_UPDATE_TASK = "boolUpdate"
     private val BOOL_DISPLAY_TASKOTHER = "boolDisplayTaskOther"
+    private val FLOAT_LAST_LAT = "floatLastLatitude"
+    private val FLOAT_LAST_LNG = "floatLastLongitude"
 
     var intInsertCategoryDefault: Int
         get() = preferences.getInt(INT_INSERT_CATEGORY_DEFAULT, 0)
@@ -42,6 +44,14 @@ class Prefs(private var context: Context) {
     var boolDisplayTaskOther: Boolean
         get() = preferences.getBoolean(BOOL_DISPLAY_TASKOTHER, true)
         set(value) = preferences.edit().putBoolean(BOOL_DISPLAY_TASKOTHER, value).apply()
+
+    var floatLastLat: Float
+        get() = preferences.getFloat(FLOAT_LAST_LAT, 0f)
+        set(value) = preferences.edit().putFloat(FLOAT_LAST_LAT, value).apply()
+
+    var floatLastLng: Float
+        get() = preferences.getFloat(FLOAT_LAST_LNG, 0f)
+        set(value) = preferences.edit().putFloat(FLOAT_LAST_LNG, value).apply()
 
 
 
