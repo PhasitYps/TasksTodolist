@@ -211,5 +211,6 @@
     <string name="Select">Select</string>
     <string name="Select_Language">Select Language</string>
     <string name="It_is_recommended_to_turn_on_automatic_backup">It is recommended to turn on automatic backup.</string>
+    <string name="Successfully_added_to_favorites">Successfully added to favorites</string>
 
 </resources>

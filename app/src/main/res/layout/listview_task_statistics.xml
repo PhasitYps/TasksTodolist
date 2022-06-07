@@ -12,36 +12,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
         android:background="?attr/selectableItemBackground"
+        android:gravity="center"
+        android:orientation="horizontal"
         android:paddingStart="5dp"
-        android:paddingEnd="5dp"
-        >
+        android:paddingEnd="5dp">
 
         <ImageView
             android:id="@+id/iconCateIV"
             android:layout_width="25dp"
             android:layout_height="25dp"
-            android:layout_marginStart="15dp"
-            />
+            android:layout_marginStart="15dp" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="65dp"
-            android:layout_weight="1"
-            android:orientation="vertical"
-            android:gravity="center"
             android:layout_marginStart="15dp"
-            >
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
 
             <TextView
                 android:id="@+id/nameTV"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="nameTV"
-                android:textColor="@color/colorBlack"
-                />
+                android:textColor="@color/colorBlack" />
 
         </LinearLayout>
 
@@ -49,11 +45,10 @@
             android:id="@+id/dateTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="1/ก.ค"
-            android:textSize="13dp"
             android:layout_margin="10dp"
+            android:text="1/ก.ค"
             android:textColor="@color/colorBlack"
-            />
+            android:textSize="13dp" />
 
     </LinearLayout>
 

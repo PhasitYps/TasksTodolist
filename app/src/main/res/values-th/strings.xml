@@ -189,6 +189,7 @@
     <string name="syncing">กำลังซิงค์ข้อมูล</string>
     <string name="Select">เลือก</string>
     <string name="Select_Language">เลือกภาษา</string>
-    <string name="It_is_recommended_to_turn_on_automatic_backup">It is recommended to turn on automatic backup.</string>
+    <string name="It_is_recommended_to_turn_on_automatic_backup">แนะนำเปิดการสำรองข้อมูลอัตโนมัติ</string>
+    <string name="Successfully_added_to_favorites">เพิ่มในรายการโปรดเรียบร้อย</string>
 
 </resources>
