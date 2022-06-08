@@ -12,11 +12,11 @@
     </com.google.android.gms.maps.MapView>
 
     <ImageView
-        android:layout_width="50dp"
-        android:layout_height="50dp"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/ic_target"
-        app:tint="@color/colorWhite" />
+        android:src="@drawable/ic_pin_100"
+        android:translationY="-18dp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

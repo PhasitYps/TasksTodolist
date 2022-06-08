@@ -158,8 +158,9 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
     }
 
     private fun setIcon(holder: ViewHolder, position: Int){
-        val taskId = taskList[position].id
-        val categoryId = taskList[position].categoryId
+        val model = taskList[position]
+        val taskId = model.id
+        val categoryId = model.categoryId
         val modelCategory = functionCategory.getById(categoryId)
         val modelRepeat = functionRepeat.getByTaskId(taskId)
 
@@ -196,6 +197,13 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
             holder.iconRepeatIV.visibility = View.VISIBLE
         }else{
             holder.iconRepeatIV.visibility = View.GONE
+        }
+
+        //isLocation
+        if(model.latitude != null && model.longitude != null){
+            holder.iconLocationIV.visibility = View.VISIBLE
+        }else{
+            holder.iconLocationIV.visibility = View.GONE
         }
 
     }
@@ -304,6 +312,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
         val iconRepeatIV = itemView.findViewById<ImageView>(R.id.iconRepeatIV)
         val iconCateIV = itemView.findViewById<ImageView>(R.id.iconCateIV)
         val iconReminderIV = itemView.findViewById<ImageView>(R.id.iconReminderIV)
+        val iconLocationIV = itemView.findViewById<ImageView>(R.id.iconLocationIV)
 
         val itemFavoriteRL = itemView.findViewById<RelativeLayout>(R.id.itemFavoriteRL)
         val itemStateRL = itemView.findViewById<RelativeLayout>(R.id.itemStateRL)

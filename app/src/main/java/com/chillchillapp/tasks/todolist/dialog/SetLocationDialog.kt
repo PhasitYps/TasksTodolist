@@ -3,6 +3,8 @@ package com.chillchillapp.tasks.todolist.dialog
 import android.app.ActionBar
 import android.app.Activity
 import android.app.Dialog
+import android.location.Address
+import android.location.Geocoder
 import android.location.Location
 import android.view.KeyEvent
 import android.view.Window
@@ -15,14 +17,15 @@ import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.MapsInitializer
 
 
-import kotlinx.android.synthetic.main.dialog_set_coordinate.*
+import kotlinx.android.synthetic.main.dialog_set_location.*
+import java.util.*
 
 
 class SetLocationDialog(private var activity: Activity, private var latLng: LatLng):Dialog(activity) {
 
     private var l:MyEvent? = null
     interface MyEvent{
-        fun onMySelect(latLng: LatLng)
+        fun onMySelect(latLng: LatLng, place: String)
     }
 
     fun setMyEvent(l: MyEvent){
@@ -38,7 +41,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
 
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.dialog_set_coordinate)
+        setContentView(R.layout.dialog_set_location)
         window!!.setBackgroundDrawableResource(android.R.color.transparent)
         window!!.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.MATCH_PARENT)
         setCancelable(false)
@@ -58,23 +61,8 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
             gpsManager.close()
         }
 
-        MapsInitializer.initialize(activity)
-        mapView.onCreate(onSaveInstanceState())
-        mapView.onResume()
+        initMap()
 
-        mapView.getMapAsync{ googleMap->
-            mMap = googleMap    //13.668217, 100.614021
-            mMap!!.mapType = GoogleMap.MAP_TYPE_HYBRID
-            mMap!!.uiSettings.isMapToolbarEnabled = false
-
-            latitude = latLng.latitude
-            longitude = latLng.longitude
-
-            if(latitude != 0.0 && longitude != 0.0){
-                val myLocation = LatLng(latitude!!, longitude!!)
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
-            }
-        }
 
         gpsManager.setMyEvent(object : GPSManage.MyEvent{
             override fun onLocationChanged(currentLocation: Location) {
@@ -95,6 +83,26 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
 
     }
 
+    private fun initMap(){
+        MapsInitializer.initialize(activity)
+        mapView.onCreate(onSaveInstanceState())
+        mapView.onResume()
+
+        mapView.getMapAsync{ googleMap->
+            mMap = googleMap    //13.668217, 100.614021
+            mMap!!.mapType = GoogleMap.MAP_TYPE_HYBRID
+            mMap!!.uiSettings.isMapToolbarEnabled = false
+
+            latitude = latLng.latitude
+            longitude = latLng.longitude
+
+            if(latitude != 0.0 && longitude != 0.0){
+                val myLocation = LatLng(latitude!!, longitude!!)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
+            }
+        }
+    }
+
     private fun event(){
 
         selectRL.setOnClickListener {
@@ -102,7 +110,23 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
             latitude = latLng.latitude
             longitude = latLng.longitude
 
-            l?.onMySelect(LatLng(latitude!!, longitude!!))
+            var geocoder = Geocoder(activity, Locale.getDefault())
+            val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
+            var place = ""
+            place = if (addresses.isNotEmpty()) {
+                var city = addresses[0].locality
+                var area = addresses[0].subAdminArea
+                var state = addresses[0].adminArea
+                var postalCode = addresses[0].postalCode
+                var address = addresses[0].getAddressLine(0)
+
+                if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
+
+            } else {
+                latitude.toString() +", " + longitude.toString()
+            }
+
+            l?.onMySelect(LatLng(latitude!!, longitude!!), place)
             dismiss()
         }
 

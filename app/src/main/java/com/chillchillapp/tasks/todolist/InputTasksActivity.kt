@@ -51,6 +51,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.masoudss.lib.WaveformSeekBar
@@ -88,6 +89,7 @@ class InputTasksActivity : BaseActivity() {
     private var favorite: Long = 0
     private var latitude: Double? = null
     private var longitude: Double? = null
+    private var place: String? = null
 
     private var reminderList = ArrayList<ModelTaskReminder>()
     //variable repeat
@@ -313,7 +315,7 @@ class InputTasksActivity : BaseActivity() {
             mMap!!.uiSettings.isZoomGesturesEnabled = false
 
             val myLocation = LatLng(latitude!!, longitude!!)
-//            mMap!!.addMarker(MarkerOptions().position(myLocation).icon(BitmapFromVector(this, R.drawable.ic_pin_circle_60)))
+            mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_100)))
             mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
 
 
@@ -368,6 +370,7 @@ class InputTasksActivity : BaseActivity() {
             completeDate = modelTask.completeDate
             latitude = modelTask.latitude
             longitude = modelTask.longitude
+            place = modelTask.place
 
             val modelRepeat = functionRepeat.getByTaskId(taskId)
             if(modelRepeat.id != null){
@@ -528,19 +531,23 @@ class InputTasksActivity : BaseActivity() {
         when(isSetMap()){
             true->{
                 mapViewCV.visibility = View.VISIBLE
+                placeCV.visibility = View.VISIBLE
                 if(mMap == null){
                     initMap()
                 }else{
                     mMap!!.clear()
                     val myLocation = LatLng(latitude!!, longitude!!)
-//                    mMap!!.addMarker(MarkerOptions().position(myLocation).icon(BitmapFromVector(this, R.drawable.ic_pin_circle_60)))
+                    mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_100)))
                     mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
                 }
                 stateLocationTV.text = getString(R.string.Edit)
+                placeTV.text = place
             }
             false->{
                 mapViewCV.visibility = View.GONE
+                placeCV.visibility = View.GONE
                 stateLocationTV.text = getString(R.string.Add)
+                placeTV.text = ""
             }
         }
     }
@@ -605,7 +612,7 @@ class InputTasksActivity : BaseActivity() {
         deleteLocationRL.setOnClickListener {
             latitude = null
             longitude = null
-
+            place = null
             updateUI()
         }
     }
@@ -777,6 +784,7 @@ class InputTasksActivity : BaseActivity() {
         modelTask.status = KEY_ACTIVE
         modelTask.latitude = latitude
         modelTask.longitude = longitude
+        modelTask.place = place
 
         if(functionTask.insert(modelTask) != 0L){
 
@@ -977,6 +985,7 @@ class InputTasksActivity : BaseActivity() {
         modelTask.status = KEY_ACTIVE
         modelTask.latitude = latitude
         modelTask.longitude = longitude
+        modelTask.place = place
 
 
         if(functionTask.update(modelTask) != 0){
@@ -1318,9 +1327,10 @@ class InputTasksActivity : BaseActivity() {
         }
 
         dialog.setMyEvent(object : SetLocationDialog.MyEvent{
-            override fun onMySelect(latLng: LatLng) {
+            override fun onMySelect(latLng: LatLng, address: String) {
                 latitude = latLng.latitude
                 longitude = latLng.longitude
+                place = address
                 updateUI()
             }
 

@@ -112,6 +112,16 @@
                         />
 
                     <ImageView
+                        android:id="@+id/iconLocationIV"
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/ic_location_60"
+                        android:layout_marginEnd="5dp"
+                        app:tint="@color/colorWhiteDarkDark"
+                        />
+
+                    <ImageView
                         android:id="@+id/iconRepeatIV"
                         android:layout_width="15dp"
                         android:layout_height="15dp"

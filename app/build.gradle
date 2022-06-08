@@ -87,6 +87,8 @@ dependencies {
 
     //google map api
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-places:17.0.0'
 
     //calendar
     implementation 'com.github.sundeepk:compact-calendar-view:3.0.0'

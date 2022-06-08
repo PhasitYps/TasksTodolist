@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:cardCornerRadius="0dp"
-            app:cardElevation="0dp"
+            app:cardElevation="2dp"
             app:cardPreventCornerOverlap="false"
             app:cardUseCompatPadding="false">
 
@@ -429,7 +429,7 @@
                             <androidx.cardview.widget.CardView
                                 android:id="@+id/mapViewCV"
                                 android:layout_width="match_parent"
-                                android:layout_height="200dp"
+                                android:layout_height="180dp"
                                 app:cardCornerRadius="5dp"
                                 app:cardUseCompatPadding="true"
                                 app:cardPreventCornerOverlap="true"
@@ -453,27 +453,28 @@
 
                                     </FrameLayout>
 
-                                    <ImageView
-                                        android:layout_width="30dp"
-                                        android:layout_height="30dp"
-                                        android:layout_centerInParent="true"
-                                        android:src="@drawable/ic_pin_circle_100"
-                                        />
+<!--                                    <ImageView-->
+<!--                                        android:layout_width="30dp"-->
+<!--                                        android:layout_height="30dp"-->
+<!--                                        android:layout_centerInParent="true"-->
+<!--                                        android:src="@drawable/ic_pin_circle_100"-->
+<!--                                        android:visibility="gone"-->
+<!--                                        />-->
 
                                     <RelativeLayout
                                         android:id="@+id/deleteLocationRL"
                                         android:layout_width="wrap_content"
                                         android:layout_height="wrap_content"
-                                        android:padding="2dp"
+                                        android:padding="0dp"
                                         android:layout_margin="2dp"
-                                        android:background="@drawable/bg_radius_10_black"
+                                        android:background="@drawable/bg_radius_5"
                                         android:layout_alignParentRight="true"
-                                        android:backgroundTint="#80000000"
+                                        android:backgroundTint="#ec000000"
                                         >
 
                                         <ImageView
-                                            android:layout_width="30dp"
-                                            android:layout_height="30dp"
+                                            android:layout_width="25dp"
+                                            android:layout_height="25dp"
                                             android:padding="5dp"
                                             android:src="@drawable/ic_close"
                                             app:tint="@color/colorWhite" />
@@ -483,6 +484,42 @@
 
                             </androidx.cardview.widget.CardView>
 
+                            <androidx.cardview.widget.CardView
+                                android:id="@+id/placeCV"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:cardElevation="2dp"
+                                app:cardPreventCornerOverlap="true"
+                                app:cardUseCompatPadding="true"
+                                app:cardCornerRadius="5dp"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:padding="5dp"
+                                    android:gravity="center"
+                                    >
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:src="@drawable/ic_pin_black_100"
+                                        android:layout_margin="10dp"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/placeTV"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:textColor="@color/colorBlack"
+                                        android:text="place"
+                                        />
+
+                                </LinearLayout>
+
+                            </androidx.cardview.widget.CardView>
 
                         </LinearLayout>
 
