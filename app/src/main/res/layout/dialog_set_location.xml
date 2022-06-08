@@ -50,9 +50,9 @@
             android:backgroundTint="#ffffff"
             android:gravity="center"
             android:paddingLeft="20dp"
-            android:paddingTop="15dp"
+            android:paddingTop="10dp"
             android:paddingRight="20dp"
-            android:paddingBottom="15dp"
+            android:paddingBottom="10dp"
             android:text="Select your location"
             android:textColor="@color/colorBlack" />
 
