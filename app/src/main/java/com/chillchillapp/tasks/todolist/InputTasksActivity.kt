@@ -382,6 +382,7 @@ class InputTasksActivity : BaseActivity() {
             }
 
             subTaskList.addAll(functionTaskSub.getDataByTaskId(taskId))
+            subTaskList.sortBy { it.priority }
             functionReminder.getReminderByTaskId(taskId).forEach { m->
                 val choice = ArrayList<ModelTaskReminder>()
                 choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
@@ -1157,14 +1158,16 @@ class InputTasksActivity : BaseActivity() {
 
     private fun updateSubTask(taskID: Long){
 
+        for(m in subTaskList){
+            Log.i("hhhhhghgd", "subTaskList: " + m.todo)
+        }
+
         val dataSubTask = subTaskList.filter { it.todo!!.isNotEmpty() }
         val subtask = functionTaskSub.getDataByTaskId(taskID)
 
         for (m in subtask){
             val data = dataSubTask.filter { it.id == m.id }
-            if(data.isEmpty()){
-                functionTaskSub.delete(m.id)
-            }
+            if(data.isEmpty()) functionTaskSub.delete(m.id)
         }
 
         //save subTask
@@ -1173,6 +1176,8 @@ class InputTasksActivity : BaseActivity() {
             dataSubTask[i].priority = i.toLong()
             dataSubTask[i].taskId = taskID
             dataSubTask[i].updateDate = updateDate
+
+            Log.i("hhhhhghgd", "dataSubTask: " + dataSubTask[i].todo)
 
             if(dataSubTask[i].id != null){
                 functionTaskSub.update(dataSubTask[i])
@@ -1414,7 +1419,7 @@ class InputTasksActivity : BaseActivity() {
 
         helper = ItemTouchHelper(object : ItemTouchHelper.SimpleCallback(ItemTouchHelper.UP or ItemTouchHelper.DOWN, 0) {
             override fun onMove(recyclerView: RecyclerView, viewHolder: RecyclerView.ViewHolder, target: RecyclerView.ViewHolder): Boolean {
-                Log.i("ggge", "onMove: ")
+                Log.i("ItemTouchHelper", "onMove: ")
                 val positionDragged = viewHolder.adapterPosition
                 val positionTarget = target.adapterPosition
 
@@ -1425,6 +1430,7 @@ class InputTasksActivity : BaseActivity() {
             }
 
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
+                Log.i("ItemTouchHelper", "onSwiped: ")
                 adapter.notifyItemChanged(viewHolder.adapterPosition)
             }
 
@@ -1437,7 +1443,7 @@ class InputTasksActivity : BaseActivity() {
 
                 if (actionState == ItemTouchHelper.ACTION_STATE_IDLE) {
                     //drop
-                    Log.i("ggge", "onSelectedChanged: ")
+                    Log.i("ItemTouchHelper", "onSelectedChanged: ")
                     adapter.notifyDataSetChanged()
 
 
