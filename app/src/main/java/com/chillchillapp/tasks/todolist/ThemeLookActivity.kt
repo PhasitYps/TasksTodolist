@@ -189,7 +189,7 @@ class ThemeLookActivity : BaseActivity() {
             )
             val myList = ColorStateList(states, colors)
 
-            chip.setTextColor(ContextCompat.getColorStateList(activity, R.color.selector_text_state))
+            chip.setTextColor(myList)
             chip.chipBackgroundColor = myList
             chip.isCheckable = true
             chip.isClickable = false
