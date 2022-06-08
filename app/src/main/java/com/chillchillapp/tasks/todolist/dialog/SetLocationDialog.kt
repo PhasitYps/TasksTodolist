@@ -8,6 +8,7 @@ import android.location.Geocoder
 import android.location.Location
 import android.view.KeyEvent
 import android.view.Window
+import android.widget.Toast
 import com.chillchillapp.tasks.todolist.R
 import com.chillchillapp.tasks.todolist.master.GPSManage
 import com.chillchillapp.tasks.todolist.master.Prefs
@@ -25,7 +26,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
 
     private var l:MyEvent? = null
     interface MyEvent{
-        fun onMySelect(latLng: LatLng, place: String)
+        fun onMySelect(latLng: LatLng)
     }
 
     fun setMyEvent(l: MyEvent){
@@ -110,23 +111,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
             latitude = latLng.latitude
             longitude = latLng.longitude
 
-            var geocoder = Geocoder(activity, Locale.getDefault())
-            val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
-            var place = ""
-            place = if (addresses.isNotEmpty()) {
-                var city = addresses[0].locality
-                var area = addresses[0].subAdminArea
-                var state = addresses[0].adminArea
-                var postalCode = addresses[0].postalCode
-                var address = addresses[0].getAddressLine(0)
-
-                if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
-
-            } else {
-                latitude.toString() +", " + longitude.toString()
-            }
-
-            l?.onMySelect(LatLng(latitude!!, longitude!!), place)
+            l?.onMySelect(LatLng(latitude!!, longitude!!))
             dismiss()
         }
 

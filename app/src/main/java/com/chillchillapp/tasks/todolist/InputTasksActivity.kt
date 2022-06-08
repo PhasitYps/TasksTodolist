@@ -8,6 +8,8 @@ import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.drawable.Drawable
+import android.location.Address
+import android.location.Geocoder
 import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Build
@@ -1332,9 +1334,27 @@ class InputTasksActivity : BaseActivity() {
         }
 
         dialog.setMyEvent(object : SetLocationDialog.MyEvent{
-            override fun onMySelect(latLng: LatLng, address: String) {
+            override fun onMySelect(latLng: LatLng) {
                 latitude = latLng.latitude
                 longitude = latLng.longitude
+
+                var geocoder = Geocoder(this@InputTasksActivity, Locale.getDefault())
+                val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
+                var address = ""
+                address = if (addresses.isNotEmpty()) {
+                    var city = addresses[0].locality
+                    var area = addresses[0].subAdminArea
+                    var state = addresses[0].adminArea
+                    var postalCode = addresses[0].postalCode
+                    var address = addresses[0].getAddressLine(0)
+
+
+                    if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
+
+                } else {
+                    latitude.toString() +", " + longitude.toString()
+                }
+
                 place = address
                 updateUI()
             }
