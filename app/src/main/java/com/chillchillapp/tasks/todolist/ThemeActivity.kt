@@ -40,7 +40,7 @@ class ThemeActivity : BaseActivity() {
 
     private fun setEvent(){
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             finish()
         }
     }

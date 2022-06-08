@@ -23,7 +23,7 @@
             android:padding="15dp">
 
             <ImageView
-                android:id="@+id/backIV"
+                android:id="@+id/backRL"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginEnd="15dp"

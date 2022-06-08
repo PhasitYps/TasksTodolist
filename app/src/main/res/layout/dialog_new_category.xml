@@ -144,7 +144,7 @@
                     android:id="@+id/addTV"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/add"
+                    android:text="@string/Add"
                     android:textColor="?attr/colorAccent"
                     android:textStyle="bold"
                     android:background="?attr/selectableItemBackground"

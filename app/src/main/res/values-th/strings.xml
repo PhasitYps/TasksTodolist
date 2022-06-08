@@ -90,7 +90,7 @@
     <string name="the_category_has_been_deleted">ลบหมวดหมู่เรียบร้อย</string>
     <string name="show">เเสดง</string>
     <string name="hide">ซ่อน</string>
-    <string name="edit">เเก้ไข</string>
+    <string name="Edit">เเก้ไข</string>
 
     <!--HistoryActivity-->
     <string name="achieve_the_goal">บรรลุเป้าหมาย</string>
@@ -152,7 +152,7 @@
     <string name="please_set_a_date_first">กรุณากำหนดวันที่ก่อน</string>
     <string name="do_not_have">ไม่มี</string>
     <string name="no_loop">ไม่ วนซ้ำ</string>
-    <string name="add">เพิ่ม</string>
+    <string name="Add">เพิ่ม</string>
     <string name="have">มี</string>
     <string name="attached_list">รายการเเนบ</string>
     <string name="no_time">ไม่มีเวลา</string>

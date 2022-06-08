@@ -28,7 +28,7 @@
                 android:padding="15dp">
 
                 <ImageView
-                    android:id="@+id/backIV"
+                    android:id="@+id/backRL"
                     android:layout_width="30dp"
                     android:layout_height="30dp"
                     android:background="?attr/selectableItemBackgroundBorderless"
@@ -384,6 +384,7 @@
                         android:id="@+id/settingLocationRL"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
                         >
 
                         <LinearLayout
@@ -394,7 +395,6 @@
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:background="?attr/selectableItemBackground"
                                 android:gravity="center"
                                 android:orientation="horizontal"
                                 android:padding="15dp">
@@ -413,13 +413,14 @@
                                     android:textColor="@color/colorBlack" />
 
                                 <TextView
+                                    android:id="@+id/stateLocationTV"
                                     android:layout_width="wrap_content"
                                     android:layout_height="wrap_content"
                                     android:paddingLeft="10dp"
                                     android:paddingTop="5dp"
                                     android:paddingRight="10dp"
                                     android:paddingBottom="5dp"
-                                    android:text="@string/add"
+                                    android:text="@string/Add"
                                     android:textColor="@color/colorBlack"
                                     android:visibility="visible" />
 
@@ -429,23 +430,57 @@
                                 android:id="@+id/mapViewCV"
                                 android:layout_width="match_parent"
                                 android:layout_height="200dp"
-                                app:cardCornerRadius="10dp"
+                                app:cardCornerRadius="5dp"
                                 app:cardUseCompatPadding="true"
                                 app:cardPreventCornerOverlap="true"
-                                app:cardElevation="0dp"
+                                app:cardElevation="2dp"
                                 >
-                                <FrameLayout
+                                <RelativeLayout
                                     android:layout_width="match_parent"
                                     android:layout_height="match_parent"
                                     >
-                                    <fragment
-                                        android:id="@+id/map"
-                                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                                    <FrameLayout
                                         android:layout_width="match_parent"
                                         android:layout_height="match_parent"
-                                        tools:context=".MapsActivity"
+                                        >
+                                        <fragment
+                                            android:id="@+id/map"
+                                            android:name="com.google.android.gms.maps.SupportMapFragment"
+                                            android:layout_width="match_parent"
+                                            android:layout_height="match_parent"
+                                            tools:context=".MapsActivity"
+                                            />
+
+                                    </FrameLayout>
+
+                                    <ImageView
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_centerInParent="true"
+                                        android:src="@drawable/ic_pin_circle_100"
                                         />
-                                </FrameLayout>
+
+                                    <RelativeLayout
+                                        android:id="@+id/deleteLocationRL"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:padding="2dp"
+                                        android:layout_margin="2dp"
+                                        android:background="@drawable/bg_radius_10_black"
+                                        android:layout_alignParentRight="true"
+                                        android:backgroundTint="#80000000"
+                                        >
+
+                                        <ImageView
+                                            android:layout_width="30dp"
+                                            android:layout_height="30dp"
+                                            android:padding="5dp"
+                                            android:src="@drawable/ic_close"
+                                            app:tint="@color/colorWhite" />
+                                    </RelativeLayout>
+
+                                </RelativeLayout>
+
                             </androidx.cardview.widget.CardView>
 
 
@@ -494,7 +529,7 @@
                                 android:paddingTop="5dp"
                                 android:paddingRight="10dp"
                                 android:paddingBottom="5dp"
-                                android:text="@string/add"
+                                android:text="@string/Add"
                                 android:textColor="@color/colorBlack" />
 
                         </LinearLayout>

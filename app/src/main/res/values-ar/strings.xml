@@ -112,14 +112,14 @@
     <string name="wish">Deseo</string>
     <string name="do_not_have">No</string>
     <string name="have">Tengo</string>
-    <string name="add">Agregar</string>
+    <string name="Add">Agregar</string>
     <string name="create_a_new_category"> Crea una nueva categoría </string>
     <string name="enter_a_category_name"> Ingrese un nombre de categoría </string>
     <string name="the_category_name_is_too_long"> El nombre de la categoría es demasiado largo </string>
     <string name="the_category_has_been_deleted"> La categoría ha sido eliminada </string>
     <string name="show"> Mostrar </string>
     <string name="hide"> Ocultar </string>
-    <string name="edit"> Editar </string>
+    <string name="Edit"> Editar </string>
     <string name="leave"> Salir </string>
     <string name="drive">Drive</string>
     <string name="do_you_want_to_leave_the_app_now"> ¿Quieres salir de la aplicación ahora? </string>

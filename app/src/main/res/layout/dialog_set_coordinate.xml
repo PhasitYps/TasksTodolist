@@ -21,28 +21,50 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:padding="15dp"
-        android:background="#80FFFFFF"
-        >
-        <ImageView
-            android:id="@+id/backIV"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
-            android:padding="5dp"
-            android:src="@drawable/ic_arrow_back"
-            android:layout_centerInParent="true"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/backRL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentStart="true"
-            android:background="?attr/selectableItemBackgroundBorderless"
-            />
+            android:layout_centerInParent="true"
+            android:background="@drawable/bg_circle_white"
+            android:backgroundTint="#ffffff">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:padding="5dp"
+                android:src="@drawable/ic_arrow_back"
+                app:tint="@color/colorBlack" />
+        </RelativeLayout>
 
         <TextView
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
+            android:background="@drawable/bg_radius_10_black"
+            android:backgroundTint="#ffffff"
             android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingTop="15dp"
+            android:paddingRight="20dp"
+            android:paddingBottom="15dp"
             android:text="Select your location"
             android:textColor="@color/colorBlack" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/currentFab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true"
+            app:backgroundTint="@color/colorWhite"
+            app:fabSize="mini"
+            app:srcCompat="@drawable/ic_my_location" />
 
     </RelativeLayout>
 
@@ -57,7 +79,9 @@
             android:id="@+id/selectRL"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="10dp"
+            android:layout_marginRight="25dp"
+            android:layout_marginLeft="25dp"
+            android:layout_marginBottom="25dp"
             android:background="@drawable/bg_radius_10_accent">
 
             <TextView
@@ -73,20 +97,6 @@
         </RelativeLayout>
 
     </LinearLayout>
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/currentFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp"
-        android:layout_marginBottom="80dp"
-        android:clickable="true"
-        app:backgroundTint="@color/colorWhite"
-        app:fabSize="mini"
-        app:srcCompat="@drawable/ic_my_location" />
 
 
 </RelativeLayout>

@@ -51,13 +51,12 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.BitmapDescriptor
 import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.chip.Chip
 import com.masoudss.lib.WaveformSeekBar
 import kotlinx.android.synthetic.main.activity_category.*
 import kotlinx.android.synthetic.main.activity_input_tasks.*
-import kotlinx.android.synthetic.main.activity_input_tasks.backIV
+import kotlinx.android.synthetic.main.activity_input_tasks.backRL
 import kotlinx.android.synthetic.main.activity_input_tasks.stateNotifyTV
 import kotlinx.android.synthetic.main.activity_input_tasks.stateTimeTV
 import kotlinx.android.synthetic.main.activity_select_symbol.*
@@ -314,11 +313,11 @@ class InputTasksActivity : BaseActivity() {
             mMap!!.uiSettings.isZoomGesturesEnabled = false
 
             val myLocation = LatLng(latitude!!, longitude!!)
-            mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_circle_60)))
-            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16f))
+//            mMap!!.addMarker(MarkerOptions().position(myLocation).icon(BitmapFromVector(this, R.drawable.ic_pin_circle_60)))
+            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
+
 
         }
-
 
     }
 
@@ -534,12 +533,14 @@ class InputTasksActivity : BaseActivity() {
                 }else{
                     mMap!!.clear()
                     val myLocation = LatLng(latitude!!, longitude!!)
-                    mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_circle_60)))
-                    mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 16f))
+//                    mMap!!.addMarker(MarkerOptions().position(myLocation).icon(BitmapFromVector(this, R.drawable.ic_pin_circle_60)))
+                    mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
                 }
+                stateLocationTV.text = getString(R.string.Edit)
             }
             false->{
                 mapViewCV.visibility = View.GONE
+                stateLocationTV.text = getString(R.string.Add)
             }
         }
     }
@@ -592,13 +593,20 @@ class InputTasksActivity : BaseActivity() {
         }
 
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             checkUpdate()
             finish()
         }
 
         menuIV.setOnClickListener {
             showMenuPopup(it)
+        }
+
+        deleteLocationRL.setOnClickListener {
+            latitude = null
+            longitude = null
+
+            updateUI()
         }
     }
 
@@ -1280,7 +1288,11 @@ class InputTasksActivity : BaseActivity() {
         val d = SetDueDateDialog(this)
         d.setInitValue(calDueDate, currentHour, currentMinute, reminderList)
         d.setOnPositiveListener(object : SetDueDateDialog.OnPositiveListener{
-            override fun OnPositiveListener(calDue: Calendar, hour: Int, minute: Int, selectReminderList: ArrayList<ModelTaskReminder>
+            override fun OnPositiveListener(
+                calDue: Calendar,
+                hour: Int,
+                minute: Int,
+                selectReminderList: ArrayList<ModelTaskReminder>,
             ) {
                 reminderList.clear()
 
@@ -1728,6 +1740,29 @@ class InputTasksActivity : BaseActivity() {
         return BitmapDescriptorFactory.fromBitmap(bitmap)
     }
 
+    private fun BitmapFromVector(context: Context, vectorResId: Int): BitmapDescriptor? {
+        // below line is use to generate a drawable.
+        val vectorDrawable = ContextCompat.getDrawable(context, vectorResId)
+
+        // below line is use to set bounds to our vector drawable.
+        vectorDrawable!!.setBounds(0,
+            0,
+            vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight)
+
+        // below line is use to create a bitmap for our
+        // drawable which we have added.
+        val bitmap = Bitmap.createBitmap(vectorDrawable.intrinsicWidth,
+            vectorDrawable.intrinsicHeight,
+            Bitmap.Config.ARGB_8888)
+
+        val canvas = Canvas(bitmap)
+        vectorDrawable.draw(canvas)
+
+        // after generating our bitmap we are returning our bitmap.
+        return BitmapDescriptorFactory.fromBitmap(bitmap)
+    }
+
     /*private fun TextView.setTextDate(date: Date?) {
 
         val format_date = FORMAT_DATE_CALENDAR
@@ -2103,6 +2138,6 @@ class InputTasksActivity : BaseActivity() {
 
     data class ModelInputAttach(
         var model: ModelTaskAttach = ModelTaskAttach(),
-        var uri: Uri? = null
+        var uri: Uri? = null,
     )
 }

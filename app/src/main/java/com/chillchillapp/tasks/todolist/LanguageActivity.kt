@@ -62,7 +62,7 @@ class LanguageActivity : BaseActivity() {
             setCurrentLanguage(languageList[indexSelect].locale!!)
         }
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             finish()
         }
     }

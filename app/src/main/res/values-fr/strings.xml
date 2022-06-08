@@ -154,7 +154,7 @@
 
     <string name="do_not_have">Non</string>
     <string name="have">Avoir</string>
-    <string name="add">Ajouter</string>
+    <string name="Add">Ajouter</string>
 
     <string name="drive">Drive</string>
     <string name="create_a_new_category">Créer une nouvelle catégorie</string>
@@ -163,7 +163,7 @@
     <string name="the_category_has_been_deleted">La catégorie a été supprimée</string>
     <string name="show">Afficher</string>
     <string name="hide">Masquer</string>
-    <string name="edit">Modifier</string>
+    <string name="Edit">Modifier</string>
     <string name="leave">Quitter</string>
     <string name="do_you_want_to_leave_the_app_now">Voulez-vous quitter l\'application maintenant?</string>
     <string name="tap_again_to_exit_see_you_again_tomorrow">Appuyez à nouveau pour quitter. à demain</string>

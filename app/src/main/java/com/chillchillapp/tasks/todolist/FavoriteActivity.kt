@@ -26,7 +26,7 @@ class FavoriteActivity : BaseActivity() {
 
     private fun setEvent(){
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             finish()
         }
     }

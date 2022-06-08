@@ -3,19 +3,18 @@ package com.chillchillapp.tasks.todolist.dialog
 import android.app.ActionBar
 import android.app.Activity
 import android.app.Dialog
+import android.location.Location
+import android.view.KeyEvent
 import android.view.Window
 import com.chillchillapp.tasks.todolist.R
+import com.chillchillapp.tasks.todolist.master.GPSManage
 import com.chillchillapp.tasks.todolist.master.Prefs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
-import com.google.android.gms.maps.OnMapReadyCallback
-import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.LatLng
-import androidx.fragment.app.FragmentActivity
 import com.google.android.gms.maps.MapsInitializer
 
 
-import com.google.android.gms.maps.MapView
 import kotlinx.android.synthetic.main.dialog_set_coordinate.*
 
 
@@ -31,6 +30,8 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
     }
 
     private var prefs = Prefs(activity)
+    private var gpsManager = GPSManage(activity)
+
     private lateinit var mMap: GoogleMap
     private var latitude: Double? = null
     private var longitude: Double? = null
@@ -43,9 +44,18 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
         setCancelable(false)
         create()
 
+        setOnKeyListener { _, keyCode, _ ->
+            if (keyCode == KeyEvent.KEYCODE_BACK) {
+                dismiss()
+                true
+            }
+            false
+        }
+
         setOnDismissListener {
             prefs!!.floatLastLat = mMap.cameraPosition.target.latitude.toFloat()
             prefs!!.floatLastLng = mMap.cameraPosition.target.longitude.toFloat()
+            gpsManager.close()
         }
 
         MapsInitializer.initialize(activity)
@@ -62,9 +72,24 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
 
             if(latitude != 0.0 && longitude != 0.0){
                 val myLocation = LatLng(latitude!!, longitude!!)
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 18f))
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
             }
         }
+
+        gpsManager.setMyEvent(object : GPSManage.MyEvent{
+            override fun onLocationChanged(currentLocation: Location) {
+                latitude = currentLocation.latitude
+                longitude = currentLocation.longitude
+
+                val myLocation = LatLng(latitude!!, longitude!!)
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
+                gpsManager.close()
+            }
+
+            override fun onDissAccessGPS() {
+            }
+
+        })
 
         event()
 
@@ -81,7 +106,11 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
             dismiss()
         }
 
-        backIV.setOnClickListener {
+        currentFab.setOnClickListener {
+            gpsManager.requestGPS()
+        }
+
+        backRL.setOnClickListener {
             dismiss()
         }
     }

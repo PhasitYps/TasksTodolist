@@ -16,7 +16,7 @@ import com.chillchillapp.tasks.todolist.database.*
 import com.chillchillapp.tasks.todolist.dialog.AddCategoryDialog
 import com.chillchillapp.tasks.todolist.model.ModelCategory
 import kotlinx.android.synthetic.main.activity_category.*
-import kotlinx.android.synthetic.main.activity_category.backIV
+import kotlinx.android.synthetic.main.activity_category.backRL
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -65,7 +65,7 @@ class CategoryActivity : BaseActivity() {
             showAddCategoryDialog()
         }
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             finish()
         }
     }

@@ -154,14 +154,14 @@
     <string name="drive">Drive</string>
     <string name="do_not_have">Wala</string>
     <string name="have">Meron</string>
-    <string name="add">Idagdag</string>
+    <string name="Add">Idagdag</string>
     <string name="create_a_new_category">Gumawa ng bagong kategorya</string>
     <string name="enter_a_category_name">Magpasok ng pangalan ng kategorya</string>
     <string name="the_category_name_is_too_long">Masyadong mahaba ang pangalan ng kategorya</string>
     <string name="the_category_has_been_deleted">Ang kategorya ay tinanggal na</string>
     <string name="show">Ipakita</string>
     <string name="hide">Itago</string>
-    <string name="edit">I-edit</string>
+    <string name="Edit">I-edit</string>
     <string name="leave">Umalis</string>
     <string name="do_you_want_to_leave_the_app_now">Gusto mo bang umalis sa app ngayon?</string>
     <string name="tap_again_to_exit_see_you_again_tomorrow">I-tap muli upang lumabas. magkita tayong muli bukas</string>

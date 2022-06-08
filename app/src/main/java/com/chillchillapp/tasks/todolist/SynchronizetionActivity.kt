@@ -164,7 +164,7 @@ class SynchronizetionActivity : BaseActivity() {
             showMenuPopup(it)
         }
 
-        backIV.setOnClickListener {
+        backRL.setOnClickListener {
             finish()
         }
 
