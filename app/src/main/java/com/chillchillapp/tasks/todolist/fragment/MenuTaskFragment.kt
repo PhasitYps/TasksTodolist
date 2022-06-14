@@ -53,7 +53,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initBase()
-        setAds()
+        //setAds()
 
         init()
         database()
@@ -257,7 +257,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
 
                 Handler().postDelayed({
                     updateTaskUI()
-                    showAds()
+                    //showAds()
                 }, 500)
 
             }
@@ -266,7 +266,7 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
 
                 Handler().postDelayed({
                     updateData()
-                    showAds()
+                    //showAds()
                 }, 500)
             }
         })

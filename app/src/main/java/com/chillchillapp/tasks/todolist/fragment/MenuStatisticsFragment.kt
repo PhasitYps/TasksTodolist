@@ -60,7 +60,7 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         initBase()
 
 
-        setAds()
+        //setAds()
         init()
         setAdap()
         currentDate()
@@ -495,7 +495,6 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         var startDate: Date? = null,
         var dateName: String? = "",
         var countTask: Double? = 0.0,
-
-        )
+    )
 
 }
