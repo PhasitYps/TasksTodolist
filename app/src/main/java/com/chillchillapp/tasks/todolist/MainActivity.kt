@@ -13,6 +13,7 @@ import androidx.work.WorkManager
 import com.chillchillapp.tasks.todolist.`interface`.Communicator
 import com.chillchillapp.tasks.todolist.database.FunctionTask
 import com.chillchillapp.tasks.todolist.database.FunctionTaskReminder
+import com.chillchillapp.tasks.todolist.dialog.AdsDialog
 import com.chillchillapp.tasks.todolist.fragment.MenuCalendarFragment
 import com.chillchillapp.tasks.todolist.fragment.MenuMenuFragment
 import com.chillchillapp.tasks.todolist.fragment.MenuStatisticsFragment
@@ -43,6 +44,7 @@ class MainActivity : BaseActivity() , Communicator{
 
         setTheme()
         setContentView(R.layout.activity_main)
+        showAdsDialog()
 
         setAutoSync()
         changeMenu("task")
@@ -245,6 +247,17 @@ class MainActivity : BaseActivity() , Communicator{
             finish()
         }
 
+    }
+
+    private fun showAdsDialog(){
+        val dialog = AdsDialog(this)
+        dialog.setMyEvent(object : AdsDialog.MyEvent{
+            override fun onMyEventListener(status: String) {
+                if(status == "showAds"){
+                    dialog.show()
+                }
+            }
+        })
     }
 
     private fun setEvent(){

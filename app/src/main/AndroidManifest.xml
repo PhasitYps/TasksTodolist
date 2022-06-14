@@ -21,10 +21,10 @@
         android:roundIcon="@drawable/ic_todolist"
         android:supportsRtl="true"
         android:theme="@style/BlueTheme">
+
         <activity
             android:name=".InitiateLanguageActivity"
-            android:exported="false"
-           />
+            android:exported="false" />
         <activity
             android:name=".SynchronizetionActivity"
             android:exported="false" />
@@ -56,11 +56,9 @@
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="@string/My_App_Id" />
-
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyDCMrC_swC2mFKPrWi2RR-ty-Cs1jCaDHg" />
-
     </application>
 
 </manifest>
