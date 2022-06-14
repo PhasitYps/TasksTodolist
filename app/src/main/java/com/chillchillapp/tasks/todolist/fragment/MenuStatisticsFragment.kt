@@ -59,8 +59,9 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         super.onViewCreated(view, savedInstanceState)
         initBase()
 
+        nativeAdView.visibility = View.GONE
 
-        //setAds()
+        setAds()
         init()
         setAdap()
         currentDate()
@@ -199,6 +200,7 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
     }
 
     private fun init(){
+
         functionCategory = FunctionCategory(requireContext())
         functionTask = FunctionTask(requireActivity())
 
