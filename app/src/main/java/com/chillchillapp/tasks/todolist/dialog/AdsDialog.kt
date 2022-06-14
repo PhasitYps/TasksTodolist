@@ -17,7 +17,7 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.nativead.NativeAd
 import com.google.android.gms.ads.nativead.NativeAdOptions
-import kotlinx.android.synthetic.main.dialog_ads.*
+import kotlinx.android.synthetic.main.dialog_ads1.*
 
 class AdsDialog(private var activity: Activity): Dialog(activity) {
 
@@ -28,7 +28,7 @@ class AdsDialog(private var activity: Activity): Dialog(activity) {
 
     init {
         requestWindowFeature(Window.FEATURE_NO_TITLE)
-        setContentView(R.layout.dialog_ads)
+        setContentView(R.layout.dialog_ads1)
         window!!.setBackgroundDrawableResource(android.R.color.transparent)
         window!!.setLayout(ActionBar.LayoutParams.MATCH_PARENT, ActionBar.LayoutParams.WRAP_CONTENT)
         setCancelable(false)
@@ -37,6 +37,12 @@ class AdsDialog(private var activity: Activity): Dialog(activity) {
 
         closeIV.setOnClickListener {
             dismiss()
+        }
+
+        if(negativeTV != null){
+            negativeTV.setOnClickListener {
+                dismiss()
+            }
         }
     }
 
