@@ -60,6 +60,7 @@ class MainActivity : BaseActivity() , Communicator{
     }
 
     private val pinReminderChannel = "com.chillchillapp.tasks.todolist.input.tasks.activity"
+    private val NOTIFICATION_ID = -1
     private fun showPinReminderNotification(){
 
         val remoteViews = RemoteViews(packageName, R.layout.view_notification_pin_reminder)
@@ -81,6 +82,8 @@ class MainActivity : BaseActivity() , Communicator{
                     setContentIntent(getPendingIntent())
                     setAutoCancel(false)
                     setShowWhen(false)
+                    setVibrate(null)
+                    setSound(null)
                 }
             }
             else -> {
@@ -90,6 +93,8 @@ class MainActivity : BaseActivity() , Communicator{
                     setCustomContentView(remoteViews)
                     setAutoCancel(false)
                     setShowWhen(false)
+                    setVibrate(null)
+                    setSound(null)
                 }
             }
         }
@@ -98,7 +103,7 @@ class MainActivity : BaseActivity() , Communicator{
 
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createChannel()
-        notificationManager.notify(-1, notification)
+        notificationManager.notify(NOTIFICATION_ID, notification)
 
 
 
@@ -108,7 +113,11 @@ class MainActivity : BaseActivity() , Communicator{
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelList = mutableListOf<NotificationChannel>()
-            channelList.add(NotificationChannel(pinReminderChannel, "PinReminder", NotificationManager.IMPORTANCE_LOW))
+            val channel = NotificationChannel(pinReminderChannel, "PinReminder", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                setSound(null, null)
+                vibrationPattern = null
+            }
+            channelList.add(channel)
             this.createNotificationChannels(channelList)
         }
         //val descriptionText = "channel_description"

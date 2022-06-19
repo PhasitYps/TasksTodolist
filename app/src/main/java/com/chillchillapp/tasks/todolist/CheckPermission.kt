@@ -35,12 +35,15 @@ class CheckPermission : BaseActivity() {
         window.setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN)
         setContentView(R.layout.activity_check_permission)
 
-        showPinReminderNotification()
+        if(isSetCategoryDefault()){
+            showPinReminderNotification()
+        }
         timerCount()
 
     }
 
     private val pinReminderChannel = "com.chillchillapp.tasks.todolist.input.tasks.activity"
+    private val NOTIFICATION_ID = -1
     private fun showPinReminderNotification(){
 
         val remoteViews = RemoteViews(packageName, R.layout.view_notification_pin_reminder)
@@ -62,6 +65,8 @@ class CheckPermission : BaseActivity() {
                     setContentIntent(getPendingIntent())
                     setAutoCancel(false)
                     setShowWhen(false)
+                    setVibrate(null)
+                    setSound(null)
                 }
             }
             else -> {
@@ -71,6 +76,8 @@ class CheckPermission : BaseActivity() {
                     setCustomContentView(remoteViews)
                     setAutoCancel(false)
                     setShowWhen(false)
+                    setVibrate(null)
+                    setSound(null)
                 }
             }
         }
@@ -79,7 +86,7 @@ class CheckPermission : BaseActivity() {
 
         val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
         notificationManager.createChannel()
-        notificationManager.notify(-1, notification)
+        notificationManager.notify(NOTIFICATION_ID, notification)
 
 
 
@@ -89,7 +96,11 @@ class CheckPermission : BaseActivity() {
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             val channelList = mutableListOf<NotificationChannel>()
-            channelList.add(NotificationChannel(pinReminderChannel, "PinReminder", NotificationManager.IMPORTANCE_LOW))
+            val channel = NotificationChannel(pinReminderChannel, "PinReminder", NotificationManager.IMPORTANCE_DEFAULT).apply {
+                setSound(null, null)
+                vibrationPattern = null
+            }
+            channelList.add(channel)
             this.createNotificationChannels(channelList)
         }
         //val descriptionText = "channel_description"
@@ -103,7 +114,6 @@ class CheckPermission : BaseActivity() {
         FLAG_CANCEL_CURRENT คือ อันก่อนหน้า ถ้ามีอยู่แล้วจะถูกยกเลิก แล้วสร้างอันใหม่
         FLAG_UPDATE_CURRENT คือ ถ้ามีอยู่แล้ว จะทำการไปอัพเดท*/
     }
-
 
 
     var T: Timer? = null
