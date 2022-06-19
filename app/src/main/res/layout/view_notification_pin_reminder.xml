@@ -31,15 +31,16 @@
         android:layout_marginStart="15dp"
         >
         <TextView
-            android:id="@+id/textTV"
+            android:id="@+id/addTV"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="@string/add_task"
             style="@style/TextAppearance.Compat.Notification.Title" />
         <TextView
+            android:id="@+id/captionTV"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="เพลิดเพลินกับวันของคุณ!"
+            android:text="@string/Every_morning_starts_a_new_page_in_your_story"
             style="@style/TextAppearance.Compat.Notification.Info" />
 
     </LinearLayout>

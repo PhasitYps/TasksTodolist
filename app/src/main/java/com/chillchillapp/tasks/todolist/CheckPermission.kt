@@ -36,7 +36,6 @@ class CheckPermission : BaseActivity() {
         setContentView(R.layout.activity_check_permission)
 
         showPinReminderNotification()
-
         timerCount()
 
     }
@@ -53,7 +52,8 @@ class CheckPermission : BaseActivity() {
 
         remoteViews.setOnClickPendingIntent(R.id.addTaskIV, PendingIntent.getActivity(this, 0, addTaskIntent, 0))
         remoteViews.setOnClickPendingIntent(R.id.cancelIV, PendingIntent.getBroadcast(this, 0, discardIntent, 0))
-
+        remoteViews.setTextViewText(R.id.captionTV, getString(R.string.Every_morning_starts_a_new_page_in_your_story))
+        remoteViews.setTextViewText(R.id.addTV, getString(R.string.add_task))
         val build = when {
             Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
                 NotificationCompat.Builder(this, pinReminderChannel).apply {
@@ -95,7 +95,6 @@ class CheckPermission : BaseActivity() {
         //val descriptionText = "channel_description"
         //notificationChannel.description = descriptionText
     }
-
     private fun getPendingIntent(): PendingIntent {
         val intent = Intent(this, MainActivity::class.java)
         return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)

@@ -154,4 +154,6 @@
     <string name="Select">Seleccione</string>
     <string name="Select_Language">Seleccione el idioma</string>
     <string name="It_is_recommended_to_turn_on_automatic_backup">Se recomienda activar la copia de seguridad automática.</string>
+    <string name="Successfully_added_to_favorites">Agregado con éxito a favoritos</string>
+    <string name="Location">Ubicación</string>
 </resources>

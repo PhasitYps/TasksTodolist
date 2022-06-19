@@ -59,7 +59,6 @@
     <string name="time_and_notification">Time &amp; Reminder</string>
     <string name="notification_at">Reminder at</string>
     <string name="repeat_every">Repeat every</string>
-    <string name="Location">Location</string>
     <string name="attachment">Attachment</string>
     <string name="add_task">Add Task</string>
     <string name="not_repeat">Not Repeat</string>
@@ -213,5 +212,7 @@
     <string name="Select_Language">Select Language</string>
     <string name="It_is_recommended_to_turn_on_automatic_backup">It is recommended to turn on automatic backup.</string>
     <string name="Successfully_added_to_favorites">Successfully added to favorites</string>
+    <string name="Location">Location</string>
+    <string name="Every_morning_starts_a_new_page_in_your_story">Every morning starts a new page in your story!</string>
 
 </resources>

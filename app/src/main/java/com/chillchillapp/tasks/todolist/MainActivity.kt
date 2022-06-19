@@ -2,12 +2,15 @@ package com.chillchillapp.tasks.todolist
 
 import android.app.*
 import android.content.Intent
+import android.os.Build
 import android.os.Bundle
 import android.util.Log.d
 import android.view.KeyEvent
 import android.view.View
 import android.view.Window
+import android.widget.RemoteViews
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
 import androidx.core.content.ContextCompat
 import androidx.work.WorkManager
 import com.chillchillapp.tasks.todolist.`interface`.Communicator
@@ -30,6 +33,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.bgSyncingLL
 import kotlinx.android.synthetic.main.activity_main.syncProgressBar
 import kotlinx.android.synthetic.main.dialog_leaveapp.*
+import kotlinx.android.synthetic.main.view_notification_pin_reminder.*
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -45,6 +49,7 @@ class MainActivity : BaseActivity() , Communicator{
         setTheme()
         setContentView(R.layout.activity_main)
         showAdsDialog()
+        showPinReminderNotification()
 
         setAutoSync()
         changeMenu("task")
@@ -52,47 +57,71 @@ class MainActivity : BaseActivity() , Communicator{
 
         d("hhjjjjjhhhhh", "app run")
 
-
-//        val functionReminder = FunctionTaskReminder(this)
-//        val functionTask = FunctionTask(this)
-//        val model = functionTask.getTaskById(2)
-//        val reminderList = functionReminder.getReminderByTaskId(model.id)
-//
-//        for(m in reminderList){
-//            val choice = java.util.ArrayList<ModelTaskReminder>()
-//            choice.add(ModelTaskReminder(optionId =  "op1", reminderCount = 0, reminderType = Calendar.MINUTE))
-//            choice.add(ModelTaskReminder(optionId =  "op2", reminderCount = 5, reminderType = Calendar.MINUTE))
-//            choice.add(ModelTaskReminder(optionId =  "op3", reminderCount = 10, reminderType = Calendar.MINUTE))
-//            choice.add(ModelTaskReminder(optionId =  "op4", reminderCount = 15, reminderType = Calendar.MINUTE))
-//            choice.add(ModelTaskReminder(optionId =  "op5", reminderCount = 30, reminderType = Calendar.MINUTE))
-//            choice.add(ModelTaskReminder(optionId =  "op6", reminderCount = 1, reminderType = Calendar.DATE))
-//            choice.add(ModelTaskReminder(optionId =  "op7", reminderCount = 2, reminderType = Calendar.DATE))
-//
-//            choice.forEachIndexed{i, mc ->
-//                d("sadasdaegejr", "index: $i")
-//                val cal = Calendar.getInstance()
-//                cal.timeInMillis = model.dueDate!!
-//                mc.setNotifyTime(cal, model.hour!!, model.minute!!)
-//
-//                if (mc.notifyTime == m.notifyTime) {
-//                    m.optionId = mc.optionId
-//                    m.reminderCount = mc.reminderCount
-//                    m.reminderType = mc.reminderType
-//                    d("sadasdaegejr", "return: $i")
-//                    return@forEachIndexed
-//                }
-//            }
-//
-//            d("sadasdaegejr", "next task")
-//
-//        }
-//
-//        for(m in reminderList){
-//            d("sadasdaegejr", "reminder: " + m.optionId)
-//        }
-
     }
 
+    private val pinReminderChannel = "com.chillchillapp.tasks.todolist.input.tasks.activity"
+    private fun showPinReminderNotification(){
+
+        val remoteViews = RemoteViews(packageName, R.layout.view_notification_pin_reminder)
+
+        val addTaskIntent = Intent(this, InputTasksActivity::class.java)
+        addTaskIntent.putExtra(KEY_FUNCTION, KEY_INSERT)
+        val discardIntent = Intent(this, MyCustomReceiver::class.java)
+        discardIntent.action = KEY_DISCARD_PIN_REMINDER
+
+        remoteViews.setOnClickPendingIntent(R.id.addTaskIV, PendingIntent.getActivity(this, 0, addTaskIntent, 0))
+        remoteViews.setOnClickPendingIntent(R.id.cancelIV, PendingIntent.getBroadcast(this, 0, discardIntent, 0))
+        remoteViews.setTextViewText(R.id.captionTV, getString(R.string.Every_morning_starts_a_new_page_in_your_story))
+        remoteViews.setTextViewText(R.id.addTV, getString(R.string.add_task))
+        val build = when {
+            Build.VERSION.SDK_INT >= Build.VERSION_CODES.O -> {
+                NotificationCompat.Builder(this, pinReminderChannel).apply {
+                    setCustomContentView(remoteViews)
+                    setSmallIcon(R.drawable.ic_todolist_stroke)
+                    setContentIntent(getPendingIntent())
+                    setAutoCancel(false)
+                    setShowWhen(false)
+                }
+            }
+            else -> {
+                NotificationCompat.Builder(this).apply {
+                    setSmallIcon(R.drawable.ic_todolist_stroke)
+                    setContentIntent(getPendingIntent())
+                    setCustomContentView(remoteViews)
+                    setAutoCancel(false)
+                    setShowWhen(false)
+                }
+            }
+        }
+        val notification = build.build()
+        notification.flags = notification.flags or (Notification.FLAG_NO_CLEAR or Notification.FLAG_ONGOING_EVENT)
+
+        val notificationManager = getSystemService(NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.createChannel()
+        notificationManager.notify(-1, notification)
+
+
+
+
+    }
+    private fun NotificationManager.createChannel(){
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            val channelList = mutableListOf<NotificationChannel>()
+            channelList.add(NotificationChannel(pinReminderChannel, "PinReminder", NotificationManager.IMPORTANCE_LOW))
+            this.createNotificationChannels(channelList)
+        }
+        //val descriptionText = "channel_description"
+        //notificationChannel.description = descriptionText
+    }
+    private fun getPendingIntent(): PendingIntent {
+        val intent = Intent(this, MainActivity::class.java)
+        return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        /*FLAG_ONE_SHOT คือ ใช้ได้ครั้งเดียว ถ้าเรียกซ้ำมันจะไม่ทำงาน
+        FLAG_NO_CREATE คือ ไปเช็คก่อนว่า มีอยู่มัยถ้า มีอยู่แล้วมันจะไม่สร้างใหม่ พร้อมกับ return null
+        FLAG_CANCEL_CURRENT คือ อันก่อนหน้า ถ้ามีอยู่แล้วจะถูกยกเลิก แล้วสร้างอันใหม่
+        FLAG_UPDATE_CURRENT คือ ถ้ามีอยู่แล้ว จะทำการไปอัพเดท*/
+    }
 
     private fun setAutoSync(){
 

@@ -195,4 +195,6 @@
     <string name="Select">Pumili</string>
     <string name="Select_Language">Piliin ang Wika</string>
     <string name="It_is_recommended_to_turn_on_automatic_backup">Inirerekomenda na i-on ang awtomatikong pag-backup.</string>
+    <string name="Successfully_added_to_favorites">Matagumpay na naidagdag sa mga paborito</string>
+    <string name="Location">Lokasyon</string>
 </resources>
