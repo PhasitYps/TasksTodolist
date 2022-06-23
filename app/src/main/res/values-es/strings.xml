@@ -156,4 +156,7 @@
     <string name="It_is_recommended_to_turn_on_automatic_backup">Se recomienda activar la copia de seguridad automática.</string>
     <string name="Successfully_added_to_favorites">Agregado con éxito a favoritos</string>
     <string name="Location">Ubicación</string>
+    <string name="Every_morning_starts_a_new_page_in_your_story">¡Cada mañana comienza una nueva página en tu historia!</string>
+    <string name="Please_check_your_network">Compruebe su red.</string>
+    <string name="Do_it_in_yourself">Hazlo en ti mismo!</string>
 </resources>

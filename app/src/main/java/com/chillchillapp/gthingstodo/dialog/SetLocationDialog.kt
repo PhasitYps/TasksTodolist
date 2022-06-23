@@ -4,8 +4,11 @@ import android.app.ActionBar
 import android.app.Activity
 import android.app.Dialog
 import android.location.Location
+import android.net.ConnectivityManager
 import android.view.KeyEvent
 import android.view.Window
+import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.chillchillapp.gthingstodo.R
 import com.chillchillapp.gthingstodo.master.GPSManage
 import com.chillchillapp.gthingstodo.master.Prefs
@@ -103,12 +106,16 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
     private fun event(){
 
         selectRL.setOnClickListener {
-            val latLng = mMap.cameraPosition.target
-            latitude = latLng.latitude
-            longitude = latLng.longitude
+            if(isNetworkAvailable()){
+                val latLng = mMap.cameraPosition.target
+                latitude = latLng.latitude
+                longitude = latLng.longitude
 
-            l?.onMySelect(LatLng(latitude!!, longitude!!))
-            dismiss()
+                l?.onMySelect(LatLng(latitude!!, longitude!!))
+                dismiss()
+            }else {
+                Toast.makeText(activity, activity.getString(R.string.Please_check_your_network), Toast.LENGTH_SHORT).show()
+            }
         }
 
         currentFab.setOnClickListener {
@@ -118,5 +125,11 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
         backRL.setOnClickListener {
             dismiss()
         }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = activity.getSystemService(AppCompatActivity.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 }

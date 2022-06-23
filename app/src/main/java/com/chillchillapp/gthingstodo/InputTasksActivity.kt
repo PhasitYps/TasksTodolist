@@ -72,6 +72,12 @@ import java.io.*
 import java.util.*
 import java.util.concurrent.TimeUnit
 import kotlin.collections.ArrayList
+import android.net.NetworkInfo
+
+import android.net.ConnectivityManager
+
+
+
 
 
 class InputTasksActivity : BaseActivity() {
@@ -590,7 +596,12 @@ class InputTasksActivity : BaseActivity() {
         }
 
         settingLocationRL.setOnClickListener {
-            setLocationDialog()
+
+            if(isNetworkAvailable()){
+                setLocationDialog()
+            }else{
+                Toast.makeText(this, getString(R.string.Please_check_your_network), Toast.LENGTH_SHORT).show()
+            }
 
         }
 
@@ -618,6 +629,12 @@ class InputTasksActivity : BaseActivity() {
             place = null
             updateUI()
         }
+    }
+
+    private fun isNetworkAvailable(): Boolean {
+        val connectivityManager = getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetworkInfo = connectivityManager.activeNetworkInfo
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected
     }
 
     private fun checkUpdate(){

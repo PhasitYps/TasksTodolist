@@ -199,5 +199,8 @@
     <string name="It_is_recommended_to_turn_on_automatic_backup">Il est recommandé d\'activer la sauvegarde automatique.</string>
     <string name="Successfully_added_to_favorites">Ajouté avec succès aux favoris</string>
     <string name="Location">Emplacement</string>
+    <string name="Every_morning_starts_a_new_page_in_your_story">Chaque matin commence une nouvelle page dans votre histoire!</string>
+    <string name="Please_check_your_network">Veuillez vérifier votre réseau.</string>
+    <string name="Do_it_in_yourself">Fais le en toi!</string>
 
 </resources>

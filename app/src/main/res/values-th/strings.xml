@@ -193,5 +193,7 @@
     <string name="Successfully_added_to_favorites">เพิ่มในรายการโปรดเรียบร้อย</string>
     <string name="Location">โลเคชั่น</string>
     <string name="Every_morning_starts_a_new_page_in_your_story">ทุกเช้าเริ่มหน้าใหม่ในเรื่องราวของคุณ!</string>
+    <string name="Please_check_your_network">กรุณาเช็คเครือข่ายของคุณ</string>
+    <string name="Do_it_in_yourself">ทำมันด้วยตัวเอง!</string>
 
 </resources>
