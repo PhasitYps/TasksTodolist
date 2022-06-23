@@ -64,30 +64,30 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     }
 
     private var mInterstitialAd: InterstitialAd? = null
-    private fun setAds(){
-
-        var adRequest = AdRequest.Builder().build()
-
-        InterstitialAd.load(activity, requireActivity().getString(R.string.Ads_Interstitial_FinishTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
-            override fun onAdFailedToLoad(adError: LoadAdError) {
-                Log.d(TAG, adError?.message)
-                mInterstitialAd = null
-            }
-
-            override fun onAdLoaded(interstitialAd: InterstitialAd) {
-                Log.d(TAG, "Ad was loaded.")
-                mInterstitialAd = interstitialAd
-            }
-        })
-    }
-    private fun showAds(){
-        if (mInterstitialAd != null) {
-            mInterstitialAd?.show(activity)
-            mInterstitialAd = null
-        } else {
-            Log.d("TAG", "The interstitial ad wasn't ready yet.")
-        }
-    }
+//    private fun setAds(){
+//
+//        var adRequest = AdRequest.Builder().build()
+//
+//        InterstitialAd.load(activity, requireActivity().getString(R.string.Ads_Interstitial_FinishTask_UnitId), adRequest, object : InterstitialAdLoadCallback() {
+//            override fun onAdFailedToLoad(adError: LoadAdError) {
+//                Log.d(TAG, adError?.message)
+//                mInterstitialAd = null
+//            }
+//
+//            override fun onAdLoaded(interstitialAd: InterstitialAd) {
+//                Log.d(TAG, "Ad was loaded.")
+//                mInterstitialAd = interstitialAd
+//            }
+//        })
+//    }
+//    private fun showAds(){
+//        if (mInterstitialAd != null) {
+//            mInterstitialAd?.show(activity)
+//            mInterstitialAd = null
+//        } else {
+//            Log.d("TAG", "The interstitial ad wasn't ready yet.")
+//        }
+//    }
 
 
     override fun onResume() {

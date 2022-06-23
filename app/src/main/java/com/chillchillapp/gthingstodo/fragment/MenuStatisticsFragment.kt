@@ -41,7 +41,14 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 import android.text.TextUtils
-
+import kotlinx.android.synthetic.main.dialog_ads1.*
+import kotlinx.android.synthetic.main.fragment_statistics.callToActionView
+import kotlinx.android.synthetic.main.fragment_statistics.iconView
+import kotlinx.android.synthetic.main.fragment_statistics.mediaView
+import kotlinx.android.synthetic.main.fragment_statistics.nativeAdView
+import kotlinx.android.synthetic.main.fragment_statistics.primaryView
+import kotlinx.android.synthetic.main.fragment_statistics.secondaryView
+import kotlinx.android.synthetic.main.fragment_statistics.tertiaryView
 
 
 @SuppressLint("UseRequireInsteadOfGet")
@@ -122,7 +129,7 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         val starRating = nativeAd.starRating
         val icon = nativeAd.icon
 
-        mediaView.setMediaContent(nativeAd.mediaContent)
+        nativeAd.mediaContent?.let { mediaView.setMediaContent(it) }
         mediaView.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
 
         val secondaryText: String
@@ -133,10 +140,10 @@ class MenuStatisticsFragment : BaseFragment(R.layout.fragment_statistics)  {
         secondaryView.visibility = View.VISIBLE
         secondaryText = if (adHasOnlyStore(nativeAd)) {
             nativeAdView.storeView = secondaryView
-            store
+            store.toString()
         } else if (!TextUtils.isEmpty(advertiser)) {
             nativeAdView.advertiserView = secondaryView
-            advertiser
+            advertiser.toString()
         } else {
             ""
         }

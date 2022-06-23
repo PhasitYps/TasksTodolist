@@ -99,7 +99,7 @@ class AdsDialog(private var activity: Activity): Dialog(activity) {
         val starRating = nativeAd.starRating
         val icon = nativeAd.icon
 
-        mediaView.setMediaContent(nativeAd.mediaContent)
+        nativeAd.mediaContent?.let { mediaView.setMediaContent(it) }
         mediaView.setImageScaleType(ImageView.ScaleType.CENTER_CROP)
 
         val secondaryText: String
@@ -110,10 +110,10 @@ class AdsDialog(private var activity: Activity): Dialog(activity) {
         secondaryView.visibility = View.VISIBLE
         secondaryText = if (adHasOnlyStore(nativeAd)) {
             nativeAdView.storeView = secondaryView
-            store
+            store.toString()
         } else if (!TextUtils.isEmpty(advertiser)) {
             nativeAdView.advertiserView = secondaryView
-            advertiser
+            advertiser.toString()
         } else {
             ""
         }

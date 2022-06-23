@@ -73,22 +73,22 @@ dependencies {
     implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.17'
 
     //firebase
-    implementation platform('com.google.firebase:firebase-bom:26.8.0')
+    implementation platform('com.google.firebase:firebase-bom:30.1.0')
     implementation 'com.google.firebase:firebase-auth-ktx'
     implementation 'com.google.firebase:firebase-storage-ktx'
     implementation 'com.google.firebase:firebase-firestore-ktx'
-//    implementation 'com.google.firebase:firebase-database-ktx'
-//    implementation 'com.google.firebase:firebase-messaging'
-//    implementation 'com.google.firebase:firebase-crashlytics-ktx'
-//    implementation 'com.google.firebase:firebase-analytics-ktx'
+    implementation 'com.google.firebase:firebase-database-ktx'
+    implementation 'com.google.firebase:firebase-messaging'
+    implementation 'com.google.firebase:firebase-crashlytics-ktx'
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 //    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
 //    implementation 'com.google.firebase:firebase-auth:21.0.1'
 
-    implementation 'com.google.android.gms:play-services-auth:20.1.0' //20.0.0
+    implementation 'com.google.android.gms:play-services-auth:20.2.0' //20.0.0
 
     //google map api
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.android.gms:play-services-location:19.0.1'
+    implementation 'com.google.android.gms:play-services-location:20.0.0'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
 
     //calendar
@@ -129,7 +129,7 @@ dependencies {
     implementation 'androidx.viewpager2:viewpager2:<latest_version>'
 
     //ads
-    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+    implementation 'com.google.android.gms:play-services-ads:21.0.0'
 
 
 

@@ -1348,7 +1348,6 @@ class InputTasksActivity : BaseActivity() {
                     var postalCode = addresses[0].postalCode
                     var address = addresses[0].getAddressLine(0)
 
-
                     if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
 
                 } else {
