@@ -56,7 +56,7 @@ class MainActivity : BaseActivity() , Communicator{
 
     }
 
-    private val pinReminderChannel = "com.chillchillapp.todolist.input.tasks.activity"
+    private val pinReminderChannel = "com.chillchillapp.gthingstodo.input.tasks.activity"
     private val NOTIFICATION_ID = -1
     private fun showPinReminderNotification(){
 
