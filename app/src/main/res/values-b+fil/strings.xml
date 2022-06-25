@@ -200,4 +200,7 @@
     <string name="Every_morning_starts_a_new_page_in_your_story">Tuwing umaga ay nagsisimula ng bagong pahina sa iyong kwento!</string>
     <string name="Please_check_your_network">Pakisuri ang iyong network.</string>
     <string name="Do_it_in_yourself">Gawin mo sa sarili mo!</string>
+    <string name="Record_your_to_do_list_here">I-record ang iyong listahan ng gagawin dito.</string>
+    <string name="Manage_your_lifestyle_to_do_categories_here">Pamahalaan ang iyong lifestyle to-do na mga kategorya dito.</string>
+
 </resources>

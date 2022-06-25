@@ -16,6 +16,8 @@ class Prefs(private var context: Context) {
     private val BOOL_DISPLAY_TASKOTHER = "boolDisplayTaskOther"
     private val FLOAT_LAST_LAT = "floatLastLatitude"
     private val FLOAT_LAST_LNG = "floatLastLongitude"
+    private val STR_LEARNING_CATEGORY = "strLearningCategory"
+    private val STR_LEARNING_ADDTASK = "strLearningAddTask"
 
     var intInsertCategoryDefault: Int
         get() = preferences.getInt(INT_INSERT_CATEGORY_DEFAULT, 0)
@@ -53,6 +55,11 @@ class Prefs(private var context: Context) {
         get() = preferences.getFloat(FLOAT_LAST_LNG, 0f)
         set(value) = preferences.edit().putFloat(FLOAT_LAST_LNG, value).apply()
 
+    var strLerningCategory: String?
+        get() = preferences.getString(STR_LEARNING_CATEGORY, "No")
+        set(value) = preferences.edit().putString(STR_LEARNING_CATEGORY, value).apply()
 
-
+    var strLerningAddTask: String?
+        get() = preferences.getString(STR_LEARNING_ADDTASK, "No")
+        set(value) = preferences.edit().putString(STR_LEARNING_ADDTASK, value).apply()
 }

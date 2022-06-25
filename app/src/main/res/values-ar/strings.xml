@@ -159,5 +159,7 @@
     <string name="Every_morning_starts_a_new_page_in_your_story">¡Cada mañana comienza una nueva página en tu historia!</string>
     <string name="Please_check_your_network">Compruebe su red.</string>
     <string name="Do_it_in_yourself">Hazlo en ti mismo!</string>
+    <string name="Record_your_to_do_list_here">Registre su lista de tareas pendientes aquí.</string>
+    <string name="Manage_your_lifestyle_to_do_categories_here">Administre las categorías de tareas pendientes de su estilo de vida aquí.</string>
 
 </resources>

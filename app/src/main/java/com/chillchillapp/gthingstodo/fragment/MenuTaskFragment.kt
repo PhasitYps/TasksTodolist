@@ -24,12 +24,10 @@ import com.chillchillapp.gthingstodo.database.FunctionTaskSub
 import com.chillchillapp.gthingstodo.database.FunctionTask
 import com.chillchillapp.gthingstodo.model.ModelCategory
 import com.chillchillapp.gthingstodo.model.ModelTask
-import com.google.android.gms.ads.AdRequest
-import com.google.android.gms.ads.LoadAdError
 import com.google.android.gms.ads.interstitial.InterstitialAd
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_task.*
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import java.lang.Exception
 import java.util.*
 import kotlin.collections.ArrayList
@@ -58,9 +56,31 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
         init()
         database()
         addChipCategoryView()
+
+        if(prefs!!.strLerningCategory == "No"){//new user app
+            showLerningCategoryTarget()
+        }
         setEvent()
 
+    }
+    private var lerningCategoryTarget: MaterialTapTargetPrompt? = null
+    private fun showLerningCategoryTarget(){
+        lerningCategoryTarget = MaterialTapTargetPrompt.Builder(this)
+            .setTarget(R.id.categoryRL)
+            .setPrimaryText(getString(R.string.category))
+            .setSecondaryText(getString(R.string.Manage_your_lifestyle_to_do_categories_here))
+            .setPromptStateChangeListener { prompt, state ->
+                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED) {
+                    prefs!!.strLerningCategory = "Yes"
+                }
+            }
+            .show()
+    }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d("dsadsaf3wqf", "MenuTaskFragment onDestroy")
+        lerningCategoryTarget?.dismiss()
     }
 
     private var mInterstitialAd: InterstitialAd? = null

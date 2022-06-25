@@ -127,6 +127,8 @@ dependencies {
     implementation  'com.github.massoudss:waveformSeekBar:3.0.0'
     //viewpaper2
     implementation 'androidx.viewpager2:viewpager2:<latest_version>'
+    //tab target
+    implementation 'uk.co.samuelwall:material-tap-target-prompt:3.3.2'
 
     //ads
     implementation 'com.google.android.gms:play-services-ads:21.0.0'

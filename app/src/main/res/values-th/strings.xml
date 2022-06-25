@@ -195,5 +195,7 @@
     <string name="Every_morning_starts_a_new_page_in_your_story">ทุกเช้าเริ่มหน้าใหม่ในเรื่องราวของคุณ!</string>
     <string name="Please_check_your_network">กรุณาเช็คเครือข่ายของคุณ</string>
     <string name="Do_it_in_yourself">ทำมันด้วยตัวเอง!</string>
+    <string name="Record_your_to_do_list_here">บันทึกรายการสิ่งที่ต้องทำของคุณ ได้ที่นี่</string>
+    <string name="Manage_your_lifestyle_to_do_categories_here">จัดการหมวดหมู่สิ่งที่ต้องทำตามไลฟ์สไตล์ของคุณ ได้ที่นี่</string>
 
 </resources>

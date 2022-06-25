@@ -216,5 +216,7 @@
     <string name="Every_morning_starts_a_new_page_in_your_story">Every morning starts a new page in your story!</string>
     <string name="Please_check_your_network">Please check your network.</string>
     <string name="Do_it_in_yourself">Do it in yourself!</string>
+    <string name="Record_your_to_do_list_here">Record your to-do list here.</string>
+    <string name="Manage_your_lifestyle_to_do_categories_here">Manage your lifestyle to-do categories here.</string>
 
 </resources>

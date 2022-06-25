@@ -4,6 +4,7 @@ import android.app.*
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.util.Log
 import android.util.Log.d
 import android.view.KeyEvent
 import android.view.View
@@ -31,6 +32,7 @@ import kotlinx.android.synthetic.main.activity_main.bgSyncingLL
 import kotlinx.android.synthetic.main.activity_main.syncProgressBar
 import kotlinx.android.synthetic.main.dialog_leaveapp.*
 import kotlinx.android.synthetic.main.view_notification_pin_reminder.*
+import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -42,11 +44,17 @@ class MainActivity : BaseActivity() , Communicator{
         super.onCreate(savedInstanceState)
         initBase()
         initLanguage()
-
         setTheme()
         setContentView(R.layout.activity_main)
-        showAdsDialog()
         showPinReminderNotification()
+
+
+        if(prefs!!.strLerningAddTask == "No"){//new user app
+            showLerningAddTaskTarget()
+        }else if(prefs!!.strLerningAddTask == "Yes" || prefs!!.strLerningCategory == "Yes"){
+            showAdsDialog()
+        }
+
 
         setAutoSync()
         changeMenu("task")
@@ -54,6 +62,19 @@ class MainActivity : BaseActivity() , Communicator{
 
         d("hhjjjjjhhhhh", "app run")
 
+    }
+
+    private fun showLerningAddTaskTarget(){
+        MaterialTapTargetPrompt.Builder(this)
+            .setTarget(R.id.menuInputRL)
+            .setPrimaryText(getString(R.string.add_task))
+            .setSecondaryText(getString(R.string.Record_your_to_do_list_here))
+            .setPromptStateChangeListener { prompt, state ->
+                if (state == MaterialTapTargetPrompt.STATE_FOCAL_PRESSED) {
+                    prefs!!.strLerningAddTask = "Yes"
+                }
+            }
+            .show()
     }
 
     private val pinReminderChannel = "com.chillchillapp.gthingstodo.input.tasks.activity"
