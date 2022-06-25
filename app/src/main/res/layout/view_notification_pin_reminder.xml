@@ -17,7 +17,8 @@
         <ImageView
             android:layout_width="35dp"
             android:layout_height="35dp"
-            android:layout_margin="3dp"
+            android:layout_margin="4dp"
+            android:background="@drawable/background_with_shadow_radius"
             android:src="@drawable/ic_todolist" />
 
     </RelativeLayout>
