@@ -132,7 +132,7 @@ class InitiateLanguageActivity : BaseActivity() {
 
     inner class AdapLanguage(private var languageList: ArrayList<ModelLanguage>): RecyclerView.Adapter<AdapLanguage.ViewHolder>(){
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapLanguage.ViewHolder {
-            val view = LayoutInflater.from(parent.context).inflate(R.layout.listview_selcet_language, parent, false)
+            val view = LayoutInflater.from(parent.context).inflate(R.layout.listview_select_language, parent, false)
             return ViewHolder(view)
         }
 
