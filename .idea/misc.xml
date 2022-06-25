@@ -69,7 +69,7 @@
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_initiate_language.xml" value="0.2" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_input_tasks.xml" value="0.2" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_language.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_main.xml" value="0.4" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_synchronizetion.xml" value="0.4" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_theme_look.xml" value="0.12545289855072464" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_upgrade_premium.xml" value="0.264" />
@@ -91,6 +91,7 @@
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/listview_task_history.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/listview_task_statistics.xml" value="0.22327898550724637" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/listview_task_subtask.xml" value="0.22327898550724637" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/popup_helper.xml" value="0.18478260869565216" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/popup_menu_category.xml" value="0.20923913043478262" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/view_notification_pin_reminder.xml" value="0.20923913043478262" />
       </map>

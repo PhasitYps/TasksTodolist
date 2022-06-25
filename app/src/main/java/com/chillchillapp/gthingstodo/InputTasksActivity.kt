@@ -1923,9 +1923,10 @@ class InputTasksActivity : BaseActivity() {
 
                     override fun onTextChanged(p0: CharSequence?, p1: Int, p2: Int, p3: Int) {
                         val position =  todoEDT.tag as Int
+                        val selectEnd = todoEDT.selectionEnd
 
                         taskSubList[position].todo = p0.toString()
-                        Log.i("hhhhhhjy", "onTextChanged: " + position + " todo: " + p0)
+                        Log.i("hhhhhhjy", "onTextChanged: " + position + " todo: " + p0+ " start: " + todoEDT.selectionStart + " end: " + todoEDT.selectionEnd)
 
                         todoEDT.removeTextChangedListener(this)
 
@@ -1933,11 +1934,11 @@ class InputTasksActivity : BaseActivity() {
                             1L ->{
                                 val ss = strikethroughSpan(p0.toString())
                                 todoEDT.setText(ss)
-                                todoEDT.setSelection(ss.length)
+                                todoEDT.setSelection(selectEnd)
                             }
                             0L->{
                                 todoEDT.setText(p0.toString())
-                                todoEDT.setSelection(p0!!.length)
+                                todoEDT.setSelection(selectEnd)
                             }
                         }
 
