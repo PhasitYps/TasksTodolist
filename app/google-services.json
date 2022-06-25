@@ -15,47 +15,18 @@
       },
       "oauth_client": [
         {
+          "client_id": "580610190420-091jpj4d44bjdbpnveg253vflo3jd0j1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.chillchillapp.gthingstodo",
+            "certificate_hash": "daf8262789ffac88cc5ce544ef4dc6408d882b0f"
+          }
+        },
+        {
           "client_id": "580610190420-mt7cmrk9nmc78aa4uc9pnnakhsukvoc3.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.chillchillapp.gthingstodo",
-            "certificate_hash": "4dcdd44b9e5117982165f3bb4716df5ba34202ea"
-          }
-        },
-        {
-          "client_id": "580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
-      "api_key": [
-        {
-          "current_key": "AIzaSyBIcC_iCa6_g_41-wlX_-Qzbu8batgoTdE"
-        }
-      ],
-      "services": {
-        "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "580610190420-ssmr98lb3rme0opoale7r16bi0oqn1gc.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
-        }
-      }
-    },
-    {
-      "client_info": {
-        "mobilesdk_app_id": "1:580610190420:android:91f7cd931d86d34e3991c1",
-        "android_client_info": {
-          "package_name": "com.chillchillapp.tasks.todolist"
-        }
-      },
-      "oauth_client": [
-        {
-          "client_id": "580610190420-bih0cieo0jgnn9tbsmjuln90r725h5l6.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.chillchillapp.tasks.todolist",
             "certificate_hash": "4dcdd44b9e5117982165f3bb4716df5ba34202ea"
           }
         },
