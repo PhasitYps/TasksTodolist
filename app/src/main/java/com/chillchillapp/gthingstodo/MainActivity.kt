@@ -334,6 +334,11 @@ class MainActivity : BaseActivity() , Communicator{
         }
 
         menuInputRL.setOnClickListener {
+
+            if(prefs!!.strLerningAddTask == "No"){//new user app
+                prefs!!.strLerningAddTask = "Yes"
+            }
+
             val intent = Intent(this, InputTasksActivity::class.java)
             intent.putExtra("categoryId", categoryId)
             intent.putExtra(KEY_FUNCTION, KEY_INSERT)

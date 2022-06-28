@@ -313,6 +313,11 @@ class MenuTaskFragment : BaseFragment(R.layout.fragment_task)  {
     private fun setEvent(){
 
         categoryRL.setOnClickListener {
+
+            if(prefs!!.strLerningCategory == "No"){//new user app
+                prefs!!.strLerningCategory = "Yes"
+            }
+
             val intent = Intent(activity, CategoryActivity::class.java)
             activity!!.startActivity(intent)
 

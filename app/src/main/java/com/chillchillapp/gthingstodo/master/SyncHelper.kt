@@ -184,13 +184,20 @@ class SyncHelper(private val activity: Activity) {
 
                 Log.d("hhjjjjjhhhhh", "SyncingWorker start")
 
+
                 try {
                     val driveHelper = DriveManageHelper(context)
                     val dbLocal = context.getDatabasePath(SQLITE_NAME)
                     val dbDrive = File(File(context.filesDir, FOLDER_SYNC), SQLITE_NAME)
 
+                    Log.d("hhjjjjjhhhhh", "dbDrive: " + dbDrive.exists())
+                    Log.d("hhjjjjjhhhhh", "dbLocal: " + dbLocal.exists())
+                    Log.d("hhjjjjjhhhhh", "11111: ")
                     val dbAttach = attachSync(dbLocal, dbDrive)
-                    dbAttach!!.endTransaction()
+                    Log.d("hhjjjjjhhhhh", "22222: ")
+
+
+                    Log.d("hhjjjjjhhhhh", "333333: ")
 
                     val localDB = DBFunctionHelper(context, dbLocal.path)
                     val driveDB = DBFunctionHelper(context, dbDrive.path)
@@ -296,6 +303,7 @@ class SyncHelper(private val activity: Activity) {
                 val dbAttach = SQLiteDatabase.openDatabase(dbFile.path, null, SQLiteDatabase.OPEN_READWRITE)
                 dbAttach.beginTransaction()
                 dbAttach.execSQL("ATTACH '" + dbDriveFile.path + "' AS " + DATABASE_BookTaskTodoListAttach)
+                dbAttach.endTransaction()
                 return dbAttach
             }
 
