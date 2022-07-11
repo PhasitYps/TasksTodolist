@@ -15,43 +15,59 @@
             android:orientation="vertical"
             android:paddingBottom="20dp">
 
-            <LinearLayout
+            <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/colorWhite"
-                android:orientation="horizontal"
-                android:padding="15dp"
+                app:cardElevation="0dp"
+                app:cardCornerRadius="15dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginEnd="20dp"
+                android:layout_marginTop="10dp"
+                app:cardBackgroundColor="?attr/colorPrimary"
                 >
-
-                <ImageView
-                    android:id="@+id/calLeftIV"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_sort_left_filled" />
-
-                <TextView
-                    android:id="@+id/dateTV"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:orientation="horizontal"
                     android:padding="10dp"
-                    android:text="9 มีนาคม 2564"
-                    android:textColor="@color/colorBlack"
-                    android:textStyle="bold" />
+                    >
 
-                <ImageView
-                    android:id="@+id/calRightIV"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_gravity="center"
-                    android:background="?attr/selectableItemBackgroundBorderless"
-                    android:padding="10dp"
-                    android:src="@drawable/ic_sort_right_filled" />
+                    <ImageView
+                        android:id="@+id/calLeftIV"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_sort_left_filled"
+                        app:tint="@color/colorWhiteDarkDark"/>
 
-            </LinearLayout>
+                    <TextView
+                        android:id="@+id/dateTV"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:padding="10dp"
+                        android:text="9 มีนาคม 2564"
+                        android:textSize="18dp"
+                        android:textColor="?attr/colorAccent"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/calRightIV"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_gravity="center"
+                        android:background="?attr/selectableItemBackgroundBorderless"
+                        android:padding="10dp"
+                        android:src="@drawable/ic_sort_right_filled"
+                        app:tint="@color/colorWhiteDarkDark"/>
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -67,19 +83,30 @@
                     android:orientation="vertical"
                     android:paddingTop="10dp">
 
-                    <com.github.sundeepk.compactcalendarview.CompactCalendarView
-                        android:id="@+id/calCCV"
-                        android:layout_width="fill_parent"
-                        android:layout_height="250dp"
-                        app:compactCalendarBackgroundColor="@color/colorWhite"
-                        app:compactCalendarCurrentDayBackgroundColor="@color/colorWhite"
-                        app:compactCalendarCurrentDayTextColor="?attr/colorAccent"
-                        app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorAccent"
-                        app:compactCalendarCurrentSelectedDayTextColor="@color/colorWhite"
-                        app:compactCalendarMultiEventIndicatorColor="#fff"
-                        app:compactCalendarTargetHeight="250dp"
-                        app:compactCalendarTextColor="@color/colorBlack"
-                        app:compactCalendarTextSize="14dp" />
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:cardBackgroundColor="?attr/colorPrimary"
+                        app:cardCornerRadius="15dp"
+                        app:cardElevation="0dp"
+                        >
+                        <com.github.sundeepk.compactcalendarview.CompactCalendarView
+                            android:id="@+id/calCCV"
+                            android:layout_width="fill_parent"
+                            android:layout_height="250dp"
+                            app:compactCalendarBackgroundColor="#00FFFFFF"
+                            app:compactCalendarCurrentDayBackgroundColor="?attr/colorPrimary"
+                            app:compactCalendarCurrentDayTextColor="?attr/colorAccent"
+                            app:compactCalendarCurrentSelectedDayBackgroundColor="?attr/colorAccent"
+                            app:compactCalendarCurrentSelectedDayTextColor="@color/colorWhite"
+                            app:compactCalendarMultiEventIndicatorColor="#fff"
+                            app:compactCalendarTargetHeight="250dp"
+                            app:compactCalendarTextColor="@color/colorWhiteDarkDark"
+                            app:compactCalendarTextSize="14dp"
+                            android:layout_margin="10dp"
+                            />
+
+                    </androidx.cardview.widget.CardView>
 
                     <com.google.android.material.chip.ChipGroup
                         android:id="@+id/selectDayCG"

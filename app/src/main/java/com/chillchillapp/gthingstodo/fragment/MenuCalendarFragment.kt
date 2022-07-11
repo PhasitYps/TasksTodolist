@@ -774,7 +774,8 @@ class MenuCalendarFragment : BaseFragment(R.layout.fragment_calendar)  {
         val monthSelect = date!!.month
 
         if(monthCurrent == monthSelect){
-            this.setTextColor(ContextCompat.getColor(activity!!, R.color.colorBlack))
+            //this.setTextColor(ContextCompat.getColor(activity!!, R.color.colorBlack))
+            this.setTextColor(themeColor(activity!!, R.attr.colorAccent))
         }else{
             this.setTextColor(ContextCompat.getColor(activity!!, R.color.colorWhiteDarkDark))
         }
