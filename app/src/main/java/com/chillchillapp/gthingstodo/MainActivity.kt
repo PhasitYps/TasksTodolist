@@ -369,12 +369,17 @@ class MainActivity : BaseActivity() , Communicator{
                 menuStatisticsIV.setBackgroundResource(R.drawable.ic_statistics)
                 menuMenuIV.setBackgroundResource(R.drawable.ic_menu)
 
+                //set color image
                 menuTaskIV.background.setTint(themeColor(R.attr.colorAccent))
+                menuCalendarIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuStatisticsIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuMenuIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
 
+                //set color text
                 menuTaskTV.setTextColor(themeColor(R.attr.colorAccent))
-                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
 
                 val bundle = Bundle()
                 bundle.putString("categoryId", categoryId)
@@ -394,12 +399,16 @@ class MainActivity : BaseActivity() , Communicator{
                 menuStatisticsIV.setBackgroundResource(R.drawable.ic_statistics)
                 menuMenuIV.setBackgroundResource(R.drawable.ic_menu)
 
-                menuCalendarIV.background.setTint(themeColor(R.attr.colorAccent))
 
-                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuTaskIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuCalendarIV.background.setTint(themeColor(R.attr.colorAccent))
+                menuStatisticsIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuMenuIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
                 menuCalendarTV.setTextColor(themeColor(R.attr.colorAccent))
-                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
 
                 supportFragmentManager.beginTransaction().apply {
                     replace(R.id.fragment_container, MenuCalendarFragment())
@@ -413,12 +422,15 @@ class MainActivity : BaseActivity() , Communicator{
                 menuStatisticsIV.setBackgroundResource(R.drawable.ic_statistics_press)
                 menuMenuIV.setBackgroundResource(R.drawable.ic_menu)
 
+                menuTaskIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuCalendarIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
                 menuStatisticsIV.background.setTint(themeColor(R.attr.colorAccent))
+                menuMenuIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
 
-                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
                 menuStatisticsTV.setTextColor(themeColor(R.attr.colorAccent))
-                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuMenuTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
 
 
                 supportFragmentManager.beginTransaction().apply {
@@ -433,11 +445,15 @@ class MainActivity : BaseActivity() , Communicator{
                 menuStatisticsIV.setBackgroundResource(R.drawable.ic_statistics)
                 menuMenuIV.setBackgroundResource(R.drawable.ic_menu_press)
 
+
+                menuTaskIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuCalendarIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuStatisticsIV.background.setTint(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
                 menuMenuIV.background.setTint(themeColor(R.attr.colorAccent))
 
-                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
-                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorBlack))
+                menuTaskTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuCalendarTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
+                menuStatisticsTV.setTextColor(ContextCompat.getColor(this, R.color.colorWhiteDarkDark))
                 menuMenuTV.setTextColor(themeColor(R.attr.colorAccent))
 
                 supportFragmentManager.beginTransaction().apply {
