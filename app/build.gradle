@@ -116,7 +116,7 @@ dependencies {
       }*/
 
     //Json
-    implementation 'com.google.code.gson:gson:2.8.8' // Old 2.8.6
+    //implementation 'com.google.code.gson:gson:2.8.8' // Old 2.8.6
 
     //implementation 'com.gauravk.audiovisualizer:audiovisualizer:0.9.2'
 
