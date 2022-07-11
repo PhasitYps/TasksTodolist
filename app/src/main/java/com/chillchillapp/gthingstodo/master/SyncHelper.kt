@@ -102,7 +102,7 @@ class SyncHelper(private val activity: Activity) {
 
                 return Result.success(workDataOf("Process" to 40))
             }catch (e: Exception){
-                Log.d("SyncHelper", "Exception: " + e)
+                Log.d("hhjjjjjhhhhh", "Exception: " + e)
                 return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
             }
 
@@ -176,7 +176,6 @@ class SyncHelper(private val activity: Activity) {
 
             }
         }
-
 
         class SyncingWorker(private var context: Context, workerParams: WorkerParameters): Worker(context, workerParams){
 
@@ -452,9 +451,10 @@ class SyncHelper(private val activity: Activity) {
 
                     driveHelper.update(databaseId!!, dbLocal, driveHelper.MIME_TYPE_SQLite3)
 
+                    Log.d("hhjjjjjhhhhh", "UploadWorker finish")
                     return Result.success(workDataOf("Process" to 100))
                 }catch (e: Exception){
-                    Log.d("hhjjjjjhhhhh", "UploadWorker: "  + e)
+                    Log.d("hhjjjjjhhhhh", "UploadWorker error: "  + e)
                     return Result.failure(workDataOf(KEY_FAIL to KEY_FAIL))
                 }
 

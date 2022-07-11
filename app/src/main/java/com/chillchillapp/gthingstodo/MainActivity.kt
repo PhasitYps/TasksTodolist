@@ -209,7 +209,7 @@ class MainActivity : BaseActivity() , Communicator{
 
                                 if (valueMax == 100) {
 
-                                    if (message == KEY_FAIL) {
+                                    if (message != KEY_FAIL) {
                                         changeMenu(fragmentCurrent)
                                         hideProcessSyncing()
 
