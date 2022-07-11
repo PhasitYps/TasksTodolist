@@ -8,7 +8,7 @@
     app:cardCornerRadius="10dp"
     android:layout_margin="5dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:cardBackgroundColor="?attr/colorPrimary"
+    app:cardBackgroundColor="@color/colorWhiteDark"
     >
 
     <LinearLayout

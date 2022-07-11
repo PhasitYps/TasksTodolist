@@ -346,7 +346,7 @@ class AdapTask(private val activity: Activity, private var taskList: ArrayList<M
         when(state){
             "done"->{
 
-                holder.stateIV.setColorFilter(themeColor(activity, R.attr.colorAccent))
+                holder.stateIV.setColorFilter(ContextCompat.getColor(activity, R.color.colorWhiteDarkDark))
                 holder.stateIV.setImageDrawable(ContextCompat.getDrawable(activity, R.drawable.ic_ok_filled))
                 holder.nameTV.setTextColor(ContextCompat.getColor(activity, R.color.colorWhiteDarkDark))
 
