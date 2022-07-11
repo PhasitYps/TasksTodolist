@@ -166,21 +166,21 @@ class MainActivity : BaseActivity() , Communicator{
 
                         var message = ""
                         WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(KEY_SYNC)
-                            .observe(this, { workInfoList->
+                            .observe(this) { workInfoList ->
 
                                 d("ffffgdd", "Work Live Data: " + workInfoList.size)
                                 val processList = ArrayList<Int>()
 
                                 workInfoList.forEach {
 
-                                    if(it.state.isFinished){
+                                    if (it.state.isFinished) {
                                         val fail = it.outputData.getString(KEY_FAIL)
 
-                                        if(fail == KEY_FAIL){
+                                        if (fail == KEY_FAIL) {
                                             message = KEY_FAIL
                                             processList.add(100)
                                             return@forEach
-                                        }else{
+                                        } else {
                                             val process = it.outputData.getInt("Process", 0)
                                             processList.add(process)
                                             d("ffffgdd", "Process: $process")
@@ -193,21 +193,25 @@ class MainActivity : BaseActivity() , Communicator{
                                 progressBarHelper?.setProcess(valueMax)
                                 d("ffffgdd", "valueMax: $valueMax")
 
-                                if(valueMax == 100){
+                                if (valueMax == 100) {
 
-                                    if(message == KEY_FAIL){
+                                    if (message == KEY_FAIL) {
                                         changeMenu(fragmentCurrent)
                                         hideProcessSyncing()
 
                                         prefs!!.longLastAutoSync = System.currentTimeMillis()
-                                        Toast.makeText(this, getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this,
+                                            getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account),
+                                            Toast.LENGTH_SHORT).show()
 
-                                    }else{
+                                    } else {
                                         hideProcessSyncing()
-                                        Toast.makeText(this, getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
+                                        Toast.makeText(this,
+                                            getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account),
+                                            Toast.LENGTH_SHORT).show()
                                     }
                                 }
-                            })
+                            }
 
                     }else{
                         hideProcessSyncing()

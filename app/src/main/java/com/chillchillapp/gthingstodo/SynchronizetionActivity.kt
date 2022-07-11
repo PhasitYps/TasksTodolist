@@ -55,58 +55,61 @@ class SynchronizetionActivity : BaseActivity() {
 
         valueMax = 0
         message = ""
-        WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(KEY_SYNC).observe(
-            this, { workInfoList->
+        WorkManager.getInstance(this).getWorkInfosForUniqueWorkLiveData(KEY_SYNC)
+            .observe(this) { workInfoList ->
 
-                d("ffffgdd", "Work Live Data: " + workInfoList.size)
-                val processList = ArrayList<Int>()
-                workInfoList.forEach {
+            d("ffffgdd", "Work Live Data: " + workInfoList.size)
+            val processList = ArrayList<Int>()
+            workInfoList.forEach {
 
-                    if(it.state.isFinished){
+                if (it.state.isFinished) {
 
-                        val fail = it.outputData.getString(KEY_FAIL)
+                    val fail = it.outputData.getString(KEY_FAIL)
 
-                        if(fail == KEY_FAIL){
-                            message = KEY_FAIL
-                            processList.add(100)
-                            return@forEach
-                        }else{
-                            val process = it.outputData.getInt("Process", 0)
-                            processList.add(process)
+                    if (fail == KEY_FAIL) {
+                        message = KEY_FAIL
+                        processList.add(100)
+                        return@forEach
+                    } else {
+                        val process = it.outputData.getInt("Process", 0)
+                        processList.add(process)
 
-                            d("ffffgdd", "Process: $process")
-                        }
-
-                    }
-                }
-                val value = max(processList)
-
-                if(value > valueMax){
-                    valueMax = max(processList)
-                    dialog_sync_process?.setProcess(valueMax)
-
-                    d("ffffgdd", "valueMax: $valueMax")
-                }
-
-                //finish
-                if(valueMax == 100){
-
-                    if(message != KEY_FAIL){
-
-                        prefs!!.longLastAutoSync = System.currentTimeMillis()
-                        setTextLastSyncTime()
-                        Toast.makeText(this, getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
-                    }else{
-                        Toast.makeText(this, getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account), Toast.LENGTH_SHORT).show()
+                        d("ffffgdd", "Process: $process")
                     }
 
-                    var endTime = System.currentTimeMillis()
-                    d("hhjjjjjhhhhh", "start time: " + formatDate("HH:mm:ss", Date(startTime)))
-                    d("hhjjjjjhhhhh", "end time: " + formatDate("HH:mm:ss", Date(endTime)))
-                    d("hhjjjjjhhhhh", "Time: " + (endTime - startTime)/1000 + " sec." )
                 }
             }
-        )
+            val value = max(processList)
+
+            if (value > valueMax) {
+                valueMax = max(processList)
+                dialog_sync_process?.setProcess(valueMax)
+
+                d("ffffgdd", "valueMax: $valueMax")
+            }
+
+            //finish
+            if (valueMax == 100) {
+
+                if (message != KEY_FAIL) {
+
+                    prefs!!.longLastAutoSync = System.currentTimeMillis()
+                    setTextLastSyncTime()
+                    Toast.makeText(this,
+                        getString(R.string.The_work_hasbeen_synced_to_your_google_dive_account),
+                        Toast.LENGTH_SHORT).show()
+                } else {
+                    Toast.makeText(this,
+                        getString(R.string.Failed_to_sync_tasks_to_your_google_dive_account),
+                        Toast.LENGTH_SHORT).show()
+                }
+
+                var endTime = System.currentTimeMillis()
+                d("hhjjjjjhhhhh", "start time: " + formatDate("HH:mm:ss", Date(startTime)))
+                d("hhjjjjjhhhhh", "end time: " + formatDate("HH:mm:ss", Date(endTime)))
+                d("hhjjjjjhhhhh", "Time: " + (endTime - startTime) / 1000 + " sec.")
+            }
+        }
 
     }
 
