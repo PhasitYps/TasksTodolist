@@ -18,8 +18,8 @@ android {
         applicationId "com.chillchillapp.gthingstodo"
         minSdkVersion 21
         targetSdkVersion 30
-        versionCode 3 //7/11/2022
-        versionName "1.1.0"
+        versionCode 4 // 7/11/2022-10:18
+        versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
