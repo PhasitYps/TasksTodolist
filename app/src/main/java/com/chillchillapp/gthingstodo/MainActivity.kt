@@ -1,7 +1,9 @@
 package com.chillchillapp.gthingstodo
 
+import android.annotation.SuppressLint
 import android.app.*
 import android.content.Intent
+import android.content.IntentSender
 import android.os.Build
 import android.os.Bundle
 import android.util.Log
@@ -22,6 +24,9 @@ import com.chillchillapp.gthingstodo.fragment.MenuStatisticsFragment
 import com.chillchillapp.gthingstodo.fragment.MenuTaskFragment
 import com.chillchillapp.gthingstodo.master.*
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.play.core.appupdate.AppUpdateManagerFactory
+import com.google.android.play.core.install.model.AppUpdateType
+import com.google.android.play.core.install.model.UpdateAvailability
 import com.google.api.client.extensions.android.http.AndroidHttp
 import com.google.api.client.googleapis.extensions.android.gms.auth.GoogleAccountCredential
 import com.google.api.client.json.jackson2.JacksonFactory
@@ -31,9 +36,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_main.bgSyncingLL
 import kotlinx.android.synthetic.main.activity_main.syncProgressBar
 import kotlinx.android.synthetic.main.dialog_leaveapp.*
-import kotlinx.android.synthetic.main.view_notification_pin_reminder.*
 import uk.co.samuelwall.materialtaptargetprompt.MaterialTapTargetPrompt
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MainActivity : BaseActivity() , Communicator{
@@ -49,19 +52,30 @@ class MainActivity : BaseActivity() , Communicator{
         showPinReminderNotification()
 
 
+        checkLerningApp()
+        checkAutoSync()
+        changeMenu("task")
+        setEvent()
+
+        d("hhjjjjjhhhhh", "app run")
+    }
+
+    override fun onResume() {
+        super.onResume()
+        setUpdateReminder()
+        checkForUpdateAvailability()
+    }
+
+    override fun onBackPressed() {
+        showLeaveDialog()
+    }
+
+    private fun checkLerningApp(){
         if(prefs!!.strLerningAddTask == "No"){//new user app
             showLerningAddTaskTarget()
         }else if(prefs!!.strLerningAddTask == "Yes" || prefs!!.strLerningCategory == "Yes"){
             showAdsDialog()
         }
-
-
-        setAutoSync()
-        changeMenu("task")
-        setEvent()
-
-        d("hhjjjjjhhhhh", "app run")
-
     }
 
     private fun showLerningAddTaskTarget(){
@@ -150,7 +164,7 @@ class MainActivity : BaseActivity() , Communicator{
         FLAG_UPDATE_CURRENT คือ ถ้ามีอยู่แล้ว จะทำการไปอัพเดท*/
     }
 
-    private fun setAutoSync(){
+    private fun checkAutoSync(){
 
         getDriveService().let { drive->
             if(drive != null){
@@ -265,14 +279,7 @@ class MainActivity : BaseActivity() , Communicator{
         return value
     }
 
-    override fun onResume() {
-        super.onResume()
-        setUpdateReminder()
-    }
 
-    override fun onBackPressed() {
-        showLeaveDialog()
-    }
 
     override fun OnSelectCategory(cateId: String) {
         categoryId = cateId
@@ -445,5 +452,42 @@ class MainActivity : BaseActivity() , Communicator{
         val notificationManageMaster = NotificationHelper(this)
         notificationManageMaster.setUpdateReminder()
 
+    }
+
+    private val REQUEST_UPDATE_APP_AVAILABILITY = 1001
+    private fun checkForUpdateAvailability(){
+        val appUpdateManager = AppUpdateManagerFactory.create(this)
+
+        // Returns an intent object that you use to check for an update.
+        val appUpdateInfoTask = appUpdateManager.appUpdateInfo
+
+        // Checks that the platform will allow the specified type of update.
+        appUpdateInfoTask.addOnSuccessListener { appUpdateInfo ->
+            if (appUpdateInfo.updateAvailability() == UpdateAvailability.UPDATE_AVAILABLE
+                && appUpdateInfo.isUpdateTypeAllowed(AppUpdateType.IMMEDIATE)) {
+                // Request the update.
+                d("hhjjjjjhhhhh", "UPDATE_AVAILABLE")
+
+                try{
+                    appUpdateManager.startUpdateFlowForResult(appUpdateInfo, AppUpdateType.IMMEDIATE, this,
+                        REQUEST_UPDATE_APP_AVAILABILITY)
+                }catch (e: IntentSender.SendIntentException){
+                    d("hhjjjjjhhhhh", "checkForUpdateAvailability: " + e.message)
+                }
+            }
+        }
+
+    }
+
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == REQUEST_UPDATE_APP_AVAILABILITY) {
+            if (resultCode != RESULT_OK) {
+                Log.e("MY_APP", "Update flow failed! Result code: $resultCode")
+                // If the update is cancelled or fails,
+                // you can request to start the update again.
+            }
+        }
     }
 }

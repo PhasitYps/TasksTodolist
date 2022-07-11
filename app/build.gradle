@@ -132,6 +132,9 @@ dependencies {
     //ads
     implementation 'com.google.android.gms:play-services-ads:21.0.0'
 
+    //check for update availability
+    implementation("com.google.android.play:app-update-ktx:2.0.0")
+
 
 
 }
