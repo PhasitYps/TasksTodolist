@@ -10,7 +10,7 @@ import android.view.Window
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.chillchillapp.gthingstodo.R
-import com.chillchillapp.gthingstodo.master.GPSManage
+import com.chillchillapp.gthingstodo.master.GPSManager
 import com.chillchillapp.gthingstodo.master.Prefs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
@@ -23,6 +23,7 @@ import kotlinx.android.synthetic.main.dialog_set_location.*
 
 class SetLocationDialog(private var activity: Activity, private var latLng: LatLng):Dialog(activity) {
 
+    //-------------------* not use *-------------------------------------------------------------------------------------------------
     private var l:MyEvent? = null
     interface MyEvent{
         fun onMySelect(latLng: LatLng)
@@ -33,7 +34,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
     }
 
     private var prefs = Prefs(activity)
-    private var gpsManager = GPSManage(activity)
+    private var gpsManager = GPSManager(activity)
 
     private lateinit var mMap: GoogleMap
     private var latitude: Double? = null
@@ -63,8 +64,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
 
         initMap()
 
-
-        gpsManager.setMyEvent(object : GPSManage.MyEvent{
+        gpsManager.setMyEvent(object : GPSManager.MyEvent{
             override fun onLocationChanged(currentLocation: Location) {
                 latitude = currentLocation.latitude
                 longitude = currentLocation.longitude
@@ -119,7 +119,7 @@ class SetLocationDialog(private var activity: Activity, private var latLng: LatL
         }
 
         currentFab.setOnClickListener {
-            gpsManager.requestGPS()
+            gpsManager.requestLocation()
         }
 
         backRL.setOnClickListener {

@@ -75,9 +75,7 @@ import kotlin.collections.ArrayList
 import android.net.NetworkInfo
 
 import android.net.ConnectivityManager
-
-
-
+import androidx.activity.result.contract.ActivityResultContracts
 
 
 class InputTasksActivity : BaseActivity() {
@@ -324,7 +322,7 @@ class InputTasksActivity : BaseActivity() {
 
             val myLocation = LatLng(latitude!!, longitude!!)
             mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_100)))
-            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
+            mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, zoom))
 
 
         }
@@ -445,6 +443,7 @@ class InputTasksActivity : BaseActivity() {
     private val TYPE_WEEK = "week"
     private val TYPE_MONTH = "month"
     private val TYPE_YEAR = "year"
+    private val zoom = 17f
     private fun updateUI(){
 
         when(isSetDueDate()){
@@ -547,7 +546,7 @@ class InputTasksActivity : BaseActivity() {
                     mMap!!.clear()
                     val myLocation = LatLng(latitude!!, longitude!!)
                     mMap!!.addMarker(MarkerOptions().position(myLocation).icon(bitmapDescriptorFromDrawable(this, R.drawable.ic_pin_100)))
-                    mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 14f))
+                    mMap!!.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation, zoom))
                 }
                 stateLocationTV.text = getString(R.string.Edit)
                 placeTV.text = place
@@ -598,7 +597,18 @@ class InputTasksActivity : BaseActivity() {
         settingLocationRL.setOnClickListener {
 
             if(isNetworkAvailable()){
-                setLocationDialog()
+                val intent = Intent(this, SetCoordinateActivity::class.java)
+                if(latitude != null && longitude != null){
+                    intent.putExtra(KEY_LAT, latitude)
+                    intent.putExtra(KEY_LNG, longitude)
+                }else{
+//                    val lat = prefs!!.floatLastLat.toDouble()
+//                    val lng = prefs!!.floatLastLng.toDouble()
+                }
+                resultForActivity.launch(intent)
+
+                //end
+                //setLocationDialog()
             }else{
                 Toast.makeText(this, getString(R.string.Please_check_your_network), Toast.LENGTH_SHORT).show()
             }
@@ -627,6 +637,33 @@ class InputTasksActivity : BaseActivity() {
             latitude = null
             longitude = null
             place = null
+            updateUI()
+        }
+    }
+
+    private val resultForActivity = registerForActivityResult(ActivityResultContracts.StartActivityForResult()){
+        if (it.resultCode == RESULT_OK){
+            val intent = it.data!!
+            latitude = intent.getDoubleExtra(KEY_LAT, 0.0)
+            longitude = intent.getDoubleExtra(KEY_LNG, 0.0)
+
+            var geocoder = Geocoder(this@InputTasksActivity, Locale.getDefault())
+            val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
+            var address = ""
+            address = if (addresses.isNotEmpty()) {
+                var city = addresses[0].locality
+                var area = addresses[0].subAdminArea
+                var state = addresses[0].adminArea
+                var postalCode = addresses[0].postalCode
+                var address = addresses[0].getAddressLine(0)
+
+                if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
+
+            } else {
+                latitude.toString() +", " + longitude.toString()
+            }
+
+            place = address
             updateUI()
         }
     }
@@ -1339,48 +1376,48 @@ class InputTasksActivity : BaseActivity() {
         })
     }
 
-    private fun setLocationDialog(){
-
-        var dialog: SetLocationDialog? = null
-        if(latitude != null && longitude != null){
-            dialog = SetLocationDialog(this, LatLng(latitude!!, longitude!!))
-        }else{
-            val lat = prefs!!.floatLastLat.toDouble()
-            val lng = prefs!!.floatLastLng.toDouble()
-            dialog = SetLocationDialog(this, LatLng(lat, lng))
-        }
-
-        dialog.setMyEvent(object : SetLocationDialog.MyEvent{
-            override fun onMySelect(latLng: LatLng) {
-                latitude = latLng.latitude
-                longitude = latLng.longitude
-
-                var geocoder = Geocoder(this@InputTasksActivity, Locale.getDefault())
-                val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
-                var address = ""
-                address = if (addresses.isNotEmpty()) {
-                    var city = addresses[0].locality
-                    var area = addresses[0].subAdminArea
-                    var state = addresses[0].adminArea
-                    var postalCode = addresses[0].postalCode
-                    var address = addresses[0].getAddressLine(0)
-
-                    if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
-
-                } else {
-                    latitude.toString() +", " + longitude.toString()
-                }
-
-                place = address
-                updateUI()
-            }
-
-        })
-        dialog.show()
-
-
-
-    }
+//    private fun setLocationDialog(){
+//
+//        var dialog: SetLocationDialog? = null
+//        if(latitude != null && longitude != null){
+//            dialog = SetLocationDialog(this, LatLng(latitude!!, longitude!!))
+//        }else{
+//            val lat = prefs!!.floatLastLat.toDouble()
+//            val lng = prefs!!.floatLastLng.toDouble()
+//            dialog = SetLocationDialog(this, LatLng(lat, lng))
+//        }
+//
+//        dialog.setMyEvent(object : SetLocationDialog.MyEvent{
+//            override fun onMySelect(latLng: LatLng) {
+//                latitude = latLng.latitude
+//                longitude = latLng.longitude
+//
+//                var geocoder = Geocoder(this@InputTasksActivity, Locale.getDefault())
+//                val addresses = geocoder.getFromLocation(latitude!!, longitude!!, 1) as List<Address>
+//                var address = ""
+//                address = if (addresses.isNotEmpty()) {
+//                    var city = addresses[0].locality
+//                    var area = addresses[0].subAdminArea
+//                    var state = addresses[0].adminArea
+//                    var postalCode = addresses[0].postalCode
+//                    var address = addresses[0].getAddressLine(0)
+//
+//                    if (city != null && area != null) "$city $area \n$state $postalCode" else "$address"
+//
+//                } else {
+//                    latitude.toString() +", " + longitude.toString()
+//                }
+//
+//                place = address
+//                updateUI()
+//            }
+//
+//        })
+//        dialog.show()
+//
+//
+//
+//    }
 
     private var dataNameCategoty = ""
     private var dataImageInByte: ByteArray? = null

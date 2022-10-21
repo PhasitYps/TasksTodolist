@@ -48,5 +48,7 @@ val KEY_FAIL = "fail"
 val KEY_STATUS_REMOVE = "remove"
 val KEY_STATUS_ACTIVE = "active"
 
+val KEY_LAT = "lat"
+val KEY_LNG = "lng"
 
 

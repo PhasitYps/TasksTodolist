@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    tools:context=".SetCoordinateActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -57,12 +60,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         >
-        <com.google.android.gms.maps.MapView
-            android:id="@+id/mapView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
 
-        </com.google.android.gms.maps.MapView>
+        <fragment
+            android:id="@+id/mapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:name="com.google.android.gms.maps.SupportMapFragment"/>
 
         <ImageView
             android:layout_width="48dp"
@@ -131,7 +134,6 @@
                 />
 
         </LinearLayout>
-
 
     </RelativeLayout>
 

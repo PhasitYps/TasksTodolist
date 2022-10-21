@@ -42,6 +42,7 @@
         <activity android:name=".SelectSymbol" />
         <activity android:name=".InputTasksActivity" />
         <activity android:name=".LoginActivity" />
+        <activity android:name=".SetCoordinateActivity" />
         <activity android:name=".MainActivity" />
 
         <activity android:name=".CheckPermission"

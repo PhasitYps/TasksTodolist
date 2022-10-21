@@ -227,5 +227,5 @@
     <string name="thirty_minutes_in_advance">30 minutes in advance</string>
     <string name="a_day_ago">1 day ago</string>
     <string name="two_days_ago">2 days ago</string>
-
+    <string name="Please_open_location">Please open location</string>
 </resources>

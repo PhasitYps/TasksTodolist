@@ -206,5 +206,6 @@
     <string name="thirty_minutes_in_advance">ล่วงหน้า 30 นาที</string>
     <string name="a_day_ago">1 วันที่แล้ว</string>
     <string name="two_days_ago">2 วันที่แล้ว</string>
+    <string name="Please_open_location">กรุณาเปิดตำแหน่งของคุณ</string>
 
 </resources>

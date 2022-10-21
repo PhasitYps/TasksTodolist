@@ -213,5 +213,6 @@
     <string name="thirty_minutes_in_advance">30 minutes à l\'avance</string>
     <string name="a_day_ago">il y a 1 jour</string>
     <string name="two_days_ago">il y a 2 jours</string>
+    <string name="Please_open_location">Veuillez ouvrir l\'emplacement</string>
 
 </resources>
