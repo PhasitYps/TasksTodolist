@@ -5,6 +5,7 @@ import android.app.Activity
 import android.app.Dialog
 import android.net.Uri
 import android.view.Window
+import com.bumptech.glide.Glide
 import com.chillchillapp.gthingstodo.R
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.dialog_zoom_image.*
@@ -21,7 +22,7 @@ class ZoomImageDialog(private var activity: Activity, private var imageUri: Uri)
         setCancelable(true)
         show()
 
-        Picasso.get().load(imageUri).into(zoomImageZV)
+        Glide.with(activity).load(imageUri).into(zoomImageZV)
 
         backIV.setOnClickListener {
             dismiss()
