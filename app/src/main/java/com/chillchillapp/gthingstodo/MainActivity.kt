@@ -44,16 +44,6 @@ class MainActivity : BaseActivity() , Communicator{
 
     private var categoryId: String = ""
 
-    override fun attachBaseContext(newBase: Context) {
-
-        val prefs = Prefs(newBase)
-        val languageCode = prefs.strCurrentLanguage!!
-        Log.i("hhjjjjjhhhhh", "attachBaseContext languageCode: $languageCode")
-        val context = LanguageConfig().changeLanguage(newBase, languageCode)
-
-        super.attachBaseContext(context)
-    }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()

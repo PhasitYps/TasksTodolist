@@ -7,10 +7,12 @@ import android.net.NetworkCapabilities
 import android.net.Uri
 import android.os.Build
 import android.os.LocaleList
+import android.util.Log
 import android.util.TypedValue
 import androidx.annotation.AttrRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.chillchillapp.gthingstodo.master.LanguageConfig
 import com.chillchillapp.gthingstodo.master.Prefs
 import java.io.File
 import java.text.SimpleDateFormat
@@ -22,6 +24,16 @@ open class BaseActivity: AppCompatActivity() {
 
     /*var sp: SharedPreferences? = null
     var editor: SharedPreferences.Editor? = null*/
+
+    override fun attachBaseContext(newBase: Context) {
+
+        val prefs = Prefs(newBase)
+        val languageCode = prefs.strCurrentLanguage!!
+        Log.i("hhjjjjjhhhhh", "attachBaseContext languageCode: $languageCode")
+        val context = LanguageConfig().changeLanguage(newBase, languageCode)
+
+        super.attachBaseContext(context)
+    }
 
     var prefs: Prefs? = null
 
