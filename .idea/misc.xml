@@ -63,6 +63,7 @@
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/drawable/bg_radius_10_black.xml" value="0.2703125" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/drawable/bg_radius_10_white_dark.xml" value="0.2703125" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/drawable/bg_radius_5.xml" value="0.14635416666666667" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/drawable/bg_radius_top_white.xml" value="0.165" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/drawable/ic_my_location.xml" value="0.2703125" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_ads_dialog.xml" value="0.21739130434782608" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_authentication.xml" value="0.21739130434782608" />
@@ -74,13 +75,18 @@
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_synchronizetion.xml" value="0.4" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_theme_look.xml" value="0.12545289855072464" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/activity_upgrade_premium.xml" value="0.264" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/bottom_sheet_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/custom_gridview_symbol.xml" value="0.21331521739130435" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/custom_listview_bottomsheet_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_ads.xml" value="0.176" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_ads1.xml" value="0.21739130434782608" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_due_date.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_leaveapp.xml" value="0.21739130434782608" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_process_sync.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_set_coordinate.xml" value="0.136" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_set_location.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/fragment_calendar.xml" value="0.2" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/dialog_set_repeat.xml" value="0.23505434782608695" />
+        <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/fragment_calendar.xml" value="0.1" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/fragment_menu.xml" value="0.21331521739130435" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/fragment_statistics.xml" value="0.264" />
         <entry key="..\:/Users/1903/AndroidStudioProjects/TasksTodolist/app/src/main/res/layout/fragment_task.xml" value="0.4" />

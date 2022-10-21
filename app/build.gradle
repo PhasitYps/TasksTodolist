@@ -83,11 +83,11 @@ dependencies {
 //    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
 //    implementation 'com.google.firebase:firebase-auth:21.0.1'
 
-    implementation 'com.google.android.gms:play-services-auth:20.2.0' //20.0.0
+    implementation 'com.google.android.gms:play-services-auth:20.3.0' //20.0.0
 
     //google map api
-    implementation 'com.google.android.gms:play-services-maps:18.0.2'
-    implementation 'com.google.android.gms:play-services-location:20.0.0'
+    implementation 'com.google.android.gms:play-services-maps:18.1.0'
+    implementation 'com.google.android.gms:play-services-location:21.0.0'
     implementation 'com.google.android.gms:play-services-places:17.0.0'
 
     //calendar
@@ -130,7 +130,7 @@ dependencies {
     implementation 'uk.co.samuelwall:material-tap-target-prompt:3.3.2'
 
     //ads
-    implementation 'com.google.android.gms:play-services-ads:21.0.0'
+    implementation 'com.google.android.gms:play-services-ads:21.3.0'
 
     //check for update availability
     implementation("com.google.android.play:app-update-ktx:2.0.0")

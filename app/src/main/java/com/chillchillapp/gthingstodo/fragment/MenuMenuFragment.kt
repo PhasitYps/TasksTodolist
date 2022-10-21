@@ -21,6 +21,8 @@ class MenuMenuFragment : BaseFragment(R.layout.fragment_menu)  {
         initBase()
 
         setEvent()
+
+
     }
 
     override fun onResume() {

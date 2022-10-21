@@ -27,7 +27,6 @@ class LoginActivity: BaseActivity() {
     private var myUserRef: CollectionReference? = null
 
     private val RC_SIGN_IN = 1
-    private var dialog_load: Dialog? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -68,6 +67,7 @@ class LoginActivity: BaseActivity() {
 
     }
 
+    private var dialog_load: Dialog? = null
     private fun initDialogLoad(){
         dialog_load = Dialog(this)
         dialog_load!!.requestWindowFeature(Window.FEATURE_NO_TITLE)
@@ -111,7 +111,6 @@ class LoginActivity: BaseActivity() {
     }
 
     private fun signIn() {
-
         val signInOptions = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.web_client_id))
             .requestEmail()

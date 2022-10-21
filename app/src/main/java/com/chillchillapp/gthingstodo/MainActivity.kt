@@ -64,6 +64,8 @@ class MainActivity : BaseActivity() , Communicator{
         super.onResume()
         setUpdateReminder()
         checkForUpdateAvailability()
+
+        showAdsDialog()
     }
 
     override fun onBackPressed() {
@@ -74,7 +76,7 @@ class MainActivity : BaseActivity() , Communicator{
         if(prefs!!.strLerningAddTask == "No"){//new user app
             showLerningAddTaskTarget()
         }else if(prefs!!.strLerningAddTask == "Yes" || prefs!!.strLerningCategory == "Yes"){
-            showAdsDialog()
+
         }
     }
 
@@ -278,8 +280,6 @@ class MainActivity : BaseActivity() , Communicator{
         }
         return value
     }
-
-
 
     override fun OnSelectCategory(cateId: String) {
         categoryId = cateId
