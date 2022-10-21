@@ -24,25 +24,27 @@
         android:theme="@style/BlueTheme">
 
         <activity
-            android:name="com.chillchillapp.gthingstodo.InitiateLanguageActivity"
+            android:name=".InitiateLanguageActivity"
             android:exported="false" />
         <activity
-            android:name="com.chillchillapp.gthingstodo.SynchronizetionActivity"
+            android:name=".SynchronizetionActivity"
             android:exported="false" />
-        <activity android:name="com.chillchillapp.gthingstodo.LanguageActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.HistoryActivity" />
+        <activity android:name=".LanguageActivity" />
+        <activity android:name=".HistoryActivity" />
         <activity
-            android:name="com.chillchillapp.gthingstodo.ThemeLookActivity"
+            android:name=".ThemeLookActivity"
             android:theme="@style/DarkTheme" />
-        <activity android:name="com.chillchillapp.gthingstodo.ThemeActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.FavoriteActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.UpgradePremium" />
-        <activity android:name="com.chillchillapp.gthingstodo.CategoryActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.SelectSymbol" />
-        <activity android:name="com.chillchillapp.gthingstodo.InputTasksActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.LoginActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.MainActivity" />
-        <activity android:name="com.chillchillapp.gthingstodo.CheckPermission">
+        <activity android:name=".ThemeActivity" />
+        <activity android:name=".FavoriteActivity" />
+        <activity android:name=".UpgradePremium" />
+        <activity android:name=".CategoryActivity" />
+        <activity android:name=".SelectSymbol" />
+        <activity android:name=".InputTasksActivity" />
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MainActivity" />
+
+        <activity android:name=".CheckPermission"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -50,7 +52,7 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name="com.chillchillapp.gthingstodo.master.MyCustomReceiver" /> <!-- google drive -->
+        <receiver android:name=".master.MyCustomReceiver" /> <!-- google drive -->
         <meta-data
             android:name="com.google.android.gms.version"
             android:value="@integer/google_play_services_version" /> <!-- Sample AdMob app ID: ca-app-pub-3940256099942544~3347511713 -->

@@ -2041,6 +2041,11 @@ class InputTasksActivity : BaseActivity() {
                         this.notifyDataSetChanged()
                     }
 
+                    holder.imageIV.setOnClickListener {
+                        val dialog = ZoomImageDialog(activity, uri!!)
+                        dialog.show()
+                    }
+
                 }
 
                 "video"->{

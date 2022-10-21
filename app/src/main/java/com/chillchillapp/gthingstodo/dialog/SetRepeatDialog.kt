@@ -330,7 +330,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
         popupMenu.show()
 
         popupMenu.setOnMenuItemClickListener {
-            val i = it.actionView.tag.toString().toInt()
+            val i = it.actionView!!.tag.toString().toInt()
             repeatNextTime = nextList[i].value
             Log.i("fhhhhh", "repeatNextTime: " + repeatNextTime)
 
@@ -354,7 +354,7 @@ class SetRepeatDialog(private var activity: Context): Dialog(activity) {
         popupMenu.show()
 
         popupMenu.setOnMenuItemClickListener {
-            val i = it.actionView.tag.toString().toInt()
+            val i = it.actionView!!.tag.toString().toInt()
             repeatNum = endList[i].value!!.toLong()
             Log.i("fhhhhh", "endDate: " + repeatNum)
 
