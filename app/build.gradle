@@ -13,14 +13,17 @@ apply plugin: 'com.google.firebase.crashlytics'
 
 
 android {
-    compileSdkVersion 33 //31
+    compileSdkVersion 31 //31
     defaultConfig {
+        resConfigs ("en", "ar", "fil", "es", "fr", "th")
         applicationId "com.chillchillapp.gthingstodo"
         minSdkVersion 21
-        targetSdkVersion 33 //30
+        targetSdkVersion 30 //30
         versionCode 4 // 7/11/2022-10:18
         versionName "1.1.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        resConfigs "en", "zh-rCN", "th"
     }
     buildTypes {
         release {

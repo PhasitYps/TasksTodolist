@@ -17,6 +17,7 @@
 
     <application
         android:allowBackup="true"
+        android:configChanges="locale"
         android:icon="@drawable/ic_todolist"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_todolist"

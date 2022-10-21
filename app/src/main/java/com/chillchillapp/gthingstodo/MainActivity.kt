@@ -2,6 +2,7 @@ package com.chillchillapp.gthingstodo
 
 import android.annotation.SuppressLint
 import android.app.*
+import android.content.Context
 import android.content.Intent
 import android.content.IntentSender
 import android.os.Build
@@ -43,10 +44,20 @@ class MainActivity : BaseActivity() , Communicator{
 
     private var categoryId: String = ""
 
+    override fun attachBaseContext(newBase: Context) {
+
+        val prefs = Prefs(newBase)
+        val languageCode = prefs.strCurrentLanguage!!
+        Log.i("hhjjjjjhhhhh", "attachBaseContext languageCode: $languageCode")
+        val context = LanguageConfig().changeLanguage(newBase, languageCode)
+
+        super.attachBaseContext(context)
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initBase()
-        initLanguage()
+        //initLanguage()
         setTheme()
         setContentView(R.layout.activity_main)
         showPinReminderNotification()
