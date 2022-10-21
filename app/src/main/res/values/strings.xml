@@ -219,4 +219,13 @@
     <string name="Record_your_to_do_list_here">Record your to-do list here.</string>
     <string name="Manage_your_lifestyle_to_do_categories_here">Manage your lifestyle to-do categories here.</string>
 
+    <string name="Set_Reminder">Set Reminder</string>
+    <string name="Same_day_as_due_date">Same day as due date</string>
+    <string name="five_minutes_in_advance">5 minutes in advance</string>
+    <string name="ten_minutes_in_advance">10 minutes in advance</string>
+    <string name="fifteen_minutes_in_advance">15 minutes in advance</string>
+    <string name="thirty_minutes_in_advance">30 minutes in advance</string>
+    <string name="a_day_ago">1 day ago</string>
+    <string name="two_days_ago">2 days ago</string>
+
 </resources>

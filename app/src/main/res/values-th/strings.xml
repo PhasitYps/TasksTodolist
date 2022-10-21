@@ -198,4 +198,13 @@
     <string name="Record_your_to_do_list_here">บันทึกรายการสิ่งที่ต้องทำของคุณ ได้ที่นี่</string>
     <string name="Manage_your_lifestyle_to_do_categories_here">จัดการหมวดหมู่สิ่งที่ต้องทำตามไลฟ์สไตล์ของคุณ ได้ที่นี่</string>
 
+    <string name="Set_Reminder">ตั้งเตือน</string>
+    <string name="Same_day_as_due_date">วันเดียวกับวันครบกำหนด</string>
+    <string name="five_minutes_in_advance">ล่วงหน้า 5 นาที</string>
+    <string name="ten_minutes_in_advance">ล่วงหน้า 10 นาที</string>
+    <string name="fifteen_minutes_in_advance">ล่วงหน้า 15 นาที</string>
+    <string name="thirty_minutes_in_advance">ล่วงหน้า 30 นาที</string>
+    <string name="a_day_ago">1 วันที่แล้ว</string>
+    <string name="two_days_ago">2 วันที่แล้ว</string>
+
 </resources>

@@ -203,4 +203,13 @@
     <string name="Record_your_to_do_list_here">I-record ang iyong listahan ng gagawin dito.</string>
     <string name="Manage_your_lifestyle_to_do_categories_here">Pamahalaan ang iyong lifestyle to-do na mga kategorya dito.</string>
 
+    <string name="Set_Reminder">Itakda ang Paalala</string>
+    <string name="Same_day_as_due_date">Kaparehong araw ng takdang petsa</string>
+    <string name="five_minutes_in_advance">5 minutong maaga</string>
+    <string name="ten_minutes_in_advance">10 minutong maaga</string>
+    <string name="fifteen_minutes_in_advance">15 minutong maaga</string>
+    <string name="thirty_minutes_in_advance">30 minutong maaga</string>
+    <string name="a_day_ago">1 araw ang nakalipas</string>
+    <string name="two_days_ago">2 araw ang nakalipas</string>
+
 </resources>

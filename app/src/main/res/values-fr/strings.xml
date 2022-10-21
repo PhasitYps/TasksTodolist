@@ -205,4 +205,13 @@
     <string name="Record_your_to_do_list_here">Enregistrer votre liste de tâches ici.</string>
     <string name="Manage_your_lifestyle_to_do_categories_here">Gérez vos catégories de tâches lifestyle ici.</string>
 
+    <string name="Set_Reminder">Définir un rappel</string>
+    <string name="Same_day_as_due_date">Même jour que la date d\'échéance</string>
+    <string name="five_minutes_in_advance">5 minutes à l\'avance</string>
+    <string name="ten_minutes_in_advance">10 minutes à l\'avance</string>
+    <string name="fifteen_minutes_in_advance">15 minutes à l\'avance</string>
+    <string name="thirty_minutes_in_advance">30 minutes à l\'avance</string>
+    <string name="a_day_ago">il y a 1 jour</string>
+    <string name="two_days_ago">il y a 2 jours</string>
+
 </resources>

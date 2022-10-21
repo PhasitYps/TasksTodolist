@@ -24,7 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="ตั้งการเเจ้งเตือน"
+                android:text="@string/Set_Reminder"
                 android:textColor="@color/colorBlack"
                 android:padding="20dp"
                 />
@@ -55,46 +55,46 @@
                     android:id="@+id/chk1"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="วันเดียวกันกับวันที่ครบกำหนด"
+                    android:text="@string/Same_day_as_due_date"
                     />
 
                 <CheckBox
                     android:id="@+id/chk2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ล่วงหน้า 5 นาที"
+                    android:text="@string/five_minutes_in_advance"
                     />
 
                 <CheckBox
                     android:id="@+id/chk3"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ล่วงหน้า 10 นาที"
+                    android:text="@string/ten_minutes_in_advance"
                     />
                 <CheckBox
                     android:id="@+id/chk4"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ล่วงหน้า 15 นาที"
+                    android:text="@string/fifteen_minutes_in_advance"
                     />
 
                 <CheckBox
                     android:id="@+id/chk5"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="ล่วงหน้า 30 นาที"
+                    android:text="@string/thirty_minutes_in_advance"
                     />
                 <CheckBox
                     android:id="@+id/chk6"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="1 วันก่อน"
+                    android:text="@string/a_day_ago"
                     />
                 <CheckBox
                     android:id="@+id/chk7"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="2 วันก่อน"
+                    android:text="@string/two_days_ago"
                     />
 
             </LinearLayout>
@@ -183,7 +183,7 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:layout_marginEnd="20dp"
-                    android:text="ยกเลิก"
+                    android:text="@string/cancel"
                     android:textColor="?attr/colorPrimary"
                     android:textStyle="bold" />
 
@@ -196,7 +196,7 @@
                     android:paddingTop="15dp"
                     android:paddingBottom="15dp"
                     android:layout_marginEnd="20dp"
-                    android:text="เสร็จสิ้น"
+                    android:text="@string/done"
                     android:textColor="?attr/colorAccent"
                     android:textStyle="bold" />
 

@@ -162,4 +162,13 @@
     <string name="Record_your_to_do_list_here">Registre su lista de tareas pendientes aquí.</string>
     <string name="Manage_your_lifestyle_to_do_categories_here">Administre las categorías de tareas pendientes de su estilo de vida aquí.</string>
 
+    <string name="Set_Reminder">Establecer recordatorio</string>
+    <string name="Same_day_as_due_date">El mismo día que la fecha de vencimiento</string>
+    <string name="five_minutes_in_advance">5 minutos antes</string>
+    <string name="ten_minutes_in_advance">10 minutos antes</string>
+    <string name="fifteen_minutes_in_advance">15 minutos antes</string>
+    <string name="thirty_minutes_in_advance">30 minutos antes</string>
+    <string name="a_day_ago">hace 1 día</string>
+    <string name="two_days_ago">hace 2 días</string>
+
 </resources>
