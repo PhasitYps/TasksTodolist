@@ -18,9 +18,9 @@ android {
         resConfigs ("en", "ar", "fil", "es", "fr", "th")
         applicationId "com.chillchillapp.gthingstodo"
         minSdkVersion 21
-        targetSdkVersion 30 //30
-        versionCode 4 // 7/11/2022-10:18
-        versionName "1.1.1"
+        targetSdkVersion 31 //30
+        versionCode 7 //--11/30/2022-1:14(7) 10/22/2022-3:25(6), 10/22/2022-3:14(5), 7/11/2022-10:18(4)
+        versionName "1.2.1"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         resConfigs "en", "zh-rCN", "th"

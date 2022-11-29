@@ -463,6 +463,6 @@ class SelectSymbol : BaseActivity() {
     }
 
     private fun isPurchases(): Boolean{
-        return false
+        return true
     }
 }

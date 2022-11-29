@@ -1,18 +1,17 @@
 package com.chillchillapp.gthingstodo
 
+import android.app.Notification
+import android.app.NotificationChannel
+import android.app.NotificationManager
+import android.app.PendingIntent
 import android.content.Intent
 import android.os.Build
 import android.os.Bundle
 import android.view.WindowManager
-import java.util.*
-import android.app.NotificationManager
-
-import android.app.Notification
-import android.app.NotificationChannel
-import android.app.PendingIntent
 import android.widget.RemoteViews
 import androidx.core.app.NotificationCompat
 import com.chillchillapp.gthingstodo.master.MyCustomReceiver
+import java.util.*
 
 
 class CheckPermission : BaseActivity() {
@@ -41,8 +40,19 @@ class CheckPermission : BaseActivity() {
         val discardIntent = Intent(this, MyCustomReceiver::class.java)
         discardIntent.action = KEY_DISCARD_PIN_REMINDER
 
-        remoteViews.setOnClickPendingIntent(R.id.addTaskIV, PendingIntent.getActivity(this, 0, addTaskIntent, 0))
-        remoteViews.setOnClickPendingIntent(R.id.cancelIV, PendingIntent.getBroadcast(this, 0, discardIntent, 0))
+        val addTaskPendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(this, 0, addTaskIntent, PendingIntent.FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getActivity(this, 0, addTaskIntent, 0)
+        }
+        val discardPendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getBroadcast(this, 0, discardIntent, PendingIntent.FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getBroadcast(this, 0, discardIntent, 0)
+        }
+
+        remoteViews.setOnClickPendingIntent(R.id.addTaskIV, addTaskPendingIntent)
+        remoteViews.setOnClickPendingIntent(R.id.cancelIV, discardPendingIntent)
         remoteViews.setTextViewText(R.id.captionTV, getString(R.string.Do_it_in_yourself))
         remoteViews.setTextViewText(R.id.addTV, getString(R.string.add_task))
         val build = when {
@@ -96,7 +106,13 @@ class CheckPermission : BaseActivity() {
     }
     private fun getPendingIntent(): PendingIntent {
         val intent = Intent(this, MainActivity::class.java)
-        return PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        var pendingIntent: PendingIntent? = null
+        pendingIntent = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE)
+        } else {
+            PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT)
+        }
+        return pendingIntent
         /*FLAG_ONE_SHOT คือ ใช้ได้ครั้งเดียว ถ้าเรียกซ้ำมันจะไม่ทำงาน
         FLAG_NO_CREATE คือ ไปเช็คก่อนว่า มีอยู่มัยถ้า มีอยู่แล้วมันจะไม่สร้างใหม่ พร้อมกับ return null
         FLAG_CANCEL_CURRENT คือ อันก่อนหน้า ถ้ามีอยู่แล้วจะถูกยกเลิก แล้วสร้างอันใหม่
