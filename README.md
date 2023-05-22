@@ -1,6 +1,6 @@
 # TasksTodolist
 
-This Application is a To Do List app that helps you jot down your daily to-do list, plan, organize, attach photos, videos, sounds, reminders, add appointments, repeat, prioritize tasks. Manage your tasks and manage your time. Categorized and have beautiful icons to choose from over 2000+ images, add, delete, edit anywhere, anytime. All your devices with data sync. View your work plan as a calendar, view task overview, view statistics with graphs, help you to complete your tasks faster and simpler. To save time and make the most of your everyday time, it's free to use for your Android phone and tablet.
+This application is a To Do List app that helps you jot down your daily to-do list, plan, organize, attach photos, videos, sounds, reminders, add appointments, repeat, prioritize tasks. Manage your tasks and manage your time. Categorized and have beautiful icons to choose from over 2000+ images, add, delete, edit anywhere, anytime. All your devices with data sync. View your work plan as a calendar, view task overview, view statistics with graphs, help you to complete your tasks faster and simpler. To save time and make the most of your everyday time, it's free to use for your Android phone and tablet.
 
 category
 create category Use it to separate your tasks into categories. Prioritize your tasks Choose from 2000+ icons to help you manage your work quickly.
